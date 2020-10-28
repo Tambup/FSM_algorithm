@@ -24,7 +24,7 @@
 								}
 							],
 							"observable": [ "o2" ],
-							"relevant": null
+							"relevant": []
 						}
 					]
 				},
@@ -42,7 +42,7 @@
 									"event": "e3"
 								}
 							],
-							"observable": null,
+							"observable": [],
 							"relevant": [ "r" ]
 						}
 					]
@@ -67,7 +67,7 @@
 								}
 							],
 							"observable": [ "o3" ],
-							"relevant": null
+							"relevant": []
 						}
 					]
 				},
@@ -84,7 +84,9 @@
 									"link": "L3",
 									"event": "e3"
 								}
-							]
+							],
+							"observable": [],
+							"relevant": []
 						},
 						{
 							"name": "t3c",
@@ -96,7 +98,7 @@
 									"event": "e3"
 								}
 							],
-							"observable": null,
+							"observable": [],
 							"relevant": [ "f" ]
 						}
 					]
