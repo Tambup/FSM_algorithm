@@ -1,0 +1,107 @@
+{
+	"name": null,
+	"comportamentalFA": [
+		{
+			"name": "C2",
+			"state":[
+				{
+					"name": "20",
+					"init": true,
+					"outTransition": [
+						{
+							"name": "t2a",
+							"destination": "21",
+							"link":[
+								{
+									"type": "in",
+									"link": "L2",
+									"event": "e2"
+								},
+								{
+									"type": "out",
+									"link": "L3",
+									"event": "e3"
+								}
+							],
+							"observable": [ "o2" ],
+							"relevant": null
+						}
+					]
+				},
+				{
+					"name": "21",
+					"init": false,
+					"outTransition": [
+						{
+							"name": "t2b",
+							"destination": "20",
+							"link":[
+								{
+									"type": "out",
+									"link": "L3",
+									"event": "e3"
+								}
+							],
+							"observable": null,
+							"relevant": [ "r" ]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "C3",
+			"state":[
+				{
+					"name": "30",
+					"init": true,
+					"outTransition": [
+						{
+							"name": "t3a",
+							"destination": "31",
+							"link":[
+								{
+									"type": "out",
+									"link": "L2",
+									"event": "e2"
+								}
+							],
+							"observable": [ "o3" ],
+							"relevant": null
+						}
+					]
+				},
+				{
+					"name": "31",
+					"init": false,
+					"outTransition": [
+						{
+							"name": "t3b",
+							"destination": "30",
+							"link":[
+								{
+									"type": "in",
+									"link": "L3",
+									"event": "e3"
+								}
+							]
+						},
+						{
+							"name": "t3c",
+							"destination": "31",
+							"link":[
+								{
+									"type": "in",
+									"link": "L3",
+									"event": "e3"
+								}
+							],
+							"observable": null,
+							"relevant": [ "f" ]
+						}
+					]
+				}
+			]
+		}
+	]
+}
