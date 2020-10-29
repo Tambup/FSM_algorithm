@@ -35,8 +35,10 @@ def main():
 
     cfaNetwork = UserIO.readInput(''.join(line for line in lines))
 
+    '''
     cfaNetwork.check()
-
+    '''
+    print("AA")
 
 if __name__ == '__main__':
     main()
