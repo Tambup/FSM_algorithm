@@ -34,7 +34,8 @@ def main():
         lines = [line.strip() for line in args.file[0]]
 
     cfaNetwork = UserIO.readInput(''.join(line for line in lines))
-    print()
+
+    cfaNetwork.check()
 
 
 if __name__ == '__main__':
