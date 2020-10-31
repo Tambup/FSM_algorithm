@@ -41,7 +41,10 @@ class TestStringMethods(unittest.TestCase):
         out_transition = {
             'name': None,
             'destination': None,
-            'link': [],
+            'link': [{
+                'type': None,
+		        'link': None,
+		        'event': None}], 
             'observable': [],
             'relevant': []}
         s1 = State('21', True, [out_transition])
@@ -51,11 +54,14 @@ class TestStringMethods(unittest.TestCase):
         out_transition = {
             'name': 't2a',
             'destination': '21',
-            'link': [],                                                             
+            'link': [{
+                'type': None,
+		        'link': None,
+		        'event': None}],                                                             
             'observable': [],
             'relevant': []}
         s1 = State('21', True, [out_transition])
-        self.assertFalse(s1.check)
+        self.assertFalse(s1.check())
 
     def test_check_duplicate_out_transaction(self):     
         out_transition1 = {
@@ -85,7 +91,7 @@ class TestStringMethods(unittest.TestCase):
             'observable': [],
             'relevant': []}
         s1 = State('21', True, [out_transition1,out_transition2])
-        self.assertFalse(s1.check)
+        self.assertFalse(s1.check())
 
     def test_out_transaction(self):     
         out_transition1 = {

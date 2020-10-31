@@ -31,13 +31,12 @@ class State():
         for out_trans in self._out_transitions:
             if out_trans.name == None:
                 return False
-
-            elif out_trans.check == False:
+            elif out_trans.check() == False:
                 return False
 
         for out_trans in self._out_transitions:
             for in_trans in self._out_transitions:
-                if out_trans != in_trans:
+                if id(out_trans) != id(in_trans):
                     if out_trans.__eq__(in_trans):
                         return False
 
