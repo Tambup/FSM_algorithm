@@ -19,6 +19,17 @@ class ComportamentalFA():
     def states(self):
         return self._states
 
+    def in_links(self):
+        return {link for state in self._states
+                for link in state.in_links()}
+
+    def out_links(self):
+        return {link for state in self._states
+                for link in state.out_links()}
+
+    def __eq__(self, obj):
+        raise NotImplementedError
+
     def check(self):
         if self._states is None:
             return False

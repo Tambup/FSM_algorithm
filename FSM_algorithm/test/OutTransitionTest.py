@@ -43,7 +43,7 @@ class TestStringMethods(unittest.TestCase):
             'link': None,
             'event': None}]
         out_transition1 = OutTransition('t2a', '21', link1, [], [])
-        self.assertFalse(out_transition1.check(""))
+        self.assertFalse(out_transition1.check())
 
     def test_same_event_same_type(self):
         link1 = {

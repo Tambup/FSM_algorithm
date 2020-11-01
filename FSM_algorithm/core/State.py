@@ -23,6 +23,17 @@ class State():
     def out_transitions(self):
         return self._out_transitions
 
+    def in_links(self):
+        return {link for out_trans in self._out_transitions
+                for link in out_trans.in_links()}
+
+    def out_links(self):
+        return {link for out_trans in self._out_transitions
+                for link in out_trans.out_links()}
+
+    def __eq__(self, obj):
+        raise NotImplementedError
+
     def check(self):
         if self._name is None:
             return False

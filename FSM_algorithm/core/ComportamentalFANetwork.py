@@ -17,7 +17,18 @@ class ComportamentalFANetwork():
     def comportamentalFAs(self):
         return self._comportamentalFAs
 
+    def in_links(self):
+        return {link for compFa in self._comportamentalFAs
+                for link in compFa.in_links()}
+
+    def out_links(self):
+        return {link for compFa in self._comportamentalFAs
+                for link in compFa.out_links()}
+
     def check(self):
+        if self._comportamentalFAs is None:
+            return False
+
         if len(self._comportamentalFAs) < 1:
             return False
 

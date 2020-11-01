@@ -25,16 +25,6 @@ class TestStringMethods(unittest.TestCase):
         s1 = State('21', True, [out_transition])
         self.assertTrue(s1.no_exit())
 
-    def test_is_isolated_null_out_transitions(self):
-        out_transition = {
-            'name': None,
-            'destination': None,
-            'link': [],
-            'observable': [],
-            'relevant': []}
-        s1 = State('21', True, [out_transition])
-        self.assertTrue(s1.no_exit())
-
     def test_check_null_out_transitions(self):
         out_transition = {
             'name': None,

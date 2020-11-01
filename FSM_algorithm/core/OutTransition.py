@@ -31,7 +31,16 @@ class OutTransition():
     def links(self):
         return self._links
 
+    def in_links(self):
+        return [link[0] for link in self._links if link[1] == 'in']
+
+    def out_links(self):
+        return [link[0] for link in self._links if link[1] == 'out']
+
     def check(self):
+        if self._destination is None:
+            return False
+
         for link in self._links:
             if link[0] is None or link[1] is None or link[1] is None:
                 return False
@@ -42,10 +51,11 @@ class OutTransition():
                 if in_link_exist:
                     return False
                 in_link_exist = True
+
         for link in self._links:
             for inner_link in self._links:
                 if link is not inner_link:
-                    if link[1] == "out" and inner_link[1] == 'out':
+                    if link[1] == 'out' and inner_link[1] == 'out':
                         if link[0] == inner_link[0]:
                             return False
         return True
@@ -69,3 +79,35 @@ class OutTransition():
                 all(elem in obj.observable for elem in self._observable) and \
                 all(elem in self._relevant for elem in obj.relevant) and \
                 all(elem in obj.relevant for elem in self._relevant)
+
+    def sameEvents(oth_links):
+        both_null = False
+        if self._links is None or oth_links is None:
+            if self._links is not None or oth_links is not None:
+                return False
+            else:
+                both_null = True
+
+        if not both_null:
+            for link in self._links:
+                is_contained = False
+                for oth_link in oth_links:
+                    if link[2] == oth_link[2]:
+                        if link[1] == oth_link[1]:
+                            is_contained = True
+                            break
+                if not is_contained:
+                    return False
+
+            for oth_link in oth_links:
+                is_contained = False
+                for link in links:
+                    if link[2] == oth_link[2]:
+                        if link[1] == oth_link[1]:
+                            is_contained = True
+                            break
+                if not is_contained:
+                    return False
+            return True
+
+        return False
