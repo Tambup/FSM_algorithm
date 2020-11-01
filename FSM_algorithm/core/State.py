@@ -23,34 +23,31 @@ class State():
     def out_transitions(self):
         return self._out_transitions
 
-    
     def check(self):
-        if self._name == None:
+        if self._name is None:
             return False
 
         for out_trans in self._out_transitions:
-            if out_trans.name == None:
+            if out_trans.name is None:
                 return False
-            elif out_trans.check() == False:
+            elif not out_trans.check():
                 return False
 
         for out_trans in self._out_transitions:
             for in_trans in self._out_transitions:
-                if id(out_trans) != id(in_trans):
-                    if out_trans.__eq__(in_trans):
+                if out_trans is not in_trans:
+                    if out_trans == in_trans:
                         return False
 
         return True
-    
+
     def no_exit(self):
         if self._out_transitions is None:
             return True
-        
+
         for out_trans in self._out_transitions:
-            if out_trans.name != None:
-                if out_trans.destination != self._name:
-                    return False
-                return True
+            if out_trans.destination != self._name:
+                return False
 
         return True
 

@@ -35,10 +35,7 @@ def main():
 
     cfaNetwork = UserIO.readInput(''.join(line for line in lines))
 
-
-
     cfaNetwork.check()
-
 
 
 if __name__ == '__main__':

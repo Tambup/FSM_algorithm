@@ -6,7 +6,7 @@ class OutTransition():
         self._name = name
         self._destination = destination
         self._links = {
-            (link['type'], link['event'],link['link'], ) for link in links
+            (link['link'], link['type'], link['event']) for link in links
             }
         self._observable = observable
         self._relevant = relevant
@@ -30,11 +30,12 @@ class OutTransition():
     @property
     def links(self):
         return self._links
-    
+
     def check(self):
         for link in self._links:
-            if link[0] == None and link[1] == None and link[1] == None:
+            if link[0] is None or link[1] is None or link[1] is None:
                 return False
+
         in_link_exist = False
         for _, link_type, _ in self._links:
             if link_type == 'in':
@@ -68,6 +69,3 @@ class OutTransition():
                 all(elem in obj.observable for elem in self._observable) and \
                 all(elem in self._relevant for elem in obj.relevant) and \
                 all(elem in obj.relevant for elem in self._relevant)
-
-
-
