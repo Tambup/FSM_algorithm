@@ -28,7 +28,21 @@ class ComportamentalFA():
                 for link in state.out_links()}
 
     def __eq__(self, obj):
-        raise NotImplementedError
+        if isinstance(obj, ComportamentalFA):
+            temp = self._name == obj.name
+            if self._states is None or obj.states is None:
+                return False if self._states is not None \
+                    or obj.states is not None else temp
+
+            if temp and len(self._states) == len(obj.states):
+                if not set(self._states).issubset(obj.states):
+                    return False
+
+                if not set(obj.states).issubset(self._states):
+                    return False
+
+                return True
+        return False
 
     def check(self):
         if self._states is None:
@@ -37,7 +51,7 @@ class ComportamentalFA():
             return False
 
         for state in self._states:
-            if state is null:
+            if state is None:
                 return False
             elif not state.check():
                 return False
@@ -51,12 +65,12 @@ class ComportamentalFA():
             init_counter = init_counter+1 if state.is_init() else init_counter
             for inner_state in self._states:
                 if state is not inner_state:
-                    if state.name is None or inner_state.name in None:
+                    if state.name is None or inner_state.name is None:
                         return False
                     elif state.name == inner_state.name:
                         return False
 
-            for out_trans in state.out_transition:
+            for out_trans in state.out_transitions:
                 must_continue = False
                 for inner_state in self._states:
                     if out_trans.destination == inner_state.name:

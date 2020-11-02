@@ -40,7 +40,40 @@ class ComportamentalFANetwork():
             if not compFA.check():
                 return False
 
-            if len(self._comportamentalFAs) > 1:
-                raise NotImplementedError
+        if len(self._comportamentalFAs) > 1:
+            for compFA in self._comportamentalFAs:
+                for in_link in compFA.in_links():
+                    num_out = 0
+                    for inner_compFA in self._comportamentalFAs:
+                        if compFA is not inner_compFA:
+                            inner_in_links = inner_compFA.in_links()
+                            if set([in_link]).issubset(inner_in_links):
+                                return False
+
+                            for inner_out_link in inner_compFA.out_links():
+                                if in_link == inner_out_link:
+                                    num_out += 1
+                                if num_out > 1:
+                                    return False
+
+                    if num_out != 1:
+                        return False
+
+                for out_link in compFA.out_links():
+                    num_in = 0
+                    for inner_compFA in self._comportamentalFAs:
+                        if compFA is not inner_compFA:
+                            inner_out_links = inner_compFA.out_links()
+                            if set([out_link]).issubset(inner_out_links):
+                                return False
+
+                            for inner_in_link in inner_compFA.in_links():
+                                if out_link == inner_in_link:
+                                    num_in += 1
+                                if num_in > 1:
+                                    return False
+
+                    if num_in != 1:
+                        return False
 
         return True

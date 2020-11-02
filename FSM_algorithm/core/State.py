@@ -32,7 +32,23 @@ class State():
                 for link in out_trans.out_links()}
 
     def __eq__(self, obj):
-        raise NotImplementedError
+        if isinstance(obj, State):
+            temp = self._name == obj.name and self._is_init == obj.is_init
+            if self._out_transitions is None or obj.out_transitions is None:
+                return False if self._out_transitions is not None \
+                    or obj.out_transitions is not None else temp
+
+            if temp and len(self._out_transitions) == len(obj.out_transitions):
+                if not set(self._out_transitions).issubset(
+                            obj.out_transitions):
+                    return False
+
+                if not set(obj.out_transitions).issubset(
+                            self._out_transitions):
+                    return False
+
+                return True
+        return False
 
     def check(self):
         if self._name is None:
