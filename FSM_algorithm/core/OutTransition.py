@@ -1,6 +1,3 @@
-from enum import Enum
-
-
 class OutTransition():
     def __init__(self, name, destination, links, observable, relevant):
         self._name = name
@@ -71,6 +68,9 @@ class OutTransition():
                     if self._same_vectors(obj):
                         return True
         return False
+
+    def __hash__(self):
+        return hash((self._name, self._destination, tuple(self._links)))
 
     def _same_vectors(self, obj):
         return all(elem in self._links for elem in obj.links) and \

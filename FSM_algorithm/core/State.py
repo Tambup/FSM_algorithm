@@ -33,7 +33,7 @@ class State():
 
     def __eq__(self, obj):
         if isinstance(obj, State):
-            temp = self._name == obj.name and self._is_init == obj.is_init
+            temp = self._name == obj.name and self._is_init == obj.is_init()
             if self._out_transitions is None or obj.out_transitions is None:
                 return False if self._out_transitions is not None \
                     or obj.out_transitions is not None else temp
@@ -49,6 +49,9 @@ class State():
 
                 return True
         return False
+
+    def __hash__(self):
+        return hash((self._name, self._is_init, tuple(self._out_transitions)))
 
     def check(self):
         if self._name is None:

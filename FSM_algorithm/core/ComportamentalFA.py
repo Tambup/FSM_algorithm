@@ -54,6 +54,11 @@ class ComportamentalFA():
 
         return True
 
+    def init_state(self):
+        for state in self._states:
+            if state.is_init():
+                return state
+
     def check(self):
         if self._states is None:
             return False

@@ -2,6 +2,12 @@ import argparse
 import select
 import sys
 from userInputOutput import UserInputOutput as UserIO
+from ComportamentalFANSpace import ComportamentalFANSpace
+from ComportamentalFANSObservation import ComportamentalFANSObservation
+
+
+def _execute(task, outFile):
+    task.build()
 
 
 def main():
@@ -17,7 +23,7 @@ def main():
     argGroup.add_argument('-f', '--file', dest='file', nargs=1,
                           type=argparse.FileType('r'),
                           help='File containing the ComportamentalFANetwork')
-    argGroup.add_argument('-o', '--out-file', dest='outFile', nargs=1,
+    argGroup.add_argument('-o', '--out-file', dest='out_file', nargs=1,
                           type=argparse.FileType('w+'), required=True,
                           help='File to output results')
 
@@ -35,7 +41,15 @@ def main():
 
     cfaNetwork = UserIO.readInput(''.join(line for line in lines))
 
-    cfaNetwork.check()
+    if not cfaNetwork.check():
+        print("The input describe a malformatted ComportamentalFANetwork",
+              file=sys.stderr)
+
+    options = {
+        1: ComportamentalFANSpace,
+        2: ComportamentalFANSObservation
+    }
+    _execute(options[args.type[0]](cfaNetwork), args.out_file)
 
 
 if __name__ == '__main__':
