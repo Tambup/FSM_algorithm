@@ -80,7 +80,7 @@ class OutTransition():
                 all(elem in self._relevant for elem in obj.relevant) and \
                 all(elem in obj.relevant for elem in self._relevant)
 
-    def sameEvents(oth_links):
+    def sameEvents(self, oth_links):
         both_null = False
         if self._links is None or oth_links is None:
             if self._links is not None or oth_links is not None:
@@ -101,7 +101,7 @@ class OutTransition():
 
             for oth_link in oth_links:
                 is_contained = False
-                for link in links:
+                for link in self._links:
                     if link[2] == oth_link[2]:
                         if link[1] == oth_link[1]:
                             is_contained = True

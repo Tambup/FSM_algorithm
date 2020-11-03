@@ -44,6 +44,16 @@ class ComportamentalFA():
                 return True
         return False
 
+    def _no_enter(self, state):
+        for inner_state in self._states:
+            if state is not inner_state:
+                if inner_state.out_transitions is not None:
+                    for out_trans in inner_state.out_transitions:
+                        if out_trans.destination == state.name:
+                            return False
+
+        return True
+
     def check(self):
         if self._states is None:
             return False
@@ -59,7 +69,7 @@ class ComportamentalFA():
         init_counter = 0
         for state in self._states:
             if len(self._states) > 1:
-                if state.no_exit() and _no_enter(state):
+                if state.no_exit() and self._no_enter(state):
                     return False
 
             init_counter = init_counter+1 if state.is_init() else init_counter
@@ -81,13 +91,3 @@ class ComportamentalFA():
                     return False
 
         return init_counter == 1
-
-    def _no_enter(self, state):
-        for inner_state in self._states:
-            if state is not inner_state:
-                if inner_state.out_transitions is not None:
-                    for out_trans in inner_state.out_transitions:
-                        if out_trans.destination == state.name:
-                            return False
-
-        return True
