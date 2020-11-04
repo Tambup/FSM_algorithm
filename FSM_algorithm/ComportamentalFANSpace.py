@@ -12,10 +12,11 @@ class ComportamentalFANSpace(Task):
         self._initialize()
 
         index = 0
+        id = 1
         while (index < len(self._space_states)):
             actual_space_state = self._space_states[index]
             next_trans_state = actual_space_state.next_transition_state()
-            self._add_states(actual_space_state, next_trans_state)
+            id = self._add_states(actual_space_state, next_trans_state, id)
             index += 1
 
         self._prune()
@@ -24,10 +25,10 @@ class ComportamentalFANSpace(Task):
         compFAs = super().compFAN.comportamentalFAs
         link_names = super().compFAN.in_links()
         init_states = [compFA.init_state() for compFA in compFAs]
-        init = SpaceState(init_states, link_names)
-        self._space_states = [init]
+        self._space_states = [SpaceState(init_states, link_names)]
+        self._space_states[0].id = 0
 
-    def _add_states(self, space_state, next_transition):
+    def _add_states(self, space_state, next_transition, id):
         num_comp_FA = 0
         for actual_state in space_state.states:
             try:
@@ -45,11 +46,14 @@ class ComportamentalFANSpace(Task):
                         space_state.add_next(actual_out_trans,
                                              self._space_states[index])
                     except ValueError:
+                        new_spc_st.id = id
+                        id += 1
                         self._space_states.append(new_spc_st)
                         space_state.add_next(actual_out_trans, new_spc_st)
             except KeyError:
                 pass
             num_comp_FA += 1
+        return id
 
     def _new_state(self, old_space, old_state, new_state, out_trans):
         new_space = copy.deepcopy(old_space)

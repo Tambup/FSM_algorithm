@@ -1,10 +1,11 @@
 class SpaceState:
-    NULL_EVT = "\u03B5"
+    NULL_EVT = '\u03B5'
 
     def __init__(self, states, links):
         self._links = {link_name: SpaceState.NULL_EVT for link_name in links}
         self._states = states
         self._nexts = {}
+        self._id = None
 
     def next_transition_state(self):
         possible_next = {}
@@ -18,14 +19,22 @@ class SpaceState:
 
     def _must_add(self, next_out_trans):
         for link_name, link_type, link_event in next_out_trans.links:
-            if link_type == "in":
+            if link_type == 'in':
                 if self._links[link_name] != link_event:
                     return False
-            elif link_type == "out":
+            elif link_type == 'out':
                 if self._links[link_name] != SpaceState.NULL_EVT:
                     return False
 
         return True
+
+    @property
+    def id(self):
+        return self._id
+
+    @id.setter
+    def id(self, value):
+        self._id = value
 
     @property
     def links(self):
@@ -87,21 +96,24 @@ class SpaceState:
 
     def dict_per_json(self):
         temp = {}
+        temp['name'] = self._id
         temp['link'] = {key: val for key, val in self._links.items()}
         temp['state'] = {
             'CFAN '+str(i): val.name for i, val in enumerate(self._states)
         }
         temp['next'] = {
-            key.name: self._short_str(val) for key, val in self._nexts.items()
+            k.name: self._next_desc(val, k) for k, val in self._nexts.items()
         }
 
         return temp
 
-    def _short_str(self, next_state):
-        return "state: " + str(
-            [
-                f"CFAN {i}: {state.name}"
-                for i, state in enumerate(next_state.states)
-            ]) + ", " + "link: " + str(
-                [f"{name}: {val}" for name, val in next_state.links.items()]
-            )
+    def _next_desc(self, next_state, out_trans):
+        temp = {}
+        temp['state'] = {
+            f'CFAN {i}': st.name for i, st in enumerate(next_state.states)
+        }
+        temp['link'] = {name: val for name, val in next_state.links.items()}
+        temp['observable'] = out_trans.observable
+        temp['relevant'] = out_trans.relevant
+
+        return temp
