@@ -6,8 +6,9 @@ from ComportamentalFANSpace import ComportamentalFANSpace
 from ComportamentalFANSObservation import ComportamentalFANSObservation
 
 
-def _execute(task, outFile):
+def _execute(task, out_file):
     task.build()
+    UserIO.write_result(task, out_file)
 
 
 def main():

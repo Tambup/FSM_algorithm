@@ -51,9 +51,6 @@ class ComportamentalFANSpace(Task):
                 pass
             num_comp_FA += 1
 
-    def _prune(self):
-        pass
-
     def _new_state(self, old_space, old_state, new_state, out_trans):
         new_space = copy.deepcopy(old_space)
         for link_name, link_type, link_event in out_trans.links:
@@ -64,3 +61,45 @@ class ComportamentalFANSpace(Task):
 
         new_space.change_state(old_state, new_state)
         return new_space
+
+    def _prune(self):
+        mantain_list = {}
+        remove_list = {}
+        for state in self._space_states:
+            try:
+                mantain_list[state] & remove_list[state]
+            except KeyError:
+                self._prune_recursion(state, {}, mantain_list, remove_list)
+
+        self._space_states = list(mantain_list.keys())
+
+    def _prune_recursion(self, state, forbidden, mantain_list, remove_list):
+        if state.is_final():
+            mantain_list[state] = True
+            return False
+
+        for out_trans, next in state.nexts.items():
+            if not remove_list.get(out_trans):
+                arc = (state, out_trans.name, next)
+                if not forbidden.get(arc):
+                    forbidden[arc] = True
+                    if mantain_list.get(next):
+                        if not mantain_list.get(state):
+                            mantain_list[state] = True
+                        return False
+                    elif not self._prune_recursion(next, forbidden,
+                                                   mantain_list, remove_list):
+                        if not mantain_list.get(state):
+                            mantain_list[state] = True
+                        return False
+
+        remove_list[state] = True
+        return True
+
+    def dict_per_json(self):
+        return {
+            'space_state': [
+                space_state.dict_per_json()
+                for space_state in self._space_states
+            ]
+        }
