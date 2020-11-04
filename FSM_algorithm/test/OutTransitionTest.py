@@ -1,5 +1,4 @@
 import unittest
-from core.State import State
 from core.OutTransition import OutTransition
 
 
@@ -19,15 +18,7 @@ class TestStringMethods(unittest.TestCase):
             'type': None,
             'link': None,
             'event': None}
-        link2 = {
-            'type': 'in',
-            'link': 'L2',
-            'event': 'e2'}
-        link3 = {
-            'type': 'out',
-            'link': 'L3',
-            'event': 'l3'}
-        out_transition1 = OutTransition('t2a', '21', [link1], [], [])
+        OutTransition('t2a', '21', [link1], [], [])
 
     def test_check_with_null(self):
         link1 = [{
@@ -35,10 +26,6 @@ class TestStringMethods(unittest.TestCase):
             'link': 'L2',
             'event': 'e2'},
             {
-            'type': None,
-            'link': None,
-            'event': None}]
-        link2 = [{
             'type': None,
             'link': None,
             'event': None}]
@@ -54,16 +41,7 @@ class TestStringMethods(unittest.TestCase):
             'type': 'in',
             'link': 'L2',
             'event': 'e2'}
-        link3 = {
-            'type': 'out',
-            'link': 'L3',
-            'event': 'l3'}
-        link4 = {
-            'type': 'out',
-            'link': 'L3',
-            'event': 'l3'}
-        links = [link3, link4]
-        out_transition1 = OutTransition('t2a', '21', [link1, link2], [], [])
+        OutTransition('t2a', '21', [link1, link2], [], [])
 
 
 if __name__ == '__main__':

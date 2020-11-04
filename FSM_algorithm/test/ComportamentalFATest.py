@@ -1,6 +1,4 @@
 import unittest
-from core.State import State
-from core.OutTransition import OutTransition
 from core.ComportamentalFA import ComportamentalFA
 
 

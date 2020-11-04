@@ -1,6 +1,5 @@
 import unittest
 from core.State import State
-from core.OutTransition import OutTransition
 
 
 class TestStringMethods(unittest.TestCase):
