@@ -35,6 +35,10 @@ class SpaceState:
     def states(self):
         return self._states
 
+    @property
+    def nexts(self):
+        return self._nexts
+
     def set_link(self, link_name, link_event):
         self._links[link_name] = link_event
 
@@ -45,8 +49,16 @@ class SpaceState:
         self._nexts[transition] = next
 
     def change_state(self, old_state, new_state):
+        self._nexts = {}
         self._states = [new_state if elem == old_state else elem
                         for elem in self._states]
+
+    def is_final(self):
+        for val in self._links.values():
+            if val != SpaceState.NULL_EVT:
+                return False
+
+        return True
 
     def __eq__(self, obj):
         if isinstance(obj, SpaceState):
@@ -69,3 +81,27 @@ class SpaceState:
                     return False
 
             return True
+
+    def __hash__(self):
+        return hash((tuple(sorted(self._links.items())), tuple(self._states)))
+
+    def dict_per_json(self):
+        temp = {}
+        temp['link'] = {key: val for key, val in self._links.items()}
+        temp['state'] = {
+            'CFAN '+str(i): val.name for i, val in enumerate(self._states)
+        }
+        temp['next'] = {
+            key.name: self._short_str(val) for key, val in self._nexts.items()
+        }
+
+        return temp
+
+    def _short_str(self, next_state):
+        return "state: " + str(
+            [
+                f"CFAN {i}: {state.name}"
+                for i, state in enumerate(next_state.states)
+            ]) + ", " + "link: " + str(
+                [f"{name}: {val}" for name, val in next_state.links.items()]
+            )

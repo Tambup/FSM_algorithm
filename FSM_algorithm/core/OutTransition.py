@@ -2,9 +2,9 @@ class OutTransition():
     def __init__(self, name, destination, links, observable, relevant):
         self._name = name
         self._destination = destination
-        self._links = {
+        self._links = frozenset(
             (link['link'], link['type'], link['event']) for link in links
-            }
+            )
         self._observable = observable
         self._relevant = relevant
 
@@ -70,7 +70,7 @@ class OutTransition():
         return False
 
     def __hash__(self):
-        return hash((self._name, self._destination, tuple(self._links)))
+        return hash((self._name, self._destination, self._links))
 
     def _same_vectors(self, obj):
         return all(elem in self._links for elem in obj.links) and \
