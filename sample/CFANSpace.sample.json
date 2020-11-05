@@ -238,18 +238,6 @@
                 "CFAN 1": "31"
             },
             "next": {
-                "t3b": {
-                    "state": {
-                        "CFAN 0": "21",
-                        "CFAN 1": "30"
-                    },
-                    "link": {
-                        "L2": "e2",
-                        "L3": "\u03b5"
-                    },
-                    "observable": [],
-                    "relevant": []
-                },
                 "t3c": {
                     "state": {
                         "CFAN 0": "21",

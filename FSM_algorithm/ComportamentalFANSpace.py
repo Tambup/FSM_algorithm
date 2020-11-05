@@ -85,20 +85,22 @@ class ComportamentalFANSpace(Task):
             mantain_list[state] = True
             return False
 
+        remove_trans = []
         for out_trans, next in state.nexts.items():
-            if not remove_list.get(out_trans):
+            if not remove_list.get(next):
                 arc = (state, out_trans.name, next)
                 if not forbidden.get(arc):
                     forbidden[arc] = True
-                    if mantain_list.get(next):
+                    if mantain_list.get(next) or not \
+                            self._prune_recursion(next, forbidden,
+                                                  mantain_list, remove_list):
                         if not mantain_list.get(state):
                             mantain_list[state] = True
+                        for trans in remove_trans:
+                            del state.nexts[trans]
                         return False
-                    elif not self._prune_recursion(next, forbidden,
-                                                   mantain_list, remove_list):
-                        if not mantain_list.get(state):
-                            mantain_list[state] = True
-                        return False
+                    else:
+                        remove_trans.append(out_trans)
 
         remove_list[state] = True
         return True

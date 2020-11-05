@@ -1,0 +1,183 @@
+{
+    "space_state_linear_observation": [
+        {
+            "name": 3,
+            "obs_index": 2,
+            "link": {
+                "L2": "\u03b5",
+                "L3": "\u03b5"
+            },
+            "state": {
+                "CFAN 0": "21",
+                "CFAN 1": "30"
+            },
+            "next": {}
+        },
+        {
+            "name": 2,
+            "obs_index": 2,
+            "link": {
+                "L2": "\u03b5",
+                "L3": "e3"
+            },
+            "state": {
+                "CFAN 0": "21",
+                "CFAN 1": "31"
+            },
+            "next": {
+                "t3b": {
+                    "state": {
+                        "CFAN 0": "21",
+                        "CFAN 1": "30"
+                    },
+                    "link": {
+                        "L2": "\u03b5",
+                        "L3": "\u03b5"
+                    }
+                },
+                "t3c": {
+                    "state": {
+                        "CFAN 0": "21",
+                        "CFAN 1": "31"
+                    },
+                    "link": {
+                        "L2": "\u03b5",
+                        "L3": "\u03b5"
+                    }
+                }
+            }
+        },
+        {
+            "name": 5,
+            "obs_index": 2,
+            "link": {
+                "L2": "\u03b5",
+                "L3": "\u03b5"
+            },
+            "state": {
+                "CFAN 0": "21",
+                "CFAN 1": "31"
+            },
+            "next": {
+                "t2b": {
+                    "state": {
+                        "CFAN 0": "20",
+                        "CFAN 1": "31"
+                    },
+                    "link": {
+                        "L2": "\u03b5",
+                        "L3": "e3"
+                    }
+                }
+            }
+        },
+        {
+            "name": 7,
+            "obs_index": 2,
+            "link": {
+                "L2": "\u03b5",
+                "L3": "\u03b5"
+            },
+            "state": {
+                "CFAN 0": "20",
+                "CFAN 1": "30"
+            },
+            "next": {}
+        },
+        {
+            "name": 6,
+            "obs_index": 2,
+            "link": {
+                "L2": "\u03b5",
+                "L3": "e3"
+            },
+            "state": {
+                "CFAN 0": "20",
+                "CFAN 1": "31"
+            },
+            "next": {
+                "t3b": {
+                    "state": {
+                        "CFAN 0": "20",
+                        "CFAN 1": "30"
+                    },
+                    "link": {
+                        "L2": "\u03b5",
+                        "L3": "\u03b5"
+                    }
+                },
+                "t3c": {
+                    "state": {
+                        "CFAN 0": "20",
+                        "CFAN 1": "31"
+                    },
+                    "link": {
+                        "L2": "\u03b5",
+                        "L3": "\u03b5"
+                    }
+                }
+            }
+        },
+        {
+            "name": 8,
+            "obs_index": 2,
+            "link": {
+                "L2": "\u03b5",
+                "L3": "\u03b5"
+            },
+            "state": {
+                "CFAN 0": "20",
+                "CFAN 1": "31"
+            },
+            "next": {}
+        },
+        {
+            "name": 1,
+            "obs_index": 1,
+            "link": {
+                "L2": "e2",
+                "L3": "\u03b5"
+            },
+            "state": {
+                "CFAN 0": "20",
+                "CFAN 1": "31"
+            },
+            "next": {
+                "t2a": {
+                    "state": {
+                        "CFAN 0": "21",
+                        "CFAN 1": "31"
+                    },
+                    "link": {
+                        "L2": "\u03b5",
+                        "L3": "e3"
+                    }
+                }
+            }
+        },
+        {
+            "name": 0,
+            "obs_index": 0,
+            "link": {
+                "L2": "\u03b5",
+                "L3": "\u03b5"
+            },
+            "state": {
+                "CFAN 0": "20",
+                "CFAN 1": "30"
+            },
+            "next": {
+                "t3a": {
+                    "state": {
+                        "CFAN 0": "20",
+                        "CFAN 1": "31"
+                    },
+                    "link": {
+                        "L2": "e2",
+                        "L3": "\u03b5"
+                    }
+                }
+            }
+        }
+    ]
+}
