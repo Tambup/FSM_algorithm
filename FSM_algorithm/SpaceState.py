@@ -12,7 +12,7 @@ class SpaceState:
         for next_state in self._states:
             trans = [out_trans for out_trans in next_state.out_transitions
                      if self._must_add(out_trans)]
-            if len(trans) > 0:
+            if trans:
                 possible_next[next_state] = trans
 
         return possible_next

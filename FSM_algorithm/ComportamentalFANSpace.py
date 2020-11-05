@@ -8,7 +8,7 @@ class ComportamentalFANSpace(Task):
         super().__init__(compFAN)
         self._space_states = []
 
-    def build(self):
+    def build(self, param=None):
         self._initialize()
 
         index = 0
@@ -21,11 +21,14 @@ class ComportamentalFANSpace(Task):
 
         self._prune()
 
+    def _init_instance(self, init_states, link_names):
+        return [SpaceState(init_states, link_names)]
+
     def _initialize(self) -> SpaceState:
         compFAs = super().compFAN.comportamentalFAs
         link_names = super().compFAN.in_links()
         init_states = [compFA.init_state() for compFA in compFAs]
-        self._space_states = [SpaceState(init_states, link_names)]
+        self._space_states = self._init_instance(init_states, link_names)
         self._space_states[0].id = 0
 
     def _add_states(self, space_state, next_transition, id):

@@ -9,5 +9,5 @@ class Task:
     def compFAN(self) -> ComportamentalFANetwork:
         return self._compFAN
 
-    def build(self):
+    def build(self, param=None):
         pass

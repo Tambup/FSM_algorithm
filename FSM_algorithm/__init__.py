@@ -6,8 +6,8 @@ from ComportamentalFANSpace import ComportamentalFANSpace
 from ComportamentalFANSObservation import ComportamentalFANSObservation
 
 
-def _execute(task, out_file):
-    task.build()
+def _execute(task, out_file, param=None):
+    task.build(param)
     UserIO.write_result(task, out_file)
 
 
@@ -27,6 +27,8 @@ def main():
     argGroup.add_argument('-o', '--out-file', dest='out_file', nargs=1,
                           type=argparse.FileType('w+'), required=True,
                           help='File to output results')
+    argGroup.add_argument('-O', '--obs-list', dest='obs_list', action='append',
+                          help='List of observations')
 
     args = argParser.parse_args()
     lines = ''
@@ -46,11 +48,12 @@ def main():
         print("The input describe a malformatted ComportamentalFANetwork",
               file=sys.stderr)
 
+    param = args.obs_list
     options = {
         1: ComportamentalFANSpace,
         2: ComportamentalFANSObservation
     }
-    _execute(options[args.type[0]](cfaNetwork), args.out_file)
+    _execute(options[args.type[0]](cfaNetwork), args.out_file, param=param)
 
 
 if __name__ == '__main__':
