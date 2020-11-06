@@ -1,9 +1,6 @@
 import unittest
-import select
-import sys
 from userInputOutput import UserInputOutput as UserIO
 from ComportamentalFANSpace import ComportamentalFANSpace
-from core.ComportamentalFANetwork import ComportamentalFANetwork
 from core.OutTransition import OutTransition
 from SpaceState import SpaceState
 from core.State import State

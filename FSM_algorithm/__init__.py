@@ -4,8 +4,6 @@ import sys
 from userInputOutput import UserInputOutput as UserIO
 from ComportamentalFANSpace import ComportamentalFANSpace
 from ComportamentalFANSObservation import ComportamentalFANSObservation
-from core.State import State
-from core.OutTransition import OutTransition
 
 
 def _execute(task, out_file, param=None):
@@ -56,6 +54,7 @@ def main():
         2: ComportamentalFANSObservation
     }
     _execute(options[args.type[0]](cfaNetwork), args.out_file, param=param)
+
 
 if __name__ == '__main__':
     main()
