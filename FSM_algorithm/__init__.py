@@ -50,37 +50,11 @@ def main():
         print("The input describe a malformatted ComportamentalFANetwork",
               file=sys.stderr)
 
-    test = ComportamentalFANSpace(cfaNetwork)
-    test.build()
-    space = test._space_states
-    print(space[0]._links['L3'])
-
-    outTransition = {
-            "name": "t3a",
-            "destination": "31",
-            "link": [{
-                "type": "out",
-                "link": "L2",
-                "event": "e2"}],
-            "observable": ["o3"],
-            "relevant": []}
-    link = {
-            "type": "out",
-            "link": "L2",
-            "event": "e2"}
-   
-
-
-
-    
-    '''
     param = args.obs_list
     options = {
         1: ComportamentalFANSpace,
         2: ComportamentalFANSObservation
     }
-    _execute(options[args.type[0]](cfaNetwork), args.out_file, param=param)
-    '''
 
 
 if __name__ == '__main__':
