@@ -55,7 +55,7 @@ def main():
         1: ComportamentalFANSpace,
         2: ComportamentalFANSObservation
     }
-
+    _execute(options[args.type[0]](cfaNetwork), args.out_file, param=param)
 
 if __name__ == '__main__':
     main()
