@@ -63,3 +63,7 @@
   * A ogni stato dell'osservazione lineare può essere assegnato un identificatore univoco; operazione detta **Ridenominazione**
   * Sull'osservazione lineare deve effettuare la **potatura**, ovvero l'eliminazione degli stati (e transizioni) da cui non è possibile raggiungere alcuno stato finale
  
+ ### Parte 3 (Slide 47-55)
+ * A ogni stato finale dello spazio di rilevanza relativo a un’osservazione corrisponde l’espressione regolare ottenuta concatenando le etichette di rilevanza lungo ciascuna traiettoria che porta dallo stato iniziale allo stato finale considerato. Se uno stato finale è raggiunto da più traiettorie l’espressione regolare associata è l’alternativa delle espressioni relative a tali traiettorie
+ * Per definizione, la diagnosi relativa a un’osservazione lineare è l’alternativa delle espressioni regolari di rilevanza corrispondenti agli stati finali dello spazio comportamentale inerente all’osservazione stessa
+   * La diagnosi relativa a una osservazione lineare può essere calcolata invocando l’algoritmo EspressioneRegolare(Nin), dove Nin è lo spazio comportamentale relativo all’osservazione -considerando i suoi stati finali come stati di accettazione dell’automa - e l’alfabeto dei simboli associati alle transizioni è quello delle etichette di rilevanza 
