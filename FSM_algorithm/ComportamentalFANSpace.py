@@ -8,6 +8,10 @@ class ComportamentalFANSpace(Task):
         super().__init__(compFAN)
         self._space_states = []
 
+    @property
+    def space_states(self):
+        return self._space_states
+
     def build(self, param=None):
         self._initialize()
 

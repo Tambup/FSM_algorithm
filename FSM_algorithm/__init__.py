@@ -4,11 +4,7 @@ import sys
 from userInputOutput import UserInputOutput as UserIO
 from ComportamentalFANSpace import ComportamentalFANSpace
 from ComportamentalFANSObservation import ComportamentalFANSObservation
-
-
-def _execute(task, out_file, param=None):
-    task.build(param)
-    UserIO.write_result(task, out_file)
+from Diagnosis import Diagnosis
 
 
 def main():
@@ -29,6 +25,9 @@ def main():
                           help='File to output results')
     argGroup.add_argument('-O', '--obs-list', dest='obs_list', action='append',
                           help='List of observations')
+    argGroup.add_argument('-d', '--diagnosis', dest='diagnosis',
+                          action='store_true',
+                          help='State that the diagnosis must be computed')
 
     args = argParser.parse_args()
     lines = ''
@@ -45,15 +44,26 @@ def main():
     cfaNetwork = UserIO.readInput(''.join(line for line in lines))
 
     if not cfaNetwork.check():
-        print("The input describe a malformatted ComportamentalFANetwork",
+        print('The input describe a malformatted ComportamentalFANetwork',
               file=sys.stderr)
 
-    param = args.obs_list
     options = {
         1: ComportamentalFANSpace,
-        2: ComportamentalFANSObservation
+        2: ComportamentalFANSObservation,
     }
-    _execute(options[args.type[0]](cfaNetwork), args.out_file, param=param)
+    valid_result = True
+    task_result = options[args.type[0]](cfaNetwork)
+    task_result.build(args.obs_list)
+    if args.type[0] == 2 and args.diagnosis:
+        if task_result.is_correct():
+            dignosticator = Diagnosis(task_result.space_states)
+            task_result = dignosticator.diagnosis()
+        else:
+            print('Not valid observation', file=sys.stderr)
+            valid_result = False
+
+    if valid_result:
+        UserIO.write_result(task_result, args.out_file)
 
 
 if __name__ == '__main__':
