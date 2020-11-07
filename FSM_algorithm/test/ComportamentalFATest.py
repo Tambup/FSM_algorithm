@@ -18,8 +18,8 @@ class TestStringMethods(unittest.TestCase):
                     "type": "out",
                     "link": "L3",
                     "event": "e3"}],
-                'observable': [],
-                'relevant': []}, {
+                'observable': None,
+                'relevant': None}, {
                 'name': 't2a',
                 'destination': '21',
                 'link': [{
@@ -30,8 +30,8 @@ class TestStringMethods(unittest.TestCase):
                     "type": "out",
                     "link": "L3",
                     "event": "e3"}],
-                'observable': [],
-                'relevant': []}
+                'observable': None,
+                'relevant': None}
             ]}
         compFa = ComportamentalFA('C2', [state1])
         self.assertFalse(compFa.check())
@@ -51,8 +51,8 @@ class TestStringMethods(unittest.TestCase):
                     "type": "out",
                     "link": "L3",
                     "event": "e3"}],
-                'observable': [],
-                'relevant': []}, {
+                'observable': None,
+                'relevant': None}, {
                 'name': 't2a',
                 'destination': '21',
                 'link': [{
@@ -63,8 +63,8 @@ class TestStringMethods(unittest.TestCase):
                     "type": "out",
                     "link": "L3",
                     "event": "e3"}],
-                'observable': [],
-                'relevant': []}
+                'observable': None,
+                'relevant': None}
             ]}
         compFa = ComportamentalFA('C2', [state1])
         self.assertTrue(compFa.check())
@@ -84,8 +84,8 @@ class TestStringMethods(unittest.TestCase):
                     "type": "out",
                     "link": "L3",
                     "event": "e3"}],
-                'observable': [],
-                'relevant': []}, {
+                'observable': None,
+                'relevant': None}, {
                 'name': 't2a',
                 'destination': '21',
                 'link': [{
@@ -96,8 +96,8 @@ class TestStringMethods(unittest.TestCase):
                     "type": "out",
                     "link": "L3",
                     "event": "e3"}],
-                'observable': [],
-                'relevant': []}
+                'observable': None,
+                'relevant': None}
             ]}
         state2 = {
             'name': '22',
@@ -113,8 +113,8 @@ class TestStringMethods(unittest.TestCase):
                     "type": "out",
                     "link": "L3",
                     "event": "e3"}],
-                'observable': [],
-                'relevant': []}, {
+                'observable': None,
+                'relevant': None}, {
                 'name': 't2a',
                 'destination': '21',
                 'link': [{
@@ -125,8 +125,8 @@ class TestStringMethods(unittest.TestCase):
                     "type": "out",
                     "link": "L3",
                     "event": "e3"}],
-                'observable': [],
-                'relevant': []}
+                'observable': None,
+                'relevant': None}
             ]}
         compFa = ComportamentalFA('C2', [state1, state2])
         self.assertFalse(compFa.check())
@@ -146,8 +146,8 @@ class TestStringMethods(unittest.TestCase):
                     "type": "out",
                     "link": "L3",
                     "event": "e3"}],
-                'observable': [],
-                'relevant': []}
+                'observable': None,
+                'relevant': None}
             ]}
         state2 = {
             'name': '22',
@@ -163,8 +163,8 @@ class TestStringMethods(unittest.TestCase):
                     "type": "out",
                     "link": "L3",
                     "event": "e3"}],
-                'observable': [],
-                'relevant': []}
+                'observable': None,
+                'relevant': None}
             ]}
         compFa = ComportamentalFA('C2', [state1, state2])
         self.assertTrue(compFa.check())
@@ -184,8 +184,8 @@ class TestStringMethods(unittest.TestCase):
                     "type": "out",
                     "link": "L3",
                     "event": "e3"}],
-                'observable': [],
-                'relevant': []}
+                'observable': None,
+                'relevant': None}
             ]}
         state2 = {
             'name': '22',
@@ -209,8 +209,8 @@ class TestStringMethods(unittest.TestCase):
                     "type": "out",
                     "link": "L3",
                     "event": "e3"}],
-                'observable': [],
-                'relevant': []}
+                'observable': None,
+                'relevant': None}
             ]}
         state2 = {
             'name': '22',
@@ -226,8 +226,8 @@ class TestStringMethods(unittest.TestCase):
                     "type": "out",
                     "link": "L3",
                     "event": "e3"}],
-                'observable': [],
-                'relevant': []}
+                'observable': None,
+                'relevant': None}
             ]}
         compFa = ComportamentalFA('C2', [state1, state2])
         self.assertFalse(compFa.check())
@@ -247,8 +247,8 @@ class TestStringMethods(unittest.TestCase):
                     "type": "out",
                     "link": "L3",
                     "event": "e3"}],
-                'observable': [],
-                'relevant': []}
+                'observable': None,
+                'relevant': None}
             ]}
         state2 = {
             'name': '22',
@@ -264,8 +264,8 @@ class TestStringMethods(unittest.TestCase):
                     "type": "out",
                     "link": "L3",
                     "event": "e3"}],
-                'observable': [],
-                'relevant': []}
+                'observable': None,
+                'relevant': None}
             ]}
         state3 = {
             'name': '23',
@@ -281,8 +281,8 @@ class TestStringMethods(unittest.TestCase):
                     "type": "out",
                     "link": "L3",
                     "event": "e3"}],
-                'observable': [],
-                'relevant': []}
+                'observable': None,
+                'relevant': None}
             ]}
         compFa = ComportamentalFA('C2', [state1, state2, state3])
         self.assertTrue(compFa.check())
@@ -302,8 +302,8 @@ class TestStringMethods(unittest.TestCase):
                     "type": "out",
                     "link": "L3",
                     "event": "e3"}],
-                'observable': [],
-                'relevant': []}
+                'observable': None,
+                'relevant': None}
             ]}
         state2 = {
             'name': '22',
@@ -319,8 +319,8 @@ class TestStringMethods(unittest.TestCase):
                     "type": "out",
                     "link": "L3",
                     "event": "e3"}],
-                'observable': [],
-                'relevant': []}
+                'observable': None,
+                'relevant': None}
             ]}
         state3 = {
             'name': '23',
@@ -336,8 +336,8 @@ class TestStringMethods(unittest.TestCase):
                     "type": "out",
                     "link": "L3",
                     "event": "e3"}],
-                'observable': [],
-                'relevant': []}
+                'observable': None,
+                'relevant': None}
             ]}
         compFa = ComportamentalFA('C2', [state1, state2, state3])
         self.assertTrue(compFa.check())
@@ -357,8 +357,8 @@ class TestStringMethods(unittest.TestCase):
                     "type": "out",
                     "link": "L3",
                     "event": "e3"}],
-                'observable': [],
-                'relevant': []}
+                'observable': None,
+                'relevant': None}
             ]}
         state2 = {
             'name': '22',
@@ -374,8 +374,8 @@ class TestStringMethods(unittest.TestCase):
                     "type": "out",
                     "link": "L3",
                     "event": "e3"}],
-                'observable': [],
-                'relevant': []}
+                'observable': None,
+                'relevant': None}
             ]}
         state3 = {
             'name': '23',
@@ -391,8 +391,8 @@ class TestStringMethods(unittest.TestCase):
                     "type": "out",
                     "link": "L3",
                     "event": "e3"}],
-                'observable': [],
-                'relevant': []}
+                'observable': None,
+                'relevant': None}
             ]}
         compFa = ComportamentalFA('C2', [state1, state2, state3])
         self.assertFalse(compFa.check())
@@ -412,8 +412,8 @@ class TestStringMethods(unittest.TestCase):
                     "type": "out",
                     "link": "L3",
                     "event": "e3"}],
-                'observable': [],
-                'relevant': []}
+                'observable': None,
+                'relevant': None}
             ]}
         state2 = {
             'name': '22',
@@ -429,8 +429,8 @@ class TestStringMethods(unittest.TestCase):
                     "type": "out",
                     "link": "L3",
                     "event": "e3"}],
-                'observable': [],
-                'relevant': []}
+                'observable': None,
+                'relevant': None}
             ]}
         state3 = {
             'name': '21',
@@ -446,8 +446,8 @@ class TestStringMethods(unittest.TestCase):
                     "type": "out",
                     "link": "L3",
                     "event": "e3"}],
-                'observable': [],
-                'relevant': []}
+                'observable': None,
+                'relevant': None}
             ]}
         compFa = ComportamentalFA('C2', [state1, state2, state3])
         self.assertFalse(compFa.check())
@@ -475,8 +475,8 @@ class TestStringMethods(unittest.TestCase):
                     "type": "out",
                     "link": "L3",
                     "event": "e3"}],
-                'observable': [],
-                'relevant': []}
+                'observable': None,
+                'relevant': None}
             ]}
         state2 = {
             'name': '22',
@@ -492,8 +492,8 @@ class TestStringMethods(unittest.TestCase):
                     "type": "out",
                     "link": "L3",
                     "event": "e3"}],
-                'observable': [],
-                'relevant': []}
+                'observable': None,
+                'relevant': None}
             ]}
         state3 = {
             'name': None,
@@ -517,8 +517,8 @@ class TestStringMethods(unittest.TestCase):
                     "type": "out",
                     "link": "L3",
                     "event": "e3"}],
-                'observable': [],
-                'relevant': []}, {
+                'observable': None,
+                'relevant': None}, {
                 'name': 't2a',
                 'destination': '22',
                 'link': [{
@@ -529,8 +529,8 @@ class TestStringMethods(unittest.TestCase):
                     "type": "out",
                     "link": "L3",
                     "event": "e3"}],
-                'observable': [],
-                'relevant': []}
+                'observable': None,
+                'relevant': None}
             ]}
         state2 = {
             'name': '21',
@@ -546,8 +546,8 @@ class TestStringMethods(unittest.TestCase):
                     "type": "out",
                     "link": "L3",
                     "event": "e3"}],
-                'observable': [],
-                'relevant': []}, {
+                'observable': None,
+                'relevant': None}, {
                 'name': 't2a',
                 'destination': '22',
                 'link': [{
@@ -558,8 +558,8 @@ class TestStringMethods(unittest.TestCase):
                     "type": "out",
                     "link": "L3",
                     "event": "e3"}],
-                'observable': [],
-                'relevant': []}
+                'observable': None,
+                'relevant': None}
             ]}
         compFa = ComportamentalFA('C2', [state1, state2])
         self.assertFalse(compFa.check())

@@ -6,8 +6,8 @@ class Diagnosis:
     final_trans = OutTransition(name='',
                                 destination='FINAL',
                                 links=[],
-                                observable=[],
-                                relevant=[])
+                                observable=None,
+                                relevant=None)
 
     def __init__(self, space_states):
         self._space_states = copy.copy(space_states)

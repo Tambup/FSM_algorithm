@@ -23,8 +23,8 @@
 									"event": "e3"
 								}
 							],
-							"observable": [ "o2" ],
-							"relevant": []
+							"observable": "o2",
+							"relevant": null
 						}
 					]
 				},
@@ -42,8 +42,8 @@
 									"event": "e3"
 								}
 							],
-							"observable": [],
-							"relevant": [ "r" ]
+							"observable": null,
+							"relevant": "r"
 						}
 					]
 				}
@@ -66,8 +66,8 @@
 									"event": "e2"
 								}
 							],
-							"observable": [ "o3" ],
-							"relevant": []
+							"observable": "o3",
+							"relevant": null
 						}
 					]
 				},
@@ -85,8 +85,8 @@
 									"event": "e3"
 								}
 							],
-							"observable": [],
-							"relevant": []
+							"observable": null,
+							"relevant": null
 						},
 						{
 							"name": "t3c",
@@ -98,8 +98,8 @@
 									"event": "e3"
 								}
 							],
-							"observable": [],
-							"relevant": [ "f" ]
+							"observable": null,
+							"relevant": "f"
 						}
 					]
 				}

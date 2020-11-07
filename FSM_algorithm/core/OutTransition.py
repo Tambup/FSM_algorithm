@@ -59,12 +59,11 @@ class OutTransition():
 
     def __eq__(self, obj):
         if isinstance(obj, OutTransition):
-            if self._name == obj.name and self._destination == obj.destination:
-                if self._links is not None and self._observable is not None \
-                        and self._relevant is not None \
-                        and obj.links is not None \
-                        and obj.observable is not None \
-                        and obj.relevant is not None:
+            if self._name == obj.name and \
+                    self._destination == obj.destination and \
+                    self._observable == obj.observable and \
+                    self._relevant == obj.relevant:
+                if self._links is not None and obj.links is not None:
                     if self._same_vectors(obj):
                         return True
         return False
@@ -74,11 +73,7 @@ class OutTransition():
 
     def _same_vectors(self, obj):
         return all(elem in self._links for elem in obj.links) and \
-                all(elem in obj.links for elem in self._links) and \
-                all(elem in self._observable for elem in obj.observable) and \
-                all(elem in obj.observable for elem in self._observable) and \
-                all(elem in self._relevant for elem in obj.relevant) and \
-                all(elem in obj.relevant for elem in self._relevant)
+                all(elem in obj.links for elem in self._links)
 
     def sameEvents(self, oth_links):
         both_null = False

@@ -20,8 +20,8 @@ class TestStringMethods(unittest.TestCase):
                         "type": "out",
                         "link": "L3",
                         "event": "e3"}],
-                    'observable': [],
-                    'relevant': []}
+                    'observable': None,
+                    'relevant': None}
                 ]}, {
                 'name': '22',
                 'init': False,
@@ -36,8 +36,8 @@ class TestStringMethods(unittest.TestCase):
                         "type": "out",
                         "link": "L3",
                         "event": "e3"}],
-                    'observable': [],
-                    'relevant': []}
+                    'observable': None,
+                    'relevant': None}
                 ]}, {
                 'name': '23',
                 'init': False,
@@ -52,8 +52,8 @@ class TestStringMethods(unittest.TestCase):
                         "type": "out",
                         "link": "L3",
                         "event": "e3"}],
-                    'observable': [],
-                    'relevant': []}
+                    'observable': None,
+                    'relevant': None}
                 ]}
             ]}
         compFan = ComportamentalFANetwork('Mesto', [compFa])
@@ -83,8 +83,8 @@ class TestStringMethods(unittest.TestCase):
                         "type": "out",
                         "link": "L3",
                         "event": "e3"}],
-                    'observable': [],
-                    'relevant': []}
+                    'observable': None,
+                    'relevant': None}
                 ]}, {
                 'name': '23',
                 'init': False,
@@ -99,8 +99,8 @@ class TestStringMethods(unittest.TestCase):
                         "type": "out",
                         "link": "L3",
                         "event": "e3"}],
-                    'observable': [],
-                    'relevant': []}
+                    'observable': None,
+                    'relevant': None}
                 ]}
             ]}
         compFan = ComportamentalFANetwork('Mesto', [compFa])
@@ -127,8 +127,8 @@ class TestStringMethods(unittest.TestCase):
                         "type": "out",
                         "link": "L6",
                         "event": "e7"}],
-                    'observable': [],
-                    'relevant': []}
+                    'observable': None,
+                    'relevant': None}
                 ]}, {
                 'name': '22',
                 'init': False,
@@ -147,8 +147,8 @@ class TestStringMethods(unittest.TestCase):
                         "type": "out",
                         "link": "L6",
                         "event": "e7"}],
-                    'observable': [],
-                    'relevant': []}
+                    'observable': None,
+                    'relevant': None}
                 ]}, {
                 'name': '23',
                 'init': False,
@@ -167,8 +167,8 @@ class TestStringMethods(unittest.TestCase):
                         "type": "out",
                         "link": "L6",
                         "event": "e7"}],
-                    'observable': [],
-                    'relevant': []}
+                    'observable': None,
+                    'relevant': None}
                 ]}
             ]}
 
@@ -188,8 +188,8 @@ class TestStringMethods(unittest.TestCase):
                         "type": "out",
                         "link": "L2",
                         "event": "e3"}],
-                    'observable': [],
-                    'relevant': []}
+                    'observable': None,
+                    'relevant': None}
                 ]}, {
                 'name': '26',
                 'init': False,
@@ -200,8 +200,8 @@ class TestStringMethods(unittest.TestCase):
                         "type": "in",
                         "link": "L6",
                         "event": "e3"}],
-                    'observable': [],
-                    'relevant': []}
+                    'observable': None,
+                    'relevant': None}
                 ]}, {
                 'name': '27',
                 'init': False,
@@ -212,8 +212,8 @@ class TestStringMethods(unittest.TestCase):
                         "type": "in",
                         "link": "L6",
                         "event": "e3"}],
-                    'observable': [],
-                    'relevant': []}
+                    'observable': None,
+                    'relevant': None}
                 ]}
             ]}
         compFan = ComportamentalFANetwork('Mesto', [compFa1, compFa2])
@@ -240,8 +240,8 @@ class TestStringMethods(unittest.TestCase):
                         "type": "out",
                         "link": "L6",
                         "event": "e7"}],
-                    'observable': [],
-                    'relevant': []}
+                    'observable': None,
+                    'relevant': None}
                 ]}, {
                 'name': '22',
                 'init': False,
@@ -260,8 +260,8 @@ class TestStringMethods(unittest.TestCase):
                         "type": "out",
                         "link": "L6",
                         "event": "e7"}],
-                    'observable': [],
-                    'relevant': []}
+                    'observable': None,
+                    'relevant': None}
                 ]}, {
                 'name': '23',
                 'init': False,
@@ -280,8 +280,8 @@ class TestStringMethods(unittest.TestCase):
                         "type": "out",
                         "link": "L6",
                         "event": "e7"}],
-                    'observable': [],
-                    'relevant': []}
+                    'observable': None,
+                    'relevant': None}
                 ]}
             ]}
 
@@ -301,8 +301,8 @@ class TestStringMethods(unittest.TestCase):
                         "type": "out",
                         "link": "L2",
                         "event": "e3"}],
-                    'observable': [],
-                    'relevant': []}
+                    'observable': None,
+                    'relevant': None}
                 ]}, {
                 'name': '26',
                 'init': False,
@@ -317,8 +317,8 @@ class TestStringMethods(unittest.TestCase):
                         "type": "out",
                         "link": "L2",
                         "event": "e3"}],
-                    'observable': [],
-                    'relevant': []}
+                    'observable': None,
+                    'relevant': None}
                 ]}, {
                 'name': '27',
                 'init': False,
@@ -333,8 +333,8 @@ class TestStringMethods(unittest.TestCase):
                         "type": "out",
                         "link": "L2",
                         "event": "e3"}],
-                    'observable': [],
-                    'relevant': []}
+                    'observable': None,
+                    'relevant': None}
                 ]}
             ]}
         compFan = ComportamentalFANetwork('Mesto', [compFa1, compFa2])
@@ -357,8 +357,8 @@ class TestStringMethods(unittest.TestCase):
                         "type": "out",
                         "link": "L2",
                         "event": "e3"}],
-                    'observable': [],
-                    'relevant': []}
+                    'observable': None,
+                    'relevant': None}
                 ]}, {
                 'name': '22',
                 'init': False,
@@ -373,8 +373,8 @@ class TestStringMethods(unittest.TestCase):
                         "type": "out",
                         "link": "L2",
                         "event": "e3"}],
-                    'observable': [],
-                    'relevant': []}
+                    'observable': None,
+                    'relevant': None}
                 ]}, {
                 'name': '23',
                 'init': False,
@@ -389,8 +389,8 @@ class TestStringMethods(unittest.TestCase):
                         "type": "out",
                         "link": "L2",
                         "event": "e3"}],
-                    'observable': [],
-                    'relevant': []}
+                    'observable': None,
+                    'relevant': None}
                 ]}
             ]}
         compFa2 = {
@@ -409,8 +409,8 @@ class TestStringMethods(unittest.TestCase):
                         "type": "out",
                         "link": "L5",
                         "event": "e3"}],
-                    'observable': [],
-                    'relevant': []}
+                    'observable': None,
+                    'relevant': None}
                 ]}, {
                 'name': '26',
                 'init': False,
@@ -424,8 +424,8 @@ class TestStringMethods(unittest.TestCase):
                         "type": "in",
                         "link": "L5",
                         "event": "e3"}],
-                    'observable': [],
-                    'relevant': []}
+                    'observable': None,
+                    'relevant': None}
                 ]}, {
                 'name': '27',
                 'init': False,
@@ -439,8 +439,8 @@ class TestStringMethods(unittest.TestCase):
                         "type": "in",
                         "link": "L5",
                         "event": "e3"}],
-                    'observable': [],
-                    'relevant': []}
+                    'observable': None,
+                    'relevant': None}
                 ]}
             ]}
         compFan = ComportamentalFANetwork('Mesto', [compFa1, compFa2])
@@ -463,8 +463,8 @@ class TestStringMethods(unittest.TestCase):
                         "type": "out",
                         "link": "L6",
                         "event": "e3"}],
-                    'observable': [],
-                    'relevant': []}
+                    'observable': None,
+                    'relevant': None}
                 ]}, {
                 'name': '22',
                 'init': False,
@@ -479,8 +479,8 @@ class TestStringMethods(unittest.TestCase):
                         "type": "out",
                         "link": "L6",
                         "event": "e3"}],
-                    'observable': [],
-                    'relevant': []}
+                    'observable': None,
+                    'relevant': None}
                 ]}, {
                 'name': '23',
                 'init': False,
@@ -495,8 +495,8 @@ class TestStringMethods(unittest.TestCase):
                         "type": "out",
                         "link": "L6",
                         "event": "e3"}],
-                    'observable': [],
-                    'relevant': []}
+                    'observable': None,
+                    'relevant': None}
                 ]}
             ]}
         compFa2 = {
@@ -515,8 +515,8 @@ class TestStringMethods(unittest.TestCase):
                         "type": "out",
                         "link": "L2",
                         "event": "e3"}],
-                    'observable': [],
-                    'relevant': []}
+                    'observable': None,
+                    'relevant': None}
                 ]}, {
                 'name': '26',
                 'init': False,
@@ -527,8 +527,8 @@ class TestStringMethods(unittest.TestCase):
                         "type": "in",
                         "link": "L6",
                         "event": "e3"}],
-                    'observable': [],
-                    'relevant': []}
+                    'observable': None,
+                    'relevant': None}
                 ]}, {
                 'name': '27',
                 'init': False,
@@ -539,8 +539,8 @@ class TestStringMethods(unittest.TestCase):
                         "type": "in",
                         "link": "L6",
                         "event": "e3"}],
-                    'observable': [],
-                    'relevant': []}
+                    'observable': None,
+                    'relevant': None}
                 ]}
             ]}
         compFan = ComportamentalFANetwork('Mesto', [compFa1, compFa2])

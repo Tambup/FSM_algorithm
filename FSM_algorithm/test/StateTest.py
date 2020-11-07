@@ -9,8 +9,8 @@ class TestStringMethods(unittest.TestCase):
             'name': 't2a',
             'destination': '21',
             'link': [],
-            'observable': [],
-            'relevant': []}
+            'observable': None,
+            'relevant': None}
         s1 = State('20', True, [out_transition])
         self.assertFalse(s1.no_exit())
 
@@ -19,8 +19,8 @@ class TestStringMethods(unittest.TestCase):
             'name': 't2a',
             'destination': '21',
             'link': [],
-            'observable': [],
-            'relevant': []}
+            'observable': None,
+            'relevant': None}
         s1 = State('21', True, [out_transition])
         self.assertTrue(s1.no_exit())
 
@@ -32,8 +32,8 @@ class TestStringMethods(unittest.TestCase):
                 'type': None,
                 'link': None,
                 'event': None}],
-            'observable': [],
-            'relevant': []}
+            'observable': None,
+            'relevant': None}
         s1 = State('21', True, [out_transition])
         self.assertTrue(s1.check)
 
@@ -45,8 +45,8 @@ class TestStringMethods(unittest.TestCase):
                 'type': None,
                 'link': None,
                 'event': None}],
-            'observable': [],
-            'relevant': []}
+            'observable': None,
+            'relevant': None}
         s1 = State('21', True, [out_transition])
         self.assertFalse(s1.check())
 
@@ -62,8 +62,8 @@ class TestStringMethods(unittest.TestCase):
                 "type": "out",
                 "link": "L3",
                 "event": "e3"}],
-            'observable': [],
-            'relevant': []}
+            'observable': None,
+            'relevant': None}
         out_transition2 = {
             'name': 't2a',
             'destination': '21',
@@ -75,8 +75,8 @@ class TestStringMethods(unittest.TestCase):
                 "type": "out",
                 "link": "L3",
                 "event": "e3"}],
-            'observable': [],
-            'relevant': []}
+            'observable': None,
+            'relevant': None}
         s1 = State('21', True, [out_transition1, out_transition2])
         self.assertFalse(s1.check())
 
@@ -92,8 +92,8 @@ class TestStringMethods(unittest.TestCase):
                 "type": "out",
                 "link": "L3",
                 "event": "e3"}],
-            'observable': [],
-            'relevant': []}
+            'observable': None,
+            'relevant': None}
         out_transition2 = {
             'name': 't2a',
             'destination': '21',
@@ -105,8 +105,8 @@ class TestStringMethods(unittest.TestCase):
                 "type": "out",
                 "link": "L3",
                 "event": "e3"}],
-            'observable': [],
-            'relevant': []}
+            'observable': None,
+            'relevant': None}
         s1 = State('21', True, [out_transition1, out_transition2])
         self.assertTrue(s1.check)
 

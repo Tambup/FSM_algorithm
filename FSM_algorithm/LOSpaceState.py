@@ -30,7 +30,7 @@ class LOSpaceState(SpaceState):
 
     def _must_add(self, next_out_trans, obs_val):
         obs_list = next_out_trans.observable
-        if not obs_list or (obs_val in obs_list):
+        if not obs_list or obs_val == obs_list:
             return super()._must_add(next_out_trans)
 
         return False
