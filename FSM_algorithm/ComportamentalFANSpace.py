@@ -4,6 +4,13 @@ from SpaceState import SpaceState
 
 
 class ComportamentalFANSpace(Task):
+    """
+    The class rapresent a comportamental finite automa network space.
+
+    From now comportamental finite automa network space are identified
+    as CFANS.
+    """
+
     def __init__(self, compFAN):
         super().__init__(compFAN)
         self._space_states = []
@@ -13,8 +20,15 @@ class ComportamentalFANSpace(Task):
         return self._space_states
 
     def build(self, param=None):
-        self._initialize()
+        """Build a CFANS pruning states that cannot reach a final state.
 
+        Parameters
+        ----------
+        param : list, optional
+            In this class is useless. Don't use it. By default None
+
+        """
+        self._initialize()
         index = 0
         id = 1
         while (index < len(self._space_states)):
@@ -24,8 +38,15 @@ class ComportamentalFANSpace(Task):
             index += 1
 
         self._prune()
-    
+
     def build_no_prune(self, param=None):
+        """Build a CFANS without pruning.
+
+        Parameters
+        ----------
+        param : list, optional
+            In this class is useless. Don't use it. By default None
+        """
         self._initialize()
 
         index = 0
@@ -121,6 +142,13 @@ class ComportamentalFANSpace(Task):
         return True
 
     def dict_per_json(self):
+        """Build a dict from the object.
+
+        Returns
+        -------
+        dict
+            Return a dict that describe the CFANS.
+        """
         return {
             'space_state': [
                 space_state.dict_per_json()
