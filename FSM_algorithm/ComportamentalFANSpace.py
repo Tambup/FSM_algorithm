@@ -24,6 +24,17 @@ class ComportamentalFANSpace(Task):
             index += 1
 
         self._prune()
+    
+    def build_no_prune(self, param=None):
+        self._initialize()
+
+        index = 0
+        id = 1
+        while (index < len(self._space_states)):
+            actual_space_state = self._space_states[index]
+            next_trans_state = actual_space_state.next_transition_state()
+            id = self._add_states(actual_space_state, next_trans_state, id)
+            index += 1
 
     def _init_instance(self, init_states, link_names):
         return [SpaceState(init_states, link_names)]
