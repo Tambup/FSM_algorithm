@@ -97,7 +97,7 @@ class ComportamentalFANSpace(Task):
     def _new_state(self, old_space, old_state, new_state, out_trans):
         new_space = copy.deepcopy(old_space)
         for link_name, link_type, link_event in out_trans.links:
-            if link_type == "out":
+            if link_type == 'out':
                 new_space.set_link(link_name, link_event)
             else:
                 new_space.clear_link(link_name)
