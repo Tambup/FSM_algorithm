@@ -26,7 +26,6 @@ class ComportamentalFANSpace(Task):
         ----------
         param : list, optional
             In this class is useless. Don't use it. By default None
-
         """
         self._initialize()
         index = 0
