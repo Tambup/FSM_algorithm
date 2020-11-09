@@ -67,30 +67,24 @@ class ComportamentalFANSpace(Task):
         self._space_states[0].id = 0
 
     def _add_states(self, space_state, next_transition, id):
-        num_comp_FA = 0
-        for actual_state in space_state.states:
-            try:
-                actual_out_trans_list = next_transition[actual_state]
-                for actual_out_trans in actual_out_trans_list:
-                    for candidate in super().compFAN \
-                            .comportamentalFAs[num_comp_FA].states:
-                        if actual_out_trans.destination == candidate.name:
-                            break
+        for changing_state in next_transition.keys():
+            i, actual_out_trans_list = next_transition[changing_state]
+            for actual_out_trans in actual_out_trans_list:
+                for candidate in super().compFAN.comportamentalFAs[i].states:
+                    if actual_out_trans.destination == candidate.name:
+                        break
 
-                    new_spc_st = self._new_state(space_state, actual_state,
-                                                 candidate, actual_out_trans)
-                    try:
-                        index = self._space_states.index(new_spc_st)
-                        space_state.add_next(actual_out_trans,
-                                             self._space_states[index])
-                    except ValueError:
-                        new_spc_st.id = id
-                        id += 1
-                        self._space_states.append(new_spc_st)
-                        space_state.add_next(actual_out_trans, new_spc_st)
-            except KeyError:
-                pass
-            num_comp_FA += 1
+                new_spc_st = self._new_state(space_state, changing_state,
+                                             candidate, actual_out_trans)
+                try:
+                    index = self._space_states.index(new_spc_st)
+                    space_state.add_next(actual_out_trans,
+                                         self._space_states[index])
+                except ValueError:
+                    new_spc_st.id = id
+                    id += 1
+                    self._space_states.append(new_spc_st)
+                    space_state.add_next(actual_out_trans, new_spc_st)
         return id
 
     def _new_state(self, old_space, old_state, new_state, out_trans):

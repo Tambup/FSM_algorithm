@@ -34,27 +34,21 @@ class ComportamentalFANSObservation(ComportamentalFANSpace):
                 else self._dfs_visit(el, obs, obs_index)
 
     def _get_nexts(self, space_state, next_transition, obs):
-        num_comp_FA = 0
         nexts = []
-        for actual_state in space_state.states:
-            try:
-                actual_out_trans_list = next_transition[actual_state]
-                for actual_out_trans in actual_out_trans_list:
-                    for candidate in super().compFAN \
-                            .comportamentalFAs[num_comp_FA].states:
-                        if actual_out_trans.destination == candidate.name:
-                            break
+        for changing_state in next_transition.keys():
+            i, actual_out_trans_list = next_transition[changing_state]
+            for actual_out_trans in actual_out_trans_list:
+                for candidate in super().compFAN.comportamentalFAs[i].states:
+                    if actual_out_trans.destination == candidate.name:
+                        break
 
-                    new_spc_st = self._new_state(space_state, actual_state,
-                                                 candidate, actual_out_trans)
+                new_spc_st = self._new_state(space_state, changing_state,
+                                             candidate, actual_out_trans)
 
-                    nexts.append(new_spc_st)
-                    if obs:
-                        space_state.has_next_obs()
-                    space_state.add_next(actual_out_trans, new_spc_st)
-            except KeyError:
-                pass
-            num_comp_FA += 1
+                nexts.append(new_spc_st)
+                if obs:
+                    space_state.has_next_obs()
+                space_state.add_next(actual_out_trans, new_spc_st)
         return nexts
 
     def _init_instance(self, init_states, link_names):

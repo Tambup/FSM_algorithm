@@ -57,10 +57,10 @@ class TestStringMethods(unittest.TestCase):
         fanSpace._initialize()
         ss = fanSpace._space_states[0]
         nt = ss.next_transition_state()
-        transition = nt[ss.states[1]][0]
+        i, transition = nt[ss.states[1]]
         fanSpace._add_states(ss, nt, 1)
-        self.assertTrue(fanSpace._space_states[0]._nexts[transition] ==
-                        fanSpace._space_states[1])
+        self.assertTrue(fanSpace.space_states[0].nexts[transition[0]] ==
+                        fanSpace.space_states[1])
 
     def test_add_state_valid_no_dupplicate_state(self):
         f = open('sample/FSCNetwork.sample.json', 'r')

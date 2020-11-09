@@ -34,7 +34,7 @@ class TestStringMethods(unittest.TestCase):
             "observable": "o3",
             "relevant": None}
         s1 = State('30', True, [outTransition])
-        next = test._space_states[0].next_transition_state()[s1]
+        i, next = test._space_states[0].next_transition_state()[s1]
         self.assertTrue(next[0] == s1._out_transitions[0])
 
     def test_next_transition_none(self):

@@ -9,11 +9,11 @@ class SpaceState:
 
     def next_transition_state(self):
         possible_next = {}
-        for next_state in self._states:
+        for i, next_state in enumerate(self._states):
             trans = [out_trans for out_trans in next_state.out_transitions
                      if self._must_add(out_trans)]
             if trans:
-                possible_next[next_state] = trans
+                possible_next[next_state] = (i, trans)
 
         return possible_next
 
