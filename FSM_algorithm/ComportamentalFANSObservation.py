@@ -28,9 +28,9 @@ class ComportamentalFANSObservation(ComportamentalFANSpace):
         next_trans = next_state.next_transition_state(obs_val)
         new_sp_states = self._get_nexts(next_state, next_trans, obs_val)
 
-        for el in new_sp_states:
+        for el, obs_used in new_sp_states:
             self._space_states.append(el)
-            self._dfs_visit(el, obs[1:], obs_index+1) if obs_val \
+            self._dfs_visit(el, obs[1:], obs_index+1) if obs_used \
                 else self._dfs_visit(el, obs, obs_index)
 
     def _get_nexts(self, space_state, next_transition, obs):
@@ -40,15 +40,17 @@ class ComportamentalFANSObservation(ComportamentalFANSpace):
             for actual_out_trans in actual_out_trans_list:
                 for candidate in super().compFAN.comportamentalFAs[i].states:
                     if actual_out_trans.destination == candidate.name:
+                        new_spc_st = self._new_state(space_state,
+                                                     changing_state,
+                                                     candidate,
+                                                     actual_out_trans)
+
+                        nexts.append((new_spc_st, obs
+                                     and obs == actual_out_trans.observable))
+                        if obs:
+                            space_state.has_next_obs()
+                        space_state.add_next(actual_out_trans, new_spc_st)
                         break
-
-                new_spc_st = self._new_state(space_state, changing_state,
-                                             candidate, actual_out_trans)
-
-                nexts.append(new_spc_st)
-                if obs:
-                    space_state.has_next_obs()
-                space_state.add_next(actual_out_trans, new_spc_st)
         return nexts
 
     def _init_instance(self, init_states, link_names):

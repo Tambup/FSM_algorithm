@@ -72,19 +72,20 @@ class ComportamentalFANSpace(Task):
             for actual_out_trans in actual_out_trans_list:
                 for candidate in super().compFAN.comportamentalFAs[i].states:
                     if actual_out_trans.destination == candidate.name:
+                        new_spc_st = self._new_state(space_state,
+                                                     changing_state,
+                                                     candidate,
+                                                     actual_out_trans)
+                        try:
+                            index = self._space_states.index(new_spc_st)
+                            space_state.add_next(actual_out_trans,
+                                                 self._space_states[index])
+                        except ValueError:
+                            new_spc_st.id = id
+                            id += 1
+                            self._space_states.append(new_spc_st)
+                            space_state.add_next(actual_out_trans, new_spc_st)
                         break
-
-                new_spc_st = self._new_state(space_state, changing_state,
-                                             candidate, actual_out_trans)
-                try:
-                    index = self._space_states.index(new_spc_st)
-                    space_state.add_next(actual_out_trans,
-                                         self._space_states[index])
-                except ValueError:
-                    new_spc_st.id = id
-                    id += 1
-                    self._space_states.append(new_spc_st)
-                    space_state.add_next(actual_out_trans, new_spc_st)
         return id
 
     def _new_state(self, old_space, old_state, new_state, out_trans):
