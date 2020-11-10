@@ -55,26 +55,26 @@ class TestStringMethods(unittest.TestCase):
             'name': 't2a',
             'destination': '21',
             'link': [{
-                "type": "in",
-                "link": "L2",
-                "event": "e2"},
+                'type': 'in',
+                'link': 'L2',
+                'event': 'e2'},
                 {
-                "type": "out",
-                "link": "L3",
-                "event": "e3"}],
+                'type': 'out',
+                'link': 'L3',
+                'event': 'e3'}],
             'observable': None,
             'relevant': None}
         out_transition2 = {
             'name': 't2a',
             'destination': '21',
             'link': [{
-                "type": "in",
-                "link": "L2",
-                "event": "e2"},
+                'type': 'in',
+                'link': 'L2',
+                'event': 'e2'},
                 {
-                "type": "out",
-                "link": "L3",
-                "event": "e3"}],
+                'type': 'out',
+                'link': 'L3',
+                'event': 'e3'}],
             'observable': None,
             'relevant': None}
         s1 = State('21', True, [out_transition1, out_transition2])
@@ -85,26 +85,26 @@ class TestStringMethods(unittest.TestCase):
             'name': 't2a',
             'destination': '21',
             'link': [{
-                "type": "in",
-                "link": "L2",
-                "event": "e3"},
+                'type': 'in',
+                'link': 'L2',
+                'event': 'e3'},
                 {
-                "type": "out",
-                "link": "L3",
-                "event": "e3"}],
+                'type': 'out',
+                'link': 'L3',
+                'event': 'e3'}],
             'observable': None,
             'relevant': None}
         out_transition2 = {
             'name': 't2a',
             'destination': '21',
             'link': [{
-                "type": "in",
-                "link": "L2",
-                "event": "e2"},
+                'type': 'in',
+                'link': 'L2',
+                'event': 'e2'},
                 {
-                "type": "out",
-                "link": "L3",
-                "event": "e3"}],
+                'type': 'out',
+                'link': 'L3',
+                'event': 'e3'}],
             'observable': None,
             'relevant': None}
         s1 = State('21', True, [out_transition1, out_transition2])
