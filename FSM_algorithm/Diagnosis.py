@@ -71,7 +71,13 @@ class Diagnosis:
                     return True
 
     def _set_parallel_tansition(self):
-        pass
+        for state in self._work_space.keys():
+            for trns, next_st in state.nexts.items():
+                for trns_1, next_st_1 in state.nexts.items():
+                    if trns != trns_1 and next_st == next_st_1:
+                        self._temp = [(state, next_st)]
+                        return True
+        return False
 
     def _concat(self):
         rel = ''.join([rel if trn.relevant else ''
@@ -89,3 +95,20 @@ class Diagnosis:
                 break
         for elem, _, _ in self._temp[1:-1]:
             del self._work_space[elem]
+
+    def _attach(self):
+        rel = []
+        delete = []
+        for trns, next_st in self._temp[0][0].nexts.items():
+            if self._temp[0][1] == next_st:
+                rel.append(trns.relevant)
+                delete.append(trns)
+        new_tr = OutTransition(name='',
+                               destination=None,
+                               links=[],
+                               observable=None,
+                               relevant=rel)
+        for i in delete:
+            del self._temp[0][0]._nexts[i]
+        # manca l'aggiunta della traniszione fra
+        # self._temp[0][0] e self._temp[0][1]
