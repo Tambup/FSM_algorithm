@@ -25,11 +25,11 @@ class Diagnosis:
 
     def diagnosis(self):
         self._unify_exit()
-        while self._work_space:
+        while len(self._work_space) > 2:
             if self._sequence_transition():
                 self._concat()
             elif self._set_parallel_tansition():
-                pass
+                self._attach()
             else:
                 pass
 
@@ -73,11 +73,12 @@ class Diagnosis:
     def _set_parallel_tansition(self):
         for state in self._work_space.keys():
             for trns, next_st in state.nexts.items():
+                self._temp = (state, [trns], next_st)
                 for trns_1, next_st_1 in state.nexts.items():
-                    if trns != trns_1 and next_st == next_st_1:
-                        self._temp = [(state, next_st)]
-                        return True
-        return False
+                    if trns is not trns_1 and next_st == next_st_1:
+                        self._temp[1].append(trns_1)
+                if len(self._temp[1]) > 1:
+                    return True
 
     def _concat(self):
         rel = ''.join([rel if trn.relevant else ''
@@ -88,7 +89,10 @@ class Diagnosis:
                                links=[],
                                observable=None,
                                relevant=rel)
-        self._temp[0][0].update_nexts(self._temp[0][1], new_tr, self._temp[-1])
+        self._temp[0][0].update_nexts(
+                                     del_tr=[self._temp[0][1]],
+                                     new_tr=new_tr,
+                                     new_next=self._temp[-1])
         for i, elem in enumerate(self._prev[self._temp[-1]]):
             if elem == self._temp[-2][0]:
                 self._prev[self._temp[-1]][i] = self._temp[0][0]
@@ -97,18 +101,22 @@ class Diagnosis:
             del self._work_space[elem]
 
     def _attach(self):
-        rel = []
-        delete = []
-        for trns, next_st in self._temp[0][0].nexts.items():
-            if self._temp[0][1] == next_st:
-                rel.append(trns.relevant)
-                delete.append(trns)
+        rel = '(' + '|'.join(
+            [tr.relevant if tr.relevant else LOSpaceState.NULL_EVT
+                for tr in self._temp[1]]
+            ) + ')'
+
         new_tr = OutTransition(name='',
                                destination=None,
                                links=[],
                                observable=None,
                                relevant=rel)
-        for i in delete:
-            del self._temp[0][0]._nexts[i]
-        # manca l'aggiunta della traniszione fra
-        # self._temp[0][0] e self._temp[0][1]
+        self._temp[0].update_nexts(
+                                   del_tr=self._temp[1],
+                                   new_tr=new_tr,
+                                   new_next=self._temp[-1])
+
+        self._prev[self._temp[-1]] = [
+            val for val in self._prev[self._temp[-1]] if val != self._temp[0]
+            ]
+        self._prev[self._temp[-1]].append(self._temp[0])
