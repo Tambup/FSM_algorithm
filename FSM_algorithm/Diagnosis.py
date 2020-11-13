@@ -31,9 +31,11 @@ class Diagnosis:
             elif self._set_parallel_tansition():
                 self._attach()
             else:
-                pass
+                self._autotransition()  # Not sure if usefull
 
-        return self._regex
+        self._regex = ''.join([
+            tr.relevant for space in self._work_space.keys()
+            for tr in space.nexts.keys()])
 
     def _unify_exit(self):
         self._work_space = {k: None for k in copy.deepcopy(self._space_states)}
@@ -81,8 +83,8 @@ class Diagnosis:
                     return True
 
     def _concat(self):
-        rel = ''.join([rel if trn.relevant else ''
-                       for _, trn, rel in self._temp[:-1]])
+        rel = ''.join([rel if rel else ''
+                       for _, _, rel in self._temp[:-1]])
 
         new_tr = OutTransition(name='',
                                destination=None,
@@ -120,3 +122,29 @@ class Diagnosis:
             val for val in self._prev[self._temp[-1]] if val != self._temp[0]
             ]
         self._prev[self._temp[-1]].append(self._temp[0])
+
+    def _autotransition(self):
+        for state in self._work_space.keys():
+            for trns, next_st in state.nexts.items():
+                for fi_trns, fin_next_st in next_st.nexts.items():
+                    auto_trans = next_st.auto_trans()
+                    if auto_trans and auto_trans != fin_next_st:
+                        autotr = f'({auto_trans.relevant})*'
+                        self._temp = []
+                        self._temp.append((
+                            state,
+                            trns,
+                            (trns.relevant if trns.relevant else '') + autotr))
+                        self._temp.append((next_st, fi_trns, fi_trns.relevant))
+                        self._temp.append(fin_next_st)
+                        self._concat()
+
+    def _concat_auto_trans(self):
+        rel = ''.join([
+            self._temp[0][2] if self._temp[0][2] else '',
+            self._temp[1],
+            self._temp[2][2] if self._temp[2][2] else ''])
+        print(rel)
+
+    def dict_per_json(self):
+        return {'regex': self._regex}

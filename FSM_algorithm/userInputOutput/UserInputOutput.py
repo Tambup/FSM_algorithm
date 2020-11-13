@@ -11,4 +11,4 @@ def readInput(jsonText) -> ComportamentalFANetwork:
 def write_result(task, out_file):
     result = json.dumps(task.dict_per_json(), indent=4)
     out_file[0].write(result)
-    out_file[0].write("\n")
+    out_file[0].write('\n')

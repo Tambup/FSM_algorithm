@@ -56,8 +56,8 @@ def main():
     task_result.build(args.obs_list)
     if args.type[0] == 2 and args.diagnosis:
         if task_result.is_correct():
-            dignosticator = Diagnosis(task_result.space_states)
-            task_result = dignosticator.diagnosis()
+            task_result = Diagnosis(task_result.space_states)
+            task_result.diagnosis()
         else:
             print('Not valid observation', file=sys.stderr)
             valid_result = False

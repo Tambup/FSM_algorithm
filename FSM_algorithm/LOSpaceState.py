@@ -55,6 +55,11 @@ class LOSpaceState(SpaceState):
 
         return False
 
+    def auto_trans(self):
+        for trns, succ in self._nexts.items():
+            if succ == self:
+                return trns
+
     def dict_per_json(self):
         temp = {}
         temp['name'] = self._id
