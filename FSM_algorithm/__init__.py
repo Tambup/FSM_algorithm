@@ -5,6 +5,7 @@ from userInputOutput import UserInputOutput as UserIO
 from ComportamentalFANSpace import ComportamentalFANSpace
 from ComportamentalFANSObservation import ComportamentalFANSObservation
 from Diagnosis import Diagnosis
+from Diagnosticator import Diagnosticator
 
 
 def main():
@@ -61,6 +62,10 @@ def main():
         else:
             print('Not valid observation', file=sys.stderr)
             valid_result = False
+    elif args.type[0] == 1 and args.diagnosis:
+        if task_result.is_correct():
+            task_result = Diagnosticator(task_result.space_states)
+            task_result.build()
 
     if valid_result:
         UserIO.write_result(task_result, args.out_file)

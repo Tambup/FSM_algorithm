@@ -16,9 +16,6 @@ class ComportamentalFANSObservation(ComportamentalFANSpace):
         self._prune(self._space_states[0], mantain_dict)
         self._space_states = list(mantain_dict)
 
-    def is_correct(self):
-        return True if self._space_states else False
-
     def _dfs_visit(self, next_state, obs, obs_index):
         next_state.id = self._id_count
         self._id_count += 1

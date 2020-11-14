@@ -19,6 +19,9 @@ class ComportamentalFANSpace(Task):
     def space_states(self):
         return self._space_states
 
+    def is_correct(self):
+        return True if self._space_states else False
+
     def build(self, param=None):
         """Build a CFANS pruning states that cannot reach a final state.
 
