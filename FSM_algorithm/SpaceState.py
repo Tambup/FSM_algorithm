@@ -48,6 +48,10 @@ class SpaceState:
     def nexts(self):
         return self._nexts
 
+    @nexts.setter
+    def nexts(self, value):
+        self._nexts = value
+
     def set_link(self, link_name, link_event):
         self._links[link_name] = link_event
 
@@ -67,6 +71,13 @@ class SpaceState:
             if val != SpaceState.NULL_EVT:
                 return False
 
+        return True
+
+    def is_init(self):
+        if self.is_final():
+            for state in self._states:
+                if not state.is_init():
+                    return False
         return True
 
     def __eq__(self, obj):
