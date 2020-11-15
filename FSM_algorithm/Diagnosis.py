@@ -139,12 +139,5 @@ class Diagnosis:
                         self._temp.append(fin_next_st)
                         self._concat()
 
-    def _concat_auto_trans(self):
-        rel = ''.join([
-            self._temp[0][2] if self._temp[0][2] else '',
-            self._temp[1],
-            self._temp[2][2] if self._temp[2][2] else ''])
-        print(rel)
-
     def dict_per_json(self):
         return {'regex': self._regex}

@@ -10,6 +10,8 @@ class Diagnosticator:
         self._build_closures()
 
     def _build_closures(self):
+        closure = Closure(2, self._space_states)
+        closure.build()
         self._closures = []
         for i, state in enumerate(self._space_states):
             is_obs = False
