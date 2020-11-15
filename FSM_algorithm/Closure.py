@@ -1,16 +1,10 @@
-from core.OutTransition import OutTransition
+from core.SubscriptedTransition import SubscriptedTransition as SubscrTrans
 from SpaceState import SpaceState
 from DetachedNextsSpaceState import DetachedNextsSpaceState as DNSpaceState
 
 
 class Closure:
-    final_trans = OutTransition(name='',
-                                destination='FINAL',
-                                links=[],
-                                observable=None,
-                                relevant=None)
-
-    final_state = SpaceState(states=[], links=[])
+    final_state = DNSpaceState(SpaceState(states=[], links=[]))
 
     def __init__(self, enter_state_index, state_space):
         self._init_index = enter_state_index
@@ -29,10 +23,11 @@ class Closure:
         for state in temp:
             new_nexts = {}
             for next_trans, next_state in state.nexts.items():
-                new_state = DNSpaceState(next_state)
-                new_nexts[next_trans] = next_state
+                new_state = DNSpaceState(space_state=next_state)
+                new_trans = SubscrTrans.from_trans(out_trans=next_trans)
+                new_nexts[new_trans] = new_state
                 if not self._work_space.get(next_state):
-                    if not next_trans.observable:
+                    if not new_trans.observable:
                         self._work_space[new_state] = None
                         temp.append(new_state)
             state.nexts = new_nexts
@@ -45,11 +40,19 @@ class Closure:
         self._unify_exit()
         while len(self._work_space) > 2:
             if self._sequence_transition():
+                self._concat(self._temp[-2][1].subscript_value)
+            elif self._set_parallel_tansition():
                 pass
 
     def _unify_exit(self):
-        for state in self._finals.keys():
-            state.add_next(Closure.final_trans, Closure.final_state)
+        for i, state in enumerate(self._finals.keys()):
+            trans = SubscrTrans(name='',
+                                dest='FINAL',
+                                links=[],
+                                observable=None,
+                                relevant=None,
+                                subscr=i)
+            state.add_next(trans, Closure.final_state)
 
         self._work_space[Closure.final_state] = None
         self._prev = {}
@@ -78,3 +81,26 @@ class Closure:
                 self._temp.append(remaining[-1])
                 if len(self._temp) > 2:
                     return True
+
+    def _concat(self, nk=None):
+        rel = ''.join([rel if rel else ''
+                       for _, _, rel in self._temp[:-1]])
+
+        new_t = SubscrTrans(name='',
+                            dest=None,
+                            links=[],
+                            observable=None,
+                            relevant=rel,
+                            subscr=nk)
+        self._temp[0][0].update_nexts(del_tr=[self._temp[0][1]],
+                                      new_tr=new_t,
+                                      new_next=self._temp[-1])
+        for i, elem in enumerate(self._prev[self._temp[-1]]):
+            if elem == self._temp[-2][0]:
+                self._prev[self._temp[-1]][i] = self._temp[0][0]
+                break
+        for elem, _, _ in self._temp[1:-1]:
+            del self._work_space[elem]
+
+    def _set_parallel_tansition(self):
+        pass

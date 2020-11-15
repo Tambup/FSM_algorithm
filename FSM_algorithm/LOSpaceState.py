@@ -15,11 +15,6 @@ class LOSpaceState(SpaceState):
     def obs_index(self, value):
         self._obs_index = value
 
-    def update_nexts(self, del_tr, new_tr, new_next):
-        for to_del in del_tr:
-            del self._nexts[to_del]
-        self._nexts[new_tr] = new_next
-
     def has_next_obs(self):
         self._has_next_obs = True
 

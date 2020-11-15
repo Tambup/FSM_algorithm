@@ -3,8 +3,8 @@ from SpaceState import SpaceState
 
 class DetachedNextsSpaceState(SpaceState):
     def __init__(self, space_state):
+        super().__init__(links=[], states=space_state.states)
         self._links = space_state.links
-        self._states = space_state.states
         self._id = space_state.id
         self._nexts = space_state.nexts
         self._external_nexts = {}

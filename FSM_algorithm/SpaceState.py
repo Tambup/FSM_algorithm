@@ -61,6 +61,11 @@ class SpaceState:
     def add_next(self, transition, next):
         self._nexts[transition] = next
 
+    def update_nexts(self, del_tr, new_tr, new_next):
+        for to_del in del_tr:
+            del self._nexts[to_del]
+        self._nexts[new_tr] = new_next
+
     def change_state(self, old_state, new_state):
         self._nexts = {}
         self._states = [new_state if elem == old_state else elem
