@@ -110,6 +110,11 @@ class SpaceState:
     def __hash__(self):
         return hash((tuple(sorted(self._links.items())), tuple(self._states)))
 
+    def auto_trans(self):
+        for trns, succ in self._nexts.items():
+            if succ == self:
+                return trns
+
     def dict_per_json(self):
         temp = {}
         temp['name'] = self._id

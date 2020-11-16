@@ -42,7 +42,9 @@ class Closure:
             if self._sequence_transition():
                 self._concat(self._temp[-2][1].subscript_value)
             elif self._set_parallel_tansition():
-                pass
+                self._alternative()
+            else:
+                self._remaining()
 
     def _unify_exit(self):
         for i, state in enumerate(self._finals.keys()):
@@ -103,4 +105,37 @@ class Closure:
             del self._work_space[elem]
 
     def _set_parallel_tansition(self):
-        pass
+        for state in self._work_space.keys():
+            for trns, next_st in state.nexts.items():
+                self._temp = (state, [trns], next_st)
+                for trns_1, next_st_1 in state.nexts.items():
+                    if trns is not trns_1 and next_st == next_st_1:
+                        if trns.subscript_value == trns_1.subscript_value:
+                            self._temp[1].append(trns_1)
+                if len(self._temp[1]) > 1:
+                    return True
+
+    def _alternative(self):
+        rel = '(' + '|'.join(
+            [tr.relevant if tr.relevant else DNSpaceState.NULL_EVT
+                for tr in self._temp[1]]
+            ) + ')'
+
+        new_tr = SubscrTrans(name='',
+                             dest=None,
+                             links=[],
+                             observable=None,
+                             relevant=rel,
+                             subscr=self._temp[1][0].subscript_value)
+        self._temp[0].update_nexts(del_tr=self._temp[1],
+                                   new_tr=new_tr,
+                                   new_next=self._temp[-1])
+
+        self._prev[self._temp[-1]] = [
+            val for val in self._prev[self._temp[-1]] if val != self._temp[0]
+            ]
+        self._prev[self._temp[-1]].append(self._temp[0])
+
+    def _remaining(self):
+        for state in self._work_space.keys():
+            pass

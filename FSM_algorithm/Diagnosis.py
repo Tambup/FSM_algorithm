@@ -113,8 +113,7 @@ class Diagnosis:
                                links=[],
                                observable=None,
                                relevant=rel)
-        self._temp[0].update_nexts(
-                                   del_tr=self._temp[1],
+        self._temp[0].update_nexts(del_tr=self._temp[1],
                                    new_tr=new_tr,
                                    new_next=self._temp[-1])
 
