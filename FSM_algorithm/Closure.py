@@ -137,5 +137,18 @@ class Closure:
         self._prev[self._temp[-1]].append(self._temp[0])
 
     def _remaining(self):
-        for state in self._work_space.keys():
-            pass
+        for n_first in self._work_space.keys():
+            for r_first, n in n_first.nexts.items():
+                for r_second, n_second in n.nexts.items():
+                    auto_trans = n.auto_trans()
+                    self._temp = []
+                    if auto_trans and auto_trans != n_second:
+                        autotr = f'({auto_trans.relevant})*'
+                        self._temp.append((
+                            n_first,
+                            r_first,
+                            (r_first.relevant if r_first.relevant else '')
+                            + autotr))
+                        self._temp.append((n, r_second, r_second.relevant))
+                        self._temp.append(n_second)
+                        self._concat(self._temp[-2][1].subscript_value)
