@@ -32,3 +32,6 @@ class DetachedNextsSpaceState(SpaceState):
         if self._external_nexts:
             return True
         return False
+
+    def exit_state(self):
+        return True if self._external_nexts else False

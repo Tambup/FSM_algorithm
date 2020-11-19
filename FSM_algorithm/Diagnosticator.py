@@ -8,6 +8,7 @@ class Diagnosticator:
 
     def build(self):
         self._build_closures()
+        self._build_closure_space()
 
     def _build_closures(self):
         closable = {}
@@ -24,3 +25,7 @@ class Diagnosticator:
                               state_space=self._space_states)
             closure.build()
             self._closures.append(closure)
+
+    def _build_closure_space(self):
+        for closure in self._closures:
+            closure.build_next(self._closures)

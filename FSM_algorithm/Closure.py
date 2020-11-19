@@ -11,19 +11,27 @@ class Closure:
         self._init_space = state_space
         self._work_space = None
         self._to_decorate = None
+        self._final_states = None
+        self._exit_states = None
         self._prev = None
         self._temp = None
         self._regex = ''
+        self._out = None
 
     @property
     def regex(self):
         return self._regex
+
+    def in_space_state(self):
+        return DNSpaceState(self._init_space[self._init_index])
 
     def build(self):
         temp = [DNSpaceState(self._init_space[self._init_index])]
         self._work_space = {temp[0]: None}
 
         self._to_decorate = {}
+        self._final_states = {}
+        self._exit_states = {}
         for state in temp:
             new_nexts = {}
             for next_trans, next_state in state.nexts.items():
@@ -37,7 +45,10 @@ class Closure:
             state.nexts = new_nexts
             if state.to_decorate():
                 self._to_decorate[state] = None
-
+            if state.is_final():
+                self._final_states[state] = -100
+            if state.exit_state():
+                self._exit_states[state] = -100
         self._decorate()
 
     def _decorate(self):
@@ -52,10 +63,21 @@ class Closure:
 
         to_join = [tr for space in self._work_space.keys()
                    for tr in space.nexts.keys()
-                   if tr.subscript_value is not None]
+                   if tr.subscript_value in self._final_states.keys()]
         self._regex = '|'.join([tr.relevant if tr.relevant
                                 else SpaceState.NULL_EVT
                                 for tr in to_join])
+        temp = {}
+        for space in self._work_space.keys():
+            for tr in space.nexts.keys():
+                if tr.subscript_value in self._exit_states.keys():
+                    if tr.relevant:
+                        temp[self._exit_states[tr.subscript_value]] \
+                            = tr.relevant
+                    else:
+                        temp[self._exit_states[tr.subscript_value]] \
+                            = SpaceState.NULL_EVT
+        self._exit_states = temp
         if not self._regex:
             self._regex = SpaceState.NULL_EVT
 
@@ -66,7 +88,11 @@ class Closure:
                                 links=[],
                                 observable=None,
                                 relevant=None,
-                                subscr=i if state.is_final() else None)
+                                subscr=i)
+            if self._final_states.get(state):
+                self._final_states[i] = state
+            if self._exit_states.get(state):
+                self._exit_states[i] = state
             state.add_next(trans, Closure.final_state)
 
         self._work_space[Closure.final_state] = None
@@ -208,3 +234,12 @@ class Closure:
                             subscr=nk)
         n_first.add_next(transition=new_t, next=n_second)
         self._prev[n_second].append(n_first)
+
+    def build_next(self, closures):
+        self._out = {}
+        for state, regex in self._exit_states.items():
+            for succ in state.external_nexts.values():
+                for closure in closures:
+                    if succ == closure.in_space_state():
+                        # self._out[succ] = closure METTERE OGGETTO
+                        break
