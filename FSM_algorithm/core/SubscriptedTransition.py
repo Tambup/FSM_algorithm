@@ -19,3 +19,6 @@ class SubscriptedTransition(OutTransition):
     @property
     def subscript_value(self):
         return self._subscript_value
+
+    def __hash__(self):
+        return hash((super().__hash__(), self._subscript_value))

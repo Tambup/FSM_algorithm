@@ -10,16 +10,17 @@ class Diagnosticator:
         self._build_closures()
 
     def _build_closures(self):
-        closure = Closure(2, self._space_states)
-        closure.build()
-        self._closures = []
-        for i, state in enumerate(self._space_states):
-            is_obs = False
-            for trans in state.nexts.keys():
+        closable = {}
+        for act in self._space_states:
+            if act.is_init():
+                closable[act] = None
+            for trans, state in act.nexts.items():
                 if trans.observable:
-                    is_obs = True
-                    break
-            if is_obs or state.is_init():
-                closure = Closure(i, self._space_states)
-                closure.build()
-                self._closures.append(closure)
+                    closable[state] = None
+        closable = [self._space_states.index(elem) for elem in closable.keys()]
+        self._closures = []
+        for index in closable:
+            closure = Closure(enter_state_index=index,
+                              state_space=self._space_states)
+            closure.build()
+            self._closures.append(closure)

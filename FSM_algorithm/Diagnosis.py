@@ -122,21 +122,62 @@ class Diagnosis:
             ]
         self._prev[self._temp[-1]].append(self._temp[0])
 
-    def _autotransition(self):
-        for state in self._work_space.keys():
-            for trns, next_st in state.nexts.items():
-                for fi_trns, fin_next_st in next_st.nexts.items():
-                    auto_trans = next_st.auto_trans()
-                    if auto_trans and auto_trans != fin_next_st:
-                        autotr = f'({auto_trans.relevant})*'
-                        self._temp = []
-                        self._temp.append((
-                            state,
-                            trns,
-                            (trns.relevant if trns.relevant else '') + autotr))
-                        self._temp.append((next_st, fi_trns, fi_trns.relevant))
-                        self._temp.append(fin_next_st)
-                        self._concat()
+    def _remaining(self):
+        remove_val = None
+        for n in self._work_space.keys():
+            if remove_val:
+                break
+            for n_first in self._prev[n]:
+                if n_first == n:
+                    break
+                for t_first, n_cand in n_first.nexts.items():
+                    if n_cand == n:
+                        break
+                remove_next = False
+                for t_second, n_second in n.nexts.items():
+                    if n_second == n:
+                        break
+                    remove_val = n
+                    remove_next = True
+                    self._autotrans(first=(n_first, t_first, n),
+                                    second=(n, t_second, n_second))
+                if remove_next:
+                    del n_first.nexts[t_first]
+        if remove_val:
+            for succ in remove_val.nexts.values():
+                new_prev = []
+                for i, sample in enumerate(self._prev[succ]):
+                    if sample != remove_val:
+                        new_prev.append(sample)
+                self._prev[succ] = new_prev
+            del self._work_space[remove_val]
+
+    def _autotrans(self, first, second):
+        autotr = None
+        for t, n in second[0].nexts.items():
+            if n == second[0]:
+                autotr = t
+                break
+        autotr = autotr.relevant if autotr and autotr.relevant else ''
+        rel1 = first[1].relevant if first[1].relevant else ''
+        rel2 = second[1].relevant if second[1].relevant else ''
+        if autotr:
+            self._sub_trans(n_first=first[0],
+                            rel=rel1 + f'({autotr})*' + rel2,
+                            n_second=second[2])
+        else:
+            self._sub_trans(n_first=first[0],
+                            rel=rel1 + rel2,
+                            n_second=second[2])
+
+    def _sub_trans(self, n_first, rel, n_second):
+        new_t = OutTransition(name='',
+                              dest=None,
+                              links=[],
+                              observable=None,
+                              relevant=rel)
+        n_first.add_next(transition=new_t, next=n_second)
+        self._prev[n_second].append(n_first)
 
     def dict_per_json(self):
         return {'regex': self._regex}

@@ -79,10 +79,13 @@ class SpaceState:
         return True
 
     def is_init(self):
-        if self.is_final():
-            for state in self._states:
-                if not state.is_init():
-                    return False
+        for state in self._states:
+            if not state.is_init():
+                return False
+        for link in self._links.values():
+            if link != SpaceState.NULL_EVT:
+                return False
+
         return True
 
     def __eq__(self, obj):

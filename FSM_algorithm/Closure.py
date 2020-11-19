@@ -9,19 +9,21 @@ class Closure:
     def __init__(self, enter_state_index, state_space):
         self._init_index = enter_state_index
         self._init_space = state_space
-        self._init_state = None
         self._work_space = None
-        self._finals = None
+        self._to_decorate = None
         self._prev = None
         self._temp = None
+        self._regex = ''
+
+    @property
+    def regex(self):
+        return self._regex
 
     def build(self):
-        self._init_space = [DNSpaceState(k) for k in self._init_space]
         temp = [DNSpaceState(self._init_space[self._init_index])]
-        self._init_state = [temp[0]]
         self._work_space = {temp[0]: None}
 
-        self._finals = {}
+        self._to_decorate = {}
         for state in temp:
             new_nexts = {}
             for next_trans, next_state in state.nexts.items():
@@ -33,8 +35,8 @@ class Closure:
                         self._work_space[new_state] = None
                         temp.append(new_state)
             state.nexts = new_nexts
-            if state.is_final():
-                self._finals[state] = None
+            if state.to_decorate():
+                self._to_decorate[state] = None
 
         self._decorate()
 
@@ -48,14 +50,23 @@ class Closure:
             else:
                 self._remaining()
 
+        to_join = [tr for space in self._work_space.keys()
+                   for tr in space.nexts.keys()
+                   if tr.subscript_value is not None]
+        self._regex = '|'.join([tr.relevant if tr.relevant
+                                else SpaceState.NULL_EVT
+                                for tr in to_join])
+        if not self._regex:
+            self._regex = SpaceState.NULL_EVT
+
     def _unify_exit(self):
-        for i, state in enumerate(self._finals.keys()):
+        for i, state in enumerate(self._to_decorate.keys()):
             trans = SubscrTrans(name='',
                                 dest='FINAL',
                                 links=[],
                                 observable=None,
                                 relevant=None,
-                                subscr=i)
+                                subscr=i if state.is_final() else None)
             state.add_next(trans, Closure.final_state)
 
         self._work_space[Closure.final_state] = None
@@ -149,14 +160,16 @@ class Closure:
                 for t_first, n_cand in n_first.nexts.items():
                     if n_cand == n:
                         break
+                remove_next = False
                 for t_second, n_second in n.nexts.items():
                     if n_second == n:
                         break
                     remove_val = n
+                    remove_next = True
                     self._autotrans(first=(n_first, t_first, n),
                                     second=(n, t_second, n_second))
-
-                del n_first.nexts[t_first]
+                if remove_next:
+                    del n_first.nexts[t_first]
         if remove_val:
             for succ in remove_val.nexts.values():
                 new_prev = []

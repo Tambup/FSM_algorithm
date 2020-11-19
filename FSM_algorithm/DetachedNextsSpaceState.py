@@ -19,14 +19,14 @@ class DetachedNextsSpaceState(SpaceState):
 
     @nexts.setter
     def nexts(self, value):
+        self._nexts = {}
         for k, v in value.items():
-            del self._nexts[k]
             if k.observable:
                 self._external_nexts[k] = v
             else:
                 self._nexts[k] = v
 
-    def is_final(self):
+    def to_decorate(self):
         if super().is_final():
             return True
         if self._external_nexts:
