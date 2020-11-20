@@ -31,13 +31,14 @@ class ComportamentalFANSpace(Task):
             In this class is useless. Don't use it. By default None
         """
         self._initialize()
-        index = 0
         id = 1
-        while (index < len(self._space_states)):
-            actual_space_state = self._space_states[index]
+        present = {st: st for st in self._space_states}
+        for actual_space_state in self._space_states:
             next_trans_state = actual_space_state.next_transition_state()
-            id = self._add_states(actual_space_state, next_trans_state, id)
-            index += 1
+            id = self._add_states(space_state=actual_space_state,
+                                  next_transition=next_trans_state,
+                                  present=present,
+                                  id=id)
 
         self._prune()
 
@@ -51,13 +52,14 @@ class ComportamentalFANSpace(Task):
         """
         self._initialize()
 
-        index = 0
         id = 1
-        while (index < len(self._space_states)):
-            actual_space_state = self._space_states[index]
+        present = {st: st for st in self._space_states}
+        for actual_space_state in self._space_states:
             next_trans_state = actual_space_state.next_transition_state()
-            id = self._add_states(actual_space_state, next_trans_state, id)
-            index += 1
+            id = self._add_states(space_state=actual_space_state,
+                                  next_transition=next_trans_state,
+                                  present=present,
+                                  id=id)
 
     def _init_instance(self, init_states, link_names):
         return [SpaceState(init_states, link_names)]
@@ -69,7 +71,7 @@ class ComportamentalFANSpace(Task):
         self._space_states = self._init_instance(init_states, link_names)
         self._space_states[0].id = 0
 
-    def _add_states(self, space_state, next_transition, id):
+    def _add_states(self, space_state, next_transition, id, present):
         for changing_state in next_transition.keys():
             i, actual_out_trans_list = next_transition[changing_state]
             for actual_out_trans in actual_out_trans_list:
@@ -80,13 +82,13 @@ class ComportamentalFANSpace(Task):
                                                      candidate,
                                                      actual_out_trans)
                         try:
-                            index = self._space_states.index(new_spc_st)
                             space_state.add_next(actual_out_trans,
-                                                 self._space_states[index])
-                        except ValueError:
+                                                 present[new_spc_st])
+                        except KeyError:
                             new_spc_st.id = id
                             id += 1
                             self._space_states.append(new_spc_st)
+                            present[new_spc_st] = new_spc_st
                             space_state.add_next(actual_out_trans, new_spc_st)
                         break
         return id

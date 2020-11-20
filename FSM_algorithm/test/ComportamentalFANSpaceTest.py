@@ -35,17 +35,22 @@ class TestStringMethods(unittest.TestCase):
         fanSpace = ComportamentalFANSpace(cfaNetwork)
         fanSpace._initialize()
         fanSpace._add_states(fanSpace._space_states[0], fanSpace.
-                             _space_states[0].next_transition_state(), 1)
+                             _space_states[0].next_transition_state(), 1,
+                             {st: st for st in fanSpace.space_states})
         fanSpace._add_states(fanSpace._space_states[1], fanSpace.
-                             _space_states[1].next_transition_state(), 2)
+                             _space_states[1].next_transition_state(), 2,
+                             {st: st for st in fanSpace.space_states})
         fanSpace1 = ComportamentalFANSpace(cfaNetwork)
         fanSpace1._initialize()
         fanSpace1._add_states(fanSpace1._space_states[0], fanSpace1.
-                              _space_states[0].next_transition_state(), 1)
+                              _space_states[0].next_transition_state(), 1,
+                              {st: st for st in fanSpace1.space_states})
         fanSpace1._add_states(fanSpace1._space_states[1], fanSpace1.
-                              _space_states[1].next_transition_state(), 2)
+                              _space_states[1].next_transition_state(), 2,
+                              {st: st for st in fanSpace1.space_states})
         fanSpace1._add_states(fanSpace1._space_states[1], fanSpace1.
-                              _space_states[0].next_transition_state(), 2)
+                              _space_states[0].next_transition_state(), 2,
+                              {st: st for st in fanSpace1.space_states})
         self.assertFalse(fanSpace._space_states[1] !=
                          fanSpace1._space_states[1])
 
@@ -58,7 +63,8 @@ class TestStringMethods(unittest.TestCase):
         ss = fanSpace._space_states[0]
         nt = ss.next_transition_state()
         i, transition = nt[ss.states[1]]
-        fanSpace._add_states(ss, nt, 1)
+        fanSpace._add_states(ss, nt, 1,
+                             {st: st for st in fanSpace.space_states})
         self.assertTrue(fanSpace.space_states[0].nexts[transition[0]] ==
                         fanSpace.space_states[1])
 
@@ -69,16 +75,21 @@ class TestStringMethods(unittest.TestCase):
         fanSpace = ComportamentalFANSpace(cfaNetwork)
         fanSpace._initialize()
         fanSpace._add_states(fanSpace._space_states[0], fanSpace.
-                             _space_states[0].next_transition_state(), 1)
+                             _space_states[0].next_transition_state(), 1,
+                             {st: st for st in fanSpace.space_states})
         fanSpace._add_states(fanSpace._space_states[1], fanSpace.
-                             _space_states[1].next_transition_state(), 2)
+                             _space_states[1].next_transition_state(), 2,
+                             {st: st for st in fanSpace.space_states})
         fanSpace._add_states(fanSpace._space_states[2], fanSpace.
-                             _space_states[2].next_transition_state(), 3)
+                             _space_states[2].next_transition_state(), 3,
+                             {st: st for st in fanSpace.space_states})
         fanSpace._add_states(fanSpace._space_states[4], fanSpace.
-                             _space_states[4].next_transition_state(), 5)
+                             _space_states[4].next_transition_state(), 5,
+                             {st: st for st in fanSpace.space_states})
         fs_dim_l_it = len(fanSpace._space_states)
         fanSpace._add_states(fanSpace._space_states[5], fanSpace.
-                             _space_states[5].next_transition_state(), 6)
+                             _space_states[5].next_transition_state(), 6,
+                             {st: st for st in fanSpace.space_states})
         self.assertTrue(fanSpace._space_states[0]._states[0] in
                         fanSpace._space_states[5]._states and
                         fs_dim_l_it + 1 == len(fanSpace._space_states))
@@ -123,7 +134,8 @@ class TestStringMethods(unittest.TestCase):
         fanSpace = ComportamentalFANSpace(cfaNetwork)
         fanSpace._initialize()
         fanSpace._add_states(fanSpace._space_states[0], fanSpace.
-                             _space_states[0].next_transition_state(), 1)
+                             _space_states[0].next_transition_state(), 1,
+                             {st: st for st in fanSpace.space_states})
         self.assertTrue(state_exp_1, state_exp_2 in
                         fanSpace._space_states[1]._states and
                         len(fanSpace._space_states[1]._states) == 2)
@@ -149,7 +161,8 @@ class TestStringMethods(unittest.TestCase):
         fanSpace = ComportamentalFANSpace(cfaNetwork)
         fanSpace._initialize()
         fanSpace._add_states(fanSpace._space_states[0], fanSpace.
-                             _space_states[0].next_transition_state(), 1)
+                             _space_states[0].next_transition_state(), 1,
+                             {st: st for st in fanSpace.space_states})
         self.assertFalse(state_exp_1 in fanSpace._space_states[1]._states)
 
 
