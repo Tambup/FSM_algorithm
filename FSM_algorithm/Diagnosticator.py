@@ -1,10 +1,13 @@
 from Closure import Closure
+from SpaceState import SpaceState
 
 
 class Diagnosticator:
     def __init__(self, space_states):
         self._space_states = space_states
         self._closures = None
+        self._regex = None
+        self._is_linear_diagnosis = False
 
     def build(self):
         self._build_closures()
@@ -20,12 +23,80 @@ class Diagnosticator:
                     closable[state] = None
         closable = [self._space_states.index(elem) for elem in closable.keys()]
         self._closures = []
-        for index in closable:
+        for i, index in enumerate(closable):
             closure = Closure(enter_state_index=index,
-                              state_space=self._space_states)
+                              state_space=self._space_states,
+                              name='x'+str(i))
             closure.build()
             self._closures.append(closure)
 
     def _build_closure_space(self):
         for closure in self._closures:
             closure.build_next(self._closures)
+
+    def _linear_diagnosis(self, observations):
+        self._is_linear_diagnosis = True
+        X = {}
+        for closure in self._closures:
+            if closure.in_space_state().is_init():
+                X[closure] = SpaceState.NULL_EVT
+                break
+
+        for o in observations:
+            X_new = {}
+            for x_first, rho_first in X.items():
+                for arc in x_first.out_list(o):
+                    x_second = arc['successor']
+                    rho_second = self._build_rho_second(
+                        first=rho_first,
+                        second=arc['trns_regex']
+                    )
+                    X_new[x_second] = self._build_x_second_regex(
+                        prev_val=X_new.get(x_second),
+                        trns_regex=rho_second
+                    )
+            X = X_new
+
+        X_new = {}
+        for closure, regex in X.items():
+            if closure.is_final():
+                X_new[closure] = regex
+        X = X_new
+
+        if len(X) == 1:
+            head = list(X.items())[0]
+            self._regex = '(' + head[1] + ')(' + head[0].regex + ')'
+        elif len(X) > 1:
+            self._regex = ''
+            for x, rho in X.items():
+                self._regex += '(' + rho + '(' + x.regex + ')' + ')|'
+            self._regex = self._regex[:-1]
+
+    def _build_rho_second(self, first, second):
+        if first == SpaceState.NULL_EVT and second == SpaceState.NULL_EVT:
+            return SpaceState.NULL_EVT
+        elif first != SpaceState.NULL_EVT and second == SpaceState.NULL_EVT:
+            return first
+        elif first == SpaceState.NULL_EVT and second != SpaceState.NULL_EVT:
+            return second
+        else:
+            return first + second
+
+    def _build_x_second_regex(self, prev_val, trns_regex):
+        if prev_val:
+            if trns_regex not in prev_val.split('|'):
+                return prev_val + '|' + trns_regex
+            else:
+                return prev_val
+        else:
+            return trns_regex
+
+    def dict_per_json(self):
+        if self._is_linear_diagnosis:
+            return {'regex': self._regex}
+        else:
+            temp = {}
+            temp['closure'] = [
+                closure.dict_per_json() for closure in self._closures
+            ]
+            return temp

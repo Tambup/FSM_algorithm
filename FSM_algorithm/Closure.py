@@ -6,7 +6,8 @@ from DetachedNextsSpaceState import DetachedNextsSpaceState as DNSpaceState
 class Closure:
     final_state = DNSpaceState(SpaceState(states=[], links=[]))
 
-    def __init__(self, enter_state_index, state_space):
+    def __init__(self, enter_state_index, state_space, name):
+        self._name = name
         self._init_index = enter_state_index
         self._init_space = state_space
         self._work_space = None
@@ -19,8 +20,15 @@ class Closure:
         self._out = None
 
     @property
+    def name(self):
+        return self._name
+
+    @property
     def regex(self):
         return self._regex
+
+    def is_final(self):
+        return True if self._final_states else False
 
     def in_space_state(self):
         return DNSpaceState(self._init_space[self._init_index])
@@ -237,9 +245,41 @@ class Closure:
 
     def build_next(self, closures):
         self._out = {}
+        for state in self._exit_states.keys():
+            for trns in state.external_nexts.keys():
+                self._out[trns.observable] = []
+
         for state, regex in self._exit_states.items():
-            for succ in state.external_nexts.values():
+            for trns, succ in state.external_nexts.items():
                 for closure in closures:
                     if succ == closure.in_space_state():
-                        # self._out[succ] = closure METTERE OGGETTO
+                        trns_regex = trns.relevant if trns.relevant else ''
+                        trns_regex += regex
+                        self._out[trns.observable].append(
+                            {
+                                'successor': closure,
+                                'trns_regex': trns_regex
+                            }
+                        )
                         break
+
+    def out_list(self, observation):
+        return self._out.get(observation, [])
+
+    def dict_per_json(self):
+        temp = {}
+        temp['name'] = self._name
+        temp['in_state_id'] = self.in_space_state().id
+        temp['regex'] = self._regex
+        inner_temp = {}
+        for o, out_list in self._out.items():
+            inner_temp[o] = []
+            for out in out_list:
+                inner_temp[o].append(
+                    {
+                        'successor': out['successor'].name,
+                        'trns_regex': out['trns_regex']
+                    })
+
+        temp['exit'] = inner_temp
+        return temp
