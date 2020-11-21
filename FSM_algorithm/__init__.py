@@ -67,7 +67,7 @@ def main():
             task_result = Diagnosticator(task_result.space_states)
             task_result.build()
             if args.obs_list:
-                task_result._linear_diagnosis(args.obs_list)
+                task_result.linear_diagnosis(args.obs_list)
 
     if valid_result:
         UserIO.write_result(task_result, args.out_file)

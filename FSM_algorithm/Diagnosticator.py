@@ -34,7 +34,7 @@ class Diagnosticator:
         for closure in self._closures:
             closure.build_next(self._closures)
 
-    def _linear_diagnosis(self, observations):
+    def linear_diagnosis(self, observations):
         self._is_linear_diagnosis = True
         X = {}
         for closure in self._closures:
