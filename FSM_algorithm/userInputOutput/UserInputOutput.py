@@ -8,7 +8,10 @@ def readInput(jsonText) -> ComportamentalFANetwork:
                                    CFAs=bindData['comportamentalFA'])
 
 
-def write_result(task, out_file):
+def write_result(task, out_file, early_terminition=False):
     result = json.dumps(task.dict_per_json(), indent=4)
-    out_file[0].write(result)
-    out_file[0].write('\n')
+    if early_terminition:
+        out_file.write('Forced to stop before termination!\n')
+    out_file.write(result)
+    out_file.write('\n')
+    out_file.close()

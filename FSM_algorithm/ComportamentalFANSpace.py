@@ -1,7 +1,6 @@
 import copy
 from Task import Task
 from SpaceState import SpaceState
-import stoppable
 
 
 class ComportamentalFANSpace(Task):

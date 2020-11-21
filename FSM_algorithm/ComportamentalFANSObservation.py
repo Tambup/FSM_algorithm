@@ -1,6 +1,5 @@
 from ComportamentalFANSpace import ComportamentalFANSpace
 from LOSpaceState import LOSpaceState
-import stoppable
 
 
 class ComportamentalFANSObservation(ComportamentalFANSpace):

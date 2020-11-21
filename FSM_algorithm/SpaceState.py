@@ -1,7 +1,4 @@
-import stoppable
-
-
-class SpaceState():
+class SpaceState:
     NULL_EVT = '\u03B5'
 
     def __init__(self, states, links):

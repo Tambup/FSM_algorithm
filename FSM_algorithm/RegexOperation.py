@@ -1,6 +1,5 @@
 from core.SubscriptedTransition import SubscriptedTransition as SubscrTrans
 from core.OutTransition import OutTransition
-import stoppable
 
 
 class RegexOperation:
