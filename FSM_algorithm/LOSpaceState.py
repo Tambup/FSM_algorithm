@@ -25,7 +25,7 @@ class LOSpaceState(SpaceState):
                      if self._must_add(out_trans, obs_val)]
             if trans:
                 possible_next[next_state] = (i, trans)
-
+                print('added ' + str(len(trans)) + ' transition.\n')
         return possible_next
 
     def _must_add(self, next_out_trans, obs_val):

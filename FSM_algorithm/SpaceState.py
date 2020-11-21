@@ -14,7 +14,7 @@ class SpaceState:
                      if self._must_add(out_trans)]
             if trans:
                 possible_next[next_state] = (i, trans)
-
+        print('added ' + str(len(possible_next)) + ' transition.\n')
         return possible_next
 
     def _must_add(self, next_out_trans):

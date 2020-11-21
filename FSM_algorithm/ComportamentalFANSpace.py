@@ -30,17 +30,19 @@ class ComportamentalFANSpace(Task):
         param : list, optional
             In this class is useless. Don't use it. By default None
         """
+        print('Start creation CFANS\n')
         self._initialize()
         id = 1
         present = {st: st for st in self._space_states}
         for actual_space_state in self._space_states:
+            print('add new state number ' + str(actual_space_state._id))
             next_trans_state = actual_space_state.next_transition_state()
             id = self._add_states(space_state=actual_space_state,
                                   next_transition=next_trans_state,
                                   present=present,
                                   id=id)
-
         self._prune()
+        print('\nCFANS complete')
 
     def build_no_prune(self, param=None):
         """Build a CFANS without pruning.
@@ -112,7 +114,8 @@ class ComportamentalFANSpace(Task):
                 mantain_list[state] & remove_list[state]
             except KeyError:
                 self._prune_recursion(state, {}, mantain_list, remove_list)
-
+        for pr_state in remove_list:
+            print('prune state number ' + str(pr_state._id))
         self._space_states = list(mantain_list.keys())
 
     def _prune_recursion(self, state, forbidden, mantain_list, remove_list):

@@ -8,16 +8,18 @@ class ComportamentalFANSObservation(ComportamentalFANSpace):
         self._id_count = None
 
     def build(self, observation):
+        print('\nStart creation CFANS on observation ' +
+              str(observation) + '\n')
         super()._initialize()
-
         self._dfs_visit(self._space_states[0], obs=observation, obs_index=0)
-
         mantain_dict = {}
         self._prune(self._space_states[0], mantain_dict)
         self._space_states = list(mantain_dict)
+        print('\nCFANS respect observation ' + str(observation) + ' complete')
 
     def _dfs_visit(self, next_state, obs, obs_index):
         next_state.id = self._id_count
+        print('add new state number ' + str(self._id_count))
         self._id_count += 1
         next_state.obs_index = obs_index
 
