@@ -77,7 +77,12 @@ class ComportamentalFANSObservation(ComportamentalFANSpace):
         return reach_final
 
     def dict_per_json(self):
+        num_trans = 0
+        for space_state in self._space_states:
+            num_trans += len(space_state._nexts)
         return {
+            'number states': len(self._space_states),
+            'number transitions': num_trans,
             'space_state_linear_observation': [
                 space_state.dict_per_json()
                 for space_state in self._space_states

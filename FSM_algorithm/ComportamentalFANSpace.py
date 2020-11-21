@@ -148,7 +148,12 @@ class ComportamentalFANSpace(Task):
         dict
             Return a dict that describe the CFANS.
         """
+        num_trans = 0
+        for space_state in self._space_states:
+            num_trans += len(space_state._nexts)
         return {
+            'number states': len(self._space_states),
+            'number transitions': num_trans,
             'space_state': [
                 space_state.dict_per_json()
                 for space_state in self._space_states

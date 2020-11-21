@@ -95,7 +95,14 @@ class Diagnosticator:
         if self._is_linear_diagnosis:
             return {'regex': self._regex}
         else:
-            temp = {}
+            num_trans = 0
+            for closure in self._closures:
+                for out in closure._out.items():
+                    num_trans += len(out[1])
+            temp = {
+                'number closures': len(self._closures),
+                'number transactions': num_trans
+            }
             temp['closure'] = [
                 closure.dict_per_json() for closure in self._closures
             ]
