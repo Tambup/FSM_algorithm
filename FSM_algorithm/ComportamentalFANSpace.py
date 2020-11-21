@@ -1,6 +1,7 @@
 import copy
 from Task import Task
 from SpaceState import SpaceState
+import stoppable
 
 
 class ComportamentalFANSpace(Task):
@@ -114,8 +115,6 @@ class ComportamentalFANSpace(Task):
                 mantain_list[state] & remove_list[state]
             except KeyError:
                 self._prune_recursion(state, {}, mantain_list, remove_list)
-        for pr_state in remove_list:
-            print('prune state number ' + str(pr_state._id))
         self._space_states = list(mantain_list.keys())
 
     def _prune_recursion(self, state, forbidden, mantain_list, remove_list):
@@ -139,7 +138,8 @@ class ComportamentalFANSpace(Task):
                         return False
                     else:
                         remove_trans.append(out_trans)
-
+        if remove_list.get(state) is None:
+            print('prune state number ' + str(state._id))
         remove_list[state] = True
         return True
 

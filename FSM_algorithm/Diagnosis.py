@@ -2,6 +2,7 @@ import copy
 from core.OutTransition import OutTransition
 from LOSpaceState import LOSpaceState
 from RegexOperation import RegexOperation
+import stoppable
 
 
 class Diagnosis(RegexOperation):

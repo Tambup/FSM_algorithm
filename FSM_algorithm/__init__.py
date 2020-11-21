@@ -6,6 +6,13 @@ from ComportamentalFANSpace import ComportamentalFANSpace
 from ComportamentalFANSObservation import ComportamentalFANSObservation
 from Diagnosis import Diagnosis
 from Diagnosticator import Diagnosticator
+import stoppable
+import threading
+
+
+def exitfunc(stop_event):
+    print('TIMEOUT REACHED! STOPPING THE PROGRAM...')
+    stop_event.set()
 
 
 def main():
@@ -29,8 +36,18 @@ def main():
     argGroup.add_argument('-d', '--diagnosis', dest='diagnosis',
                           action='store_true',
                           help='State that the diagnosis must be computed')
+    argGroup.add_argument('-T', '--max-time', dest='max_time',
+                          type=float, nargs=1,
+                          help='Maximum execution time in seconds')
 
     args = argParser.parse_args()
+    if args.max_time:
+        stop_event = threading.Event()
+        stoppable.set_stop(stop_event)
+        stoppable.set_out_file(args.out_file)
+        threading.Timer(args.max_time[0],
+                        exitfunc,
+                        args=[stop_event]).start()
     lines = ''
     if not args.file:
         if select.select([sys.stdin], [], [], 0.0)[0]:

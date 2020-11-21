@@ -1,5 +1,6 @@
 from Closure import Closure
 from SpaceState import SpaceState
+import stoppable
 
 
 class Diagnosticator:
