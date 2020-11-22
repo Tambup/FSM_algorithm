@@ -77,6 +77,8 @@ class ComportamentalFANSObservation(ComportamentalFANSpace):
 
         if reach_final:
             for trans in remove_list:
+                print('pruned state number ' +
+                      str(actual_state.nexts[trans]._id))
                 del actual_state.nexts[trans]
 
         return reach_final
