@@ -1,5 +1,6 @@
 from ComportamentalFANSpace import ComportamentalFANSpace
 from LOSpaceState import LOSpaceState
+import functools
 
 
 class ComportamentalFANSObservation(ComportamentalFANSpace):
@@ -86,7 +87,11 @@ class ComportamentalFANSObservation(ComportamentalFANSpace):
             num_trans += len(space_state._nexts)
         return {
             'observation': self._observation,
-            'number states': len(self._space_states),
+            'number comportamental FA': len(super().compFAN.comportamentalFAs),
+            'number states': functools.reduce(
+                lambda old, new: old+new,
+                [len(fa.states) for fa in super().compFAN.comportamentalFAs]),
+            'number space states': len(self._space_states),
             'number transitions': num_trans,
             'space_state_linear_observation': [
                 space_state.dict_per_json()

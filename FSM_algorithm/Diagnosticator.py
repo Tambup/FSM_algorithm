@@ -97,6 +97,8 @@ class Diagnosticator:
         if self._is_linear_diagnosis:
             return {
                 'observation': self._observation,
+                'number space states': len(self._space_states),
+                'number closures': len(self._closures),
                 'regex': self._regex
                 }
         else:
@@ -105,6 +107,7 @@ class Diagnosticator:
                 for out in closure._out.items():
                     num_trans += len(out[1])
             temp = {
+                'number space states': len(self._space_states),
                 'number closures': len(self._closures),
                 'number transactions': num_trans
             }

@@ -63,5 +63,6 @@ class Diagnosis(RegexOperation):
     def dict_per_json(self):
         return {
             'observation': self._observation,
+            'number space states': len(self._space_states),
             'regex': self._regex
             }

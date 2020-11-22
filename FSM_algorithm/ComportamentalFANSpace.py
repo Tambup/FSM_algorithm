@@ -1,6 +1,7 @@
 import copy
 from Task import Task
 from SpaceState import SpaceState
+import functools
 
 
 class ComportamentalFANSpace(Task):
@@ -154,7 +155,11 @@ class ComportamentalFANSpace(Task):
         for space_state in self._space_states:
             num_trans += len(space_state._nexts)
         return {
-            'number states': len(self._space_states),
+            'number comportamental FA': len(super().compFAN.comportamentalFAs),
+            'number states': functools.reduce(
+                lambda old, new: old+new,
+                [len(fa.states) for fa in super().compFAN.comportamentalFAs]),
+            'number space states': len(self._space_states),
             'number transitions': num_trans,
             'space_state': [
                 space_state.dict_per_json()
