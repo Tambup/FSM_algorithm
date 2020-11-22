@@ -23,13 +23,14 @@ def write_result(task, out_file, early_terminition=False):
     with mutex:
         if not finished:
             finished = True
-            result = json.dumps(task.dict_per_json(), indent=4)
+            dict_to_print = task.dict_per_json()
+            if early_terminition:
+                dict_to_print['logInfo'] = 'Forced to stop before termination!'
+            result = json.dumps(dict_to_print, indent=4)
             dot_index = out_file.name.rindex('.')
             bin_name = out_file.name[:dot_index+1] + 'pkl'
             with open(bin_name, 'wb') as output:
                 pickle.dump(task, output, pickle.DEFAULT_PROTOCOL)
-            if early_terminition:
-                out_file.write('Forced to stop before termination!\n')
             out_file.write(result)
             out_file.write('\n')
             out_file.close()
