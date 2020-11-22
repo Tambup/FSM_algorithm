@@ -1,9 +1,9 @@
 import argparse
-import select
 import sys
 from userInputOutput import UserInputOutput as UserIO
 from ComportamentalFANSpace import ComportamentalFANSpace
 from ComportamentalFANSObservation import ComportamentalFANSObservation
+from core.ComportamentalFANetwork import ComportamentalFANetwork
 from Diagnosis import Diagnosis
 from Diagnosticator import Diagnosticator
 import threading
@@ -23,24 +23,32 @@ def term_program(signal, frame):
     sys.exit(0)
 
 
-def execute(args, cfaNetwork):
+def execute(args, input_read):
     global task_result
     options = {
         1: ComportamentalFANSpace,
         2: ComportamentalFANSObservation,
     }
     valid_result = True
-    task_result = options[args.type[0]](cfaNetwork)
-    task_result.build(args.obs_list)
+    if isinstance(input_read, ComportamentalFANetwork):
+        task_result = options[args.type[0]](input_read)
+        task_result.build(args.obs_list)
+    elif isinstance(input_read, ComportamentalFANSpace) \
+            or isinstance(input_read, Diagnosticator) \
+            or isinstance(input_read, ComportamentalFANSObservation):
+        task_result = input_read
     if args.type[0] == 2 and args.diagnosis:
         if task_result.is_correct():
-            task_result = Diagnosis(task_result.space_states)
+            task_result = Diagnosis(task_result.space_states, args.obs_list)
             task_result.diagnosis()
         else:
             print('Not valid observation', file=sys.stderr)
             valid_result = False
     elif args.type[0] == 1 and args.diagnosis:
-        if task_result.is_correct():
+        if isinstance(input_read, Diagnosticator):
+            if args.obs_list:
+                task_result.linear_diagnosis(args.obs_list)
+        elif task_result.is_correct():
             task_result = Diagnosticator(task_result.space_states)
             task_result.build()
             if args.obs_list:
@@ -60,9 +68,12 @@ def main():
                           help='The task to accomplish. \n\t\t1 - \
                           Compute the Comportamental FA Network Space \n\t\t2 \
                           - Compute the CFANS relative to an observation')
-    argGroup.add_argument('-f', '--file', dest='file', nargs=1,
+    argGroup.add_argument('--json', dest='json', nargs=1,
                           type=argparse.FileType('r'),
                           help='File containing the ComportamentalFANetwork')
+    argGroup.add_argument('--bin', dest='bin', nargs=1,
+                          type=argparse.FileType('rb'),
+                          help='File containing the binary structure')
     argGroup.add_argument('-o', '--out-file', dest='out_file', nargs=1,
                           type=argparse.FileType('w+'), required=True,
                           help='File to output results')
@@ -76,29 +87,27 @@ def main():
                           help='Maximum execution time in seconds')
 
     args = argParser.parse_args()
-    lines = ''
-    if not args.file:
-        if select.select([sys.stdin], [], [], 0.0)[0]:
-            lines = [line.strip() for line in sys.stdin]
-        else:
-            print(('Use one between -f option or string unassociated '
-                  'with -like option is mandatory or input redirection'),
+    if args.json and args.bin \
+            or not args.json and not args.bin:
+        print('ERROR: use either json or bin option')
+        sys.exit(1)
+    elif args.json:
+        lines = [line.strip() for line in args.json[0]]
+        input_read = UserIO.read_json(''.join(line for line in lines))
+
+        if not input_read.check():
+            print('The input describe a malformatted ComportamentalFANetwork',
                   file=sys.stderr)
-    else:
-        lines = [line.strip() for line in args.file[0]]
-
-    cfaNetwork = UserIO.readInput(''.join(line for line in lines))
-
-    if not cfaNetwork.check():
-        print('The input describe a malformatted ComportamentalFANetwork',
-              file=sys.stderr)
+            sys.exit(1)
+    elif args.bin:
+        input_read = UserIO.read_binary(args.bin[0])
 
     global out_file
     out_file = args.out_file[0]
     signal.signal(signal.SIGINT, term_program)
     if args.max_time:
         t = threading.Thread(target=execute,
-                             args=[args, cfaNetwork],
+                             args=[args, input_read],
                              daemon=True)
         t.start()
         t.join(args.max_time[0])
@@ -107,7 +116,7 @@ def main():
                                 out_file=args.out_file[0],
                                 early_terminition=True)
     else:
-        execute(args, cfaNetwork)
+        execute(args, input_read)
 
 
 if __name__ == '__main__':

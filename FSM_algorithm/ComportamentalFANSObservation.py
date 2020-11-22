@@ -5,9 +5,11 @@ from LOSpaceState import LOSpaceState
 class ComportamentalFANSObservation(ComportamentalFANSpace):
     def __init__(self, compFAN):
         super().__init__(compFAN)
+        self._observation = None
         self._id_count = None
 
     def build(self, observation):
+        self._observation = observation
         print('\nStart creation CFANS on observation ' +
               str(observation) + '\n')
         super()._initialize()
@@ -83,6 +85,7 @@ class ComportamentalFANSObservation(ComportamentalFANSpace):
         for space_state in self._space_states:
             num_trans += len(space_state._nexts)
         return {
+            'observation': self._observation,
             'number states': len(self._space_states),
             'number transitions': num_trans,
             'space_state_linear_observation': [

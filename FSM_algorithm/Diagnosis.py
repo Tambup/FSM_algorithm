@@ -13,10 +13,11 @@ class Diagnosis(RegexOperation):
 
     final_state = LOSpaceState(states=[], links=[])
 
-    def __init__(self, space_states):
+    def __init__(self, space_states, observation):
         super().__init__()
         self._space_states = space_states
         self._regex = ''
+        self._observation = observation
 
     @property
     def regex(self):
@@ -60,4 +61,7 @@ class Diagnosis(RegexOperation):
                              relevant=relevance)
 
     def dict_per_json(self):
-        return {'regex': self._regex}
+        return {
+            'observation': self._observation,
+            'regex': self._regex
+            }

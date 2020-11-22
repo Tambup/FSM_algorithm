@@ -8,6 +8,7 @@ class Diagnosticator:
         self._closures = None
         self._regex = None
         self._is_linear_diagnosis = False
+        self._observation = None
 
     def build(self):
         self._build_closures()
@@ -35,6 +36,7 @@ class Diagnosticator:
             closure.build_next(self._closures)
 
     def linear_diagnosis(self, observations):
+        self._observation = observations
         self._is_linear_diagnosis = True
         X = {}
         for closure in self._closures:
@@ -93,7 +95,10 @@ class Diagnosticator:
 
     def dict_per_json(self):
         if self._is_linear_diagnosis:
-            return {'regex': self._regex}
+            return {
+                'observation': self._observation,
+                'regex': self._regex
+                }
         else:
             num_trans = 0
             for closure in self._closures:
