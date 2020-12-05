@@ -23,6 +23,7 @@ class ComportamentalFANSObservation(ComportamentalFANSpace):
         self._prune(self._space_states[0], mantain_dict, remove_list)
         for act_st, trns, nx_st in remove_list:
             if not mantain_dict.get(nx_st):
+                print('pruned state number ' + str(act_st.nexts[trns].id))
                 del act_st.nexts[trns]
 
         self._space_states = list(mantain_dict)
@@ -85,11 +86,6 @@ class ComportamentalFANSObservation(ComportamentalFANSpace):
             else:
                 remove_list.append((actual_state, trans, next))
 
-        if reach_final:
-            for trans in remove_list:
-                print('pruned state number ' +
-                      str(actual_state.nexts[trans]._id))
-                del actual_state.nexts[trans]
         return reach_final
 
     def dict_per_json(self):
