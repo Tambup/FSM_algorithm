@@ -11,6 +11,7 @@ class Diagnosticator:
         self._observation = None
 
     def build(self):
+        print('\nStart diagnosticator')
         self._build_closures()
         self._build_closure_space()
 
@@ -29,6 +30,7 @@ class Diagnosticator:
                               state_space=self._space_states,
                               name='x'+str(i))
             closure.build()
+            print('add new closure ' + closure._name)
             self._closures.append(closure)
 
     def _build_closure_space(self):
@@ -36,6 +38,8 @@ class Diagnosticator:
             closure.build_next(self._closures)
 
     def linear_diagnosis(self, observations):
+        print('\nStart evaluate diagnosis respect observation ' +
+              str(observations))
         self._observation = observations
         self._is_linear_diagnosis = True
         X = {}
@@ -73,6 +77,7 @@ class Diagnosticator:
             for x, rho in X.items():
                 self._regex += '(' + rho + '(' + x.regex + ')' + ')|'
             self._regex = self._regex[:-1]
+        print(self._regex)
 
     def _build_rho_second(self, first, second):
         if first == SpaceState.NULL_EVT and second == SpaceState.NULL_EVT:

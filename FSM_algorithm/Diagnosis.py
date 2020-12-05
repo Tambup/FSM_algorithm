@@ -24,6 +24,7 @@ class Diagnosis(RegexOperation):
         return self._regex
 
     def diagnosis(self):
+        print('Start computing diagnosis')
         self._unify_exit()
         while len(self._work_space) > 2:
             if super()._sequence_transition():
@@ -37,6 +38,7 @@ class Diagnosis(RegexOperation):
             tr.relevant if tr.relevant else LOSpaceState.NULL_EVT
             for space in self._work_space.keys()
             for tr in space.nexts.keys()])
+        print('Diagnosis complete ' + self._regex)
 
     def _unify_exit(self):
         self._work_space = {k: None for k in copy.deepcopy(self._space_states)}
