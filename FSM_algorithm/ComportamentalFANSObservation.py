@@ -14,13 +14,22 @@ class ComportamentalFANSObservation(ComportamentalFANSpace):
         print('\nStart creation CFANS on observation ' +
               str(observation) + '\n')
         super()._initialize()
-        self._dfs_visit(self._space_states[0], obs=observation, obs_index=0)
+        self._dfs_visit(next_state=self._space_states[0],
+                        obs=observation,
+                        obs_index=0,
+                        grey_list={})
         mantain_dict = {}
-        self._prune(self._space_states[0], mantain_dict)
+        remove_list = []
+        self._prune(self._space_states[0], mantain_dict, remove_list)
+        for act_st, trns, nx_st in remove_list:
+            if not mantain_dict.get(nx_st):
+                del act_st.nexts[trns]
+
         self._space_states = list(mantain_dict)
         print('\nCFANS respect observation ' + str(observation) + ' complete')
 
-    def _dfs_visit(self, next_state, obs, obs_index):
+    def _dfs_visit(self, next_state, obs, obs_index, grey_list):
+        grey_list[next_state] = True
         next_state.id = self._id_count
         print('add new state number ' + str(self._id_count))
         self._id_count += 1
@@ -31,10 +40,12 @@ class ComportamentalFANSObservation(ComportamentalFANSpace):
         new_sp_states = self._get_nexts(next_state, next_trans, obs_val)
 
         for el, obs_used in new_sp_states:
-            if el != next_state:
+            if not grey_list.get(el):
                 self._space_states.append(el)
-                self._dfs_visit(el, obs[1:], obs_index+1) if obs_used \
-                    else self._dfs_visit(el, obs, obs_index)
+                if obs_used:
+                    self._dfs_visit(el, obs[1:], obs_index+1, grey_list)
+                else:
+                    self._dfs_visit(el, obs, obs_index, grey_list)
 
     def _get_nexts(self, space_state, next_transition, obs):
         nexts = []
@@ -60,24 +71,19 @@ class ComportamentalFANSObservation(ComportamentalFANSpace):
         self._id_count = 0
         return [LOSpaceState(init_states, link_names)]
 
-    def _prune(self, actual_state, mantain_list):
+    def _prune(self, actual_state, mantain_list, remove_list):
         reach_final = False
         if actual_state.is_final():
             mantain_list[actual_state] = True
             reach_final = True
 
-        remove_list = []
         for trans, next in actual_state.nexts.items():
-            if self._prune(next, mantain_list):
+            if self._prune(next, mantain_list, remove_list):
                 if not reach_final:
                     mantain_list[actual_state] = True
                     reach_final = True
             else:
-                remove_list.append(trans)
-
-        if reach_final:
-            for trans in remove_list:
-                del actual_state.nexts[trans]
+                remove_list.append((actual_state, trans, next))
 
         return reach_final
 

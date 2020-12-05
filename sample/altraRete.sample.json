@@ -1,0 +1,195 @@
+{
+    "name": "altraRete",
+    "comportamentalFA": [
+		{
+            "name": "S",
+			"state":[
+				{
+					"name": "0",
+					"init": true,
+					"outTransition": [
+						{
+							"name": "S1",
+							"destination": "1",
+							"link":[
+								{
+									"type": "out",
+									"link": "L",
+									"event": "op"
+								}
+							],
+							"observable": "act",
+							"relevant": null
+						},
+						{
+							"name": "S3",
+							"destination": "0",
+							"link":[
+								{
+									"type": "out",
+									"link": "L",
+									"event": "cl"
+								}
+							],
+							"observable": null,
+							"relevant": "f1"
+						}
+                    ]
+				},
+				{
+					"name": "1",
+					"init": false,
+					"outTransition": [
+						{
+							"name": "S2",
+							"destination": "0",
+							"link":[
+								{
+									"type": "out",
+									"link": "L",
+									"event": "cl"
+								}
+							],
+							"observable": "sby",
+							"relevant": null
+						},
+						{
+							"name": "S4",
+							"destination": "1",
+							"link":[
+								{
+									"type": "out",
+									"link": "L",
+									"event": "op"
+								}
+							],
+							"observable": null,
+							"relevant": "f2"
+						}
+                    ]
+				}
+			]
+		},
+		{
+            "name": "b",
+			"state":[
+				{
+					"name": "0",
+					"init": true,
+					"outTransition": [
+						{
+							"name": "b1",
+							"destination": "1",
+							"link":[
+								{
+									"type": "in",
+									"link": "L",
+									"event": "op"
+								}
+							],
+							"observable": "opn",
+							"relevant": null
+						},
+						{
+							"name": "b3",
+							"destination": "0",
+							"link":[
+								{
+									"type": "in",
+									"link": "L",
+									"event": "op"
+								}
+							],
+							"observable": null,
+							"relevant": "f3"
+						},
+						{
+							"name": "b5",
+							"destination": "0",
+							"link":[
+								{
+									"type": "in",
+									"link": "L",
+									"event": "cl"
+								}
+							],
+							"observable": "nop",
+							"relevant": null
+						},
+						{
+							"name": "b7",
+							"destination": "1",
+							"link":[
+								{
+									"type": "in",
+									"link": "L",
+									"event": "cl"
+								}
+							],
+							"observable": "opn",
+							"relevant": "f5"
+						}
+                    ]
+				},
+				{
+					"name": "1",
+					"init": false,
+					"outTransition": [
+						{
+							"name": "b2",
+							"destination": "0",
+							"link":[
+								{
+									"type": "in",
+									"link": "L",
+									"event": "cl"
+								}
+							],
+							"observable": "cls",
+							"relevant": null
+						},
+						{
+							"name": "b4",
+							"destination": "1",
+							"link":[
+								{
+									"type": "in",
+									"link": "L",
+									"event": "cl"
+								}
+							],
+							"observable": null,
+							"relevant": "f4"
+						},
+						{
+							"name": "b6",
+							"destination": "1",
+							"link":[
+								{
+									"type": "in",
+									"link": "L",
+									"event": "op"
+								}
+							],
+							"observable": "nop",
+							"relevant": null
+						},
+						{
+							"name": "b8",
+							"destination": "0",
+							"link":[
+								{
+									"type": "in",
+									"link": "L",
+									"event": "op"
+								}
+							],
+							"observable": "cls",
+							"relevant": "f6"
+						}
+                    ]
+				}
+			]
+        }
+    ]
+}

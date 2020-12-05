@@ -1,0 +1,122 @@
+{
+    "observation": [
+        "act",
+        "sby",
+        "nop"
+    ],
+    "number comportamental FA": 2,
+    "number states": 4,
+    "number space states": 5,
+    "number transitions": 5,
+    "space_state_linear_observation": [
+        {
+            "name": 4,
+            "obs_index": 3,
+            "link": {
+                "L": "\u03b5"
+            },
+            "state": {
+                "CFAN 0": "0",
+                "CFAN 1": "0"
+            },
+            "next": {}
+        },
+        {
+            "name": 3,
+            "obs_index": 2,
+            "link": {
+                "L": "cl"
+            },
+            "state": {
+                "CFAN 0": "0",
+                "CFAN 1": "0"
+            },
+            "next": {
+                "b5": {
+                    "state": {
+                        "CFAN 0": "0",
+                        "CFAN 1": "0"
+                    },
+                    "link": {
+                        "L": "\u03b5"
+                    }
+                }
+            }
+        },
+        {
+            "name": 2,
+            "obs_index": 1,
+            "link": {
+                "L": "\u03b5"
+            },
+            "state": {
+                "CFAN 0": "1",
+                "CFAN 1": "0"
+            },
+            "next": {
+                "S2": {
+                    "state": {
+                        "CFAN 0": "0",
+                        "CFAN 1": "0"
+                    },
+                    "link": {
+                        "L": "cl"
+                    }
+                },
+                "S4": {
+                    "state": {
+                        "CFAN 0": "1",
+                        "CFAN 1": "0"
+                    },
+                    "link": {
+                        "L": "op"
+                    }
+                }
+            }
+        },
+        {
+            "name": 1,
+            "obs_index": 1,
+            "link": {
+                "L": "op"
+            },
+            "state": {
+                "CFAN 0": "1",
+                "CFAN 1": "0"
+            },
+            "next": {
+                "b3": {
+                    "state": {
+                        "CFAN 0": "1",
+                        "CFAN 1": "0"
+                    },
+                    "link": {
+                        "L": "\u03b5"
+                    }
+                }
+            }
+        },
+        {
+            "name": 0,
+            "obs_index": 0,
+            "link": {
+                "L": "\u03b5"
+            },
+            "state": {
+                "CFAN 0": "0",
+                "CFAN 1": "0"
+            },
+            "next": {
+                "S1": {
+                    "state": {
+                        "CFAN 0": "1",
+                        "CFAN 1": "0"
+                    },
+                    "link": {
+                        "L": "op"
+                    }
+                }
+            }
+        }
+    ]
+}

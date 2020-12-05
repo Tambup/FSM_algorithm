@@ -1,0 +1,171 @@
+{
+    "number space states": 8,
+    "number closures": 8,
+    "number transactions": 18,
+    "closure": [
+        {
+            "name": "x0",
+            "in_state_id": 0,
+            "regex": "\u03b5",
+            "exit": {
+                "act": [
+                    {
+                        "successor": "x1",
+                        "trns_regex": "\u03b5"
+                    }
+                ],
+                "nop": [
+                    {
+                        "successor": "x0",
+                        "trns_regex": "f1"
+                    }
+                ],
+                "opn": [
+                    {
+                        "successor": "x4",
+                        "trns_regex": "f1f5"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "x1",
+            "in_state_id": 1,
+            "regex": "f3(f2f3)*",
+            "exit": {
+                "opn": [
+                    {
+                        "successor": "x3",
+                        "trns_regex": "\u03b5|f3(f2f3)*f2"
+                    }
+                ],
+                "sby": [
+                    {
+                        "successor": "x5",
+                        "trns_regex": "f3(f2f3)*"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "x2",
+            "in_state_id": 6,
+            "regex": "f4(f1f4)*",
+            "exit": {
+                "cls": [
+                    {
+                        "successor": "x0",
+                        "trns_regex": "\u03b5|f4(f1f4)*f1"
+                    }
+                ],
+                "act": [
+                    {
+                        "successor": "x6",
+                        "trns_regex": "f4(f1f4)*"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "x3",
+            "in_state_id": 3,
+            "regex": "\u03b5",
+            "exit": {
+                "sby": [
+                    {
+                        "successor": "x2",
+                        "trns_regex": "\u03b5"
+                    }
+                ],
+                "nop": [
+                    {
+                        "successor": "x3",
+                        "trns_regex": "f2"
+                    }
+                ],
+                "cls": [
+                    {
+                        "successor": "x7",
+                        "trns_regex": "f2f6"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "x4",
+            "in_state_id": 5,
+            "regex": "\u03b5|f1(f4f1)*f4",
+            "exit": {
+                "act": [
+                    {
+                        "successor": "x6",
+                        "trns_regex": "\u03b5|f1(f4f1)*f4"
+                    }
+                ],
+                "cls": [
+                    {
+                        "successor": "x0",
+                        "trns_regex": "f1(f4f1)*"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "x5",
+            "in_state_id": 2,
+            "regex": "\u03b5",
+            "exit": {
+                "nop": [
+                    {
+                        "successor": "x0",
+                        "trns_regex": "\u03b5"
+                    }
+                ],
+                "opn": [
+                    {
+                        "successor": "x4",
+                        "trns_regex": "\u03b5f5"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "x6",
+            "in_state_id": 7,
+            "regex": "\u03b5",
+            "exit": {
+                "nop": [
+                    {
+                        "successor": "x3",
+                        "trns_regex": "\u03b5"
+                    }
+                ],
+                "cls": [
+                    {
+                        "successor": "x7",
+                        "trns_regex": "\u03b5f6"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "x7",
+            "in_state_id": 4,
+            "regex": "\u03b5|f2(f3f2)*f3",
+            "exit": {
+                "sby": [
+                    {
+                        "successor": "x5",
+                        "trns_regex": "\u03b5|f2(f3f2)*f3"
+                    }
+                ],
+                "opn": [
+                    {
+                        "successor": "x3",
+                        "trns_regex": "f2(f3f2)*"
+                    }
+                ]
+            }
+        }
+    ]
+}

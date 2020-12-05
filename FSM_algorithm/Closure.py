@@ -5,7 +5,7 @@ from DetachedNextsSpaceState import DetachedNextsSpaceState as DNSpaceState
 
 
 class Closure(RegexOperation):
-    final_state = DNSpaceState(SpaceState(states=[], links=[]))
+    final_state = DNSpaceState(SpaceState(states=['', ''], links=[]))
 
     def __init__(self, enter_state_index, state_space, name):
         super().__init__()
@@ -33,22 +33,35 @@ class Closure(RegexOperation):
         return DNSpaceState(self._init_space[self._init_index])
 
     def build(self):
-        temp = [DNSpaceState(self._init_space[self._init_index])]
+        init_st = DNSpaceState(space_state=SpaceState(states=[''], links=[]),
+                               is_closure_init=True)
+        init_st.set_link(SpaceState.NULL_EVT, '!'+SpaceState.NULL_EVT)
+        trans = SubscrTrans(name='', destination='INITIAL', links=[],
+                            observable=None, relevant=None)
+        init_st.add_next(transition=trans,
+                         next=DNSpaceState(self._init_space[self._init_index]))
+        temp = [init_st]
         self._work_space = {temp[0]: None}
 
         self._to_decorate = {}
         self._final_states = {}
         self._exit_states = {}
+
+        grey_list = {temp[0]: True}
         for state in temp:
             new_nexts = {}
             for next_trans, next_state in state.nexts.items():
+                new_state = None
                 new_state = DNSpaceState(space_state=next_state)
                 new_trans = SubscrTrans.from_trans(out_trans=next_trans)
                 new_nexts[new_trans] = new_state
                 if not self._work_space.get(next_state):
                     if not new_trans.observable:
                         self._work_space[new_state] = None
-                        temp.append(new_state)
+                        if not grey_list.get(new_state):
+                            temp.append(new_state)
+                grey_list[new_state] = True
+
             state.nexts = new_nexts
             if state.to_decorate():
                 self._to_decorate[state] = None
@@ -74,19 +87,31 @@ class Closure(RegexOperation):
         self._regex = '|'.join([tr.relevant if tr.relevant
                                 else SpaceState.NULL_EVT
                                 for tr in to_join])
+
+        self._exit_states = self._build_exit_regex()
+        if not self._regex:
+            self._regex = SpaceState.NULL_EVT
+
+    def _build_exit_regex(self):
         temp = {}
         for space in self._work_space.keys():
             for tr in space.nexts.keys():
                 if tr.subscript_value in self._exit_states.keys():
-                    if tr.relevant:
-                        temp[self._exit_states[tr.subscript_value]] \
-                            = tr.relevant
+                    if temp.get(self._exit_states[tr.subscript_value]) is None:
+                        if tr.relevant:
+                            temp[self._exit_states[tr.subscript_value]] \
+                                = tr.relevant
+                        else:
+                            temp[self._exit_states[tr.subscript_value]] \
+                                = SpaceState.NULL_EVT
                     else:
-                        temp[self._exit_states[tr.subscript_value]] \
-                            = SpaceState.NULL_EVT
-        self._exit_states = temp
-        if not self._regex:
-            self._regex = SpaceState.NULL_EVT
+                        if tr.relevant:
+                            temp[self._exit_states[tr.subscript_value]] \
+                                += '|' + tr.relevant
+                        else:
+                            temp[self._exit_states[tr.subscript_value]] \
+                                += '|' + SpaceState.NULL_EVT
+        return temp
 
     def _unify_exit(self):
         for i, state in enumerate(self._to_decorate.keys()):
@@ -129,7 +154,7 @@ class Closure(RegexOperation):
                 for closure in closures:
                     if succ == closure.in_space_state():
                         trns_regex = trns.relevant if trns.relevant else ''
-                        trns_regex += regex
+                        trns_regex = regex + trns_regex
                         self._out[trns.observable].append(
                             {
                                 'successor': closure,

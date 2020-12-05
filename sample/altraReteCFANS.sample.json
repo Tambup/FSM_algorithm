@@ -1,0 +1,280 @@
+{
+    "number comportamental FA": 2,
+    "number states": 4,
+    "number space states": 8,
+    "number transitions": 16,
+    "space_state": [
+        {
+            "name": 0,
+            "link": {
+                "L": "\u03b5"
+            },
+            "state": {
+                "CFAN 0": "0",
+                "CFAN 1": "0"
+            },
+            "next": {
+                "S1": {
+                    "state": {
+                        "CFAN 0": "1",
+                        "CFAN 1": "0"
+                    },
+                    "link": {
+                        "L": "op"
+                    },
+                    "observable": "act",
+                    "relevant": null
+                },
+                "S3": {
+                    "state": {
+                        "CFAN 0": "0",
+                        "CFAN 1": "0"
+                    },
+                    "link": {
+                        "L": "cl"
+                    },
+                    "observable": null,
+                    "relevant": "f1"
+                }
+            }
+        },
+        {
+            "name": 3,
+            "link": {
+                "L": "\u03b5"
+            },
+            "state": {
+                "CFAN 0": "1",
+                "CFAN 1": "1"
+            },
+            "next": {
+                "S2": {
+                    "state": {
+                        "CFAN 0": "0",
+                        "CFAN 1": "1"
+                    },
+                    "link": {
+                        "L": "cl"
+                    },
+                    "observable": "sby",
+                    "relevant": null
+                },
+                "S4": {
+                    "state": {
+                        "CFAN 0": "1",
+                        "CFAN 1": "1"
+                    },
+                    "link": {
+                        "L": "op"
+                    },
+                    "observable": null,
+                    "relevant": "f2"
+                }
+            }
+        },
+        {
+            "name": 1,
+            "link": {
+                "L": "op"
+            },
+            "state": {
+                "CFAN 0": "1",
+                "CFAN 1": "0"
+            },
+            "next": {
+                "b1": {
+                    "state": {
+                        "CFAN 0": "1",
+                        "CFAN 1": "1"
+                    },
+                    "link": {
+                        "L": "\u03b5"
+                    },
+                    "observable": "opn",
+                    "relevant": null
+                },
+                "b3": {
+                    "state": {
+                        "CFAN 0": "1",
+                        "CFAN 1": "0"
+                    },
+                    "link": {
+                        "L": "\u03b5"
+                    },
+                    "observable": null,
+                    "relevant": "f3"
+                }
+            }
+        },
+        {
+            "name": 2,
+            "link": {
+                "L": "cl"
+            },
+            "state": {
+                "CFAN 0": "0",
+                "CFAN 1": "0"
+            },
+            "next": {
+                "b5": {
+                    "state": {
+                        "CFAN 0": "0",
+                        "CFAN 1": "0"
+                    },
+                    "link": {
+                        "L": "\u03b5"
+                    },
+                    "observable": "nop",
+                    "relevant": null
+                },
+                "b7": {
+                    "state": {
+                        "CFAN 0": "0",
+                        "CFAN 1": "1"
+                    },
+                    "link": {
+                        "L": "\u03b5"
+                    },
+                    "observable": "opn",
+                    "relevant": "f5"
+                }
+            }
+        },
+        {
+            "name": 4,
+            "link": {
+                "L": "\u03b5"
+            },
+            "state": {
+                "CFAN 0": "1",
+                "CFAN 1": "0"
+            },
+            "next": {
+                "S2": {
+                    "state": {
+                        "CFAN 0": "0",
+                        "CFAN 1": "0"
+                    },
+                    "link": {
+                        "L": "cl"
+                    },
+                    "observable": "sby",
+                    "relevant": null
+                },
+                "S4": {
+                    "state": {
+                        "CFAN 0": "1",
+                        "CFAN 1": "0"
+                    },
+                    "link": {
+                        "L": "op"
+                    },
+                    "observable": null,
+                    "relevant": "f2"
+                }
+            }
+        },
+        {
+            "name": 5,
+            "link": {
+                "L": "\u03b5"
+            },
+            "state": {
+                "CFAN 0": "0",
+                "CFAN 1": "1"
+            },
+            "next": {
+                "S1": {
+                    "state": {
+                        "CFAN 0": "1",
+                        "CFAN 1": "1"
+                    },
+                    "link": {
+                        "L": "op"
+                    },
+                    "observable": "act",
+                    "relevant": null
+                },
+                "S3": {
+                    "state": {
+                        "CFAN 0": "0",
+                        "CFAN 1": "1"
+                    },
+                    "link": {
+                        "L": "cl"
+                    },
+                    "observable": null,
+                    "relevant": "f1"
+                }
+            }
+        },
+        {
+            "name": 6,
+            "link": {
+                "L": "cl"
+            },
+            "state": {
+                "CFAN 0": "0",
+                "CFAN 1": "1"
+            },
+            "next": {
+                "b2": {
+                    "state": {
+                        "CFAN 0": "0",
+                        "CFAN 1": "0"
+                    },
+                    "link": {
+                        "L": "\u03b5"
+                    },
+                    "observable": "cls",
+                    "relevant": null
+                },
+                "b4": {
+                    "state": {
+                        "CFAN 0": "0",
+                        "CFAN 1": "1"
+                    },
+                    "link": {
+                        "L": "\u03b5"
+                    },
+                    "observable": null,
+                    "relevant": "f4"
+                }
+            }
+        },
+        {
+            "name": 7,
+            "link": {
+                "L": "op"
+            },
+            "state": {
+                "CFAN 0": "1",
+                "CFAN 1": "1"
+            },
+            "next": {
+                "b6": {
+                    "state": {
+                        "CFAN 0": "1",
+                        "CFAN 1": "1"
+                    },
+                    "link": {
+                        "L": "\u03b5"
+                    },
+                    "observable": "nop",
+                    "relevant": null
+                },
+                "b8": {
+                    "state": {
+                        "CFAN 0": "1",
+                        "CFAN 1": "0"
+                    },
+                    "link": {
+                        "L": "\u03b5"
+                    },
+                    "observable": "cls",
+                    "relevant": "f6"
+                }
+            }
+        }
+    ]
+}

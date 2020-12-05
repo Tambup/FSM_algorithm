@@ -15,7 +15,8 @@ class RegexOperation:
                 index = 0
                 remaining = [next_st]
                 while index < len(remaining):
-                    if len(remaining[index].nexts) == 1:
+                    if len(remaining[index].nexts) == 1 \
+                            and len(self._prev[remaining[index]]) == 1:
                         tr, succ = next(iter(remaining[index].nexts.items()))
                         self._temp.append((remaining[index], tr, tr.relevant))
                         remaining.append(succ)
@@ -86,21 +87,23 @@ class RegexOperation:
         for n in self._work_space.keys():
             if remove_val:
                 break
+            if n.is_closure_init():
+                continue
             for n_first in self._prev[n]:
                 if n_first == n:
-                    break
+                    continue
                 for t_first, n_cand in n_first.nexts.items():
                     if n_cand == n:
                         break
-                remove_next = False
+                remove_from_nfirst = False
                 for t_second, n_second in n.nexts.items():
                     if n_second == n:
-                        break
+                        continue
                     remove_val = n
-                    remove_next = True
+                    remove_from_nfirst = True
                     self._autotrans(first=(n_first, t_first, n),
                                     second=(n, t_second, n_second))
-                if remove_next:
+                if remove_from_nfirst:
                     del n_first.nexts[t_first]
         if remove_val:
             for succ in remove_val.nexts.values():
