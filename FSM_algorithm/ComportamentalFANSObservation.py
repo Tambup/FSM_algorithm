@@ -30,11 +30,11 @@ class ComportamentalFANSObservation(ComportamentalFANSpace):
         print('\nCFANS respect observation ' + str(observation) + ' complete')
 
     def _dfs_visit(self, next_state, obs, obs_index, grey_list):
-        grey_list[next_state] = True
         next_state.id = self._id_count
         print('add new state number ' + str(self._id_count))
         self._id_count += 1
         next_state.obs_index = obs_index
+        grey_list[next_state] = True
 
         obs_val = obs[0] if obs else None
         next_trans = next_state.next_transition_state(obs_val)
@@ -47,6 +47,8 @@ class ComportamentalFANSObservation(ComportamentalFANSpace):
                     self._dfs_visit(el, obs[1:], obs_index+1, grey_list)
                 else:
                     self._dfs_visit(el, obs, obs_index, grey_list)
+
+        del grey_list[next_state]
 
     def _get_nexts(self, space_state, next_transition, obs):
         nexts = []
@@ -62,8 +64,7 @@ class ComportamentalFANSObservation(ComportamentalFANSpace):
 
                         nexts.append((new_spc_st, obs
                                      and obs == actual_out_trans.observable))
-                        if obs:
-                            space_state.has_next_obs()
+                        space_state.set_has_obs(False if obs is None else True)
                         space_state.add_next(actual_out_trans, new_spc_st)
                         break
         return nexts

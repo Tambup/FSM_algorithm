@@ -88,6 +88,9 @@ class SpaceState:
 
         return True
 
+    def is_closure_init(self):
+        return self.is_init()
+
     def __eq__(self, obj):
         if isinstance(obj, SpaceState):
             if len(self._states) != len(obj.states):

@@ -5,7 +5,7 @@ class LOSpaceState(SpaceState):
     def __init__(self, states, links):
         super().__init__(states, links)
         self._obs_index = None
-        self._has_next_obs = False
+        self._has_next_obs = None
 
     @property
     def obs_index(self):
@@ -15,8 +15,8 @@ class LOSpaceState(SpaceState):
     def obs_index(self, value):
         self._obs_index = value
 
-    def has_next_obs(self):
-        self._has_next_obs = True
+    def set_has_obs(self, val):
+        self._has_next_obs = val
 
     def next_transition_state(self, obs_val):
         possible_next = {}
