@@ -1,0 +1,177 @@
+{
+    "name": "domotica",
+    "comportamentalFA": [
+        {
+            "name": "allarme",
+			"state":[
+				{
+					"name": "a1",
+					"init": true,
+					"outTransition": [
+						{
+							"name": "a_on",
+							"destination": "a2",
+							"link":[],
+							"observable": null,
+							"relevant": null
+						}
+                    ]
+				},
+				{
+					"name": "a2",
+					"init": false,
+					"outTransition": [
+						{
+							"name": "a_off",
+							"destination": "a1",
+							"link":[],
+							"observable": "oa",
+							"relevant": null
+						},
+						{
+							"name": "a_control",
+							"destination": "a2",
+							"link":[
+								{
+									"type": "in",
+									"link": "L1",
+									"event": "av"
+                                }
+							],
+							"observable": null,
+							"relevant": null
+						},
+						{
+							"name": "a_terremoto",
+							"destination": "a3",
+							"link":[
+								{
+									"type": "out",
+									"link": "L2",
+									"event": "terr"
+                                }
+							],
+							"observable": "o1",
+							"relevant": "terr"
+						}
+                    ]
+				},
+				{
+					"name": "a3",
+					"init": false,
+					"outTransition": [
+						{
+							"name": "a_ripristino",
+							"destination": "a2",
+							"link":[
+								{
+									"type": "in",
+									"link": "L1",
+									"event": "cr"
+                                }
+							],
+							"observable": null,
+							"relevant": null
+						}
+                    ]
+				}
+			]
+        },
+        {
+            "name": "caldaia",
+			"state":[
+				{
+					"name": "c1",
+					"init": true,
+					"outTransition": [
+						{
+							"name": "c_on",
+							"destination": "c2",
+							"link":[],
+							"observable": null,
+							"relevant": null
+						}
+                    ]
+				},
+				{
+					"name": "c2",
+					"init": false,
+					"outTransition": [
+						{
+							"name": "c_off",
+							"destination": "c1",
+							"link":[],
+							"observable": "oc",
+							"relevant": null
+						},
+						{
+							"name": "c_control",
+							"destination": "c2",
+							"link":[
+								{
+									"type": "out",
+									"link": "L1",
+									"event": "av"
+								}
+							],
+							"observable": "o2",
+							"relevant": null
+						},
+						{
+							"name": "c_manomissione",
+							"destination": "c3",
+							"link":[
+								{
+									"type": "in",
+									"link": "L2",
+									"event": "terr"
+								}
+							],
+							"observable": null,
+							"relevant": "stop"
+						},
+						{
+							"name": "c_revisione",
+							"destination": "c4",
+							"link":[],
+							"observable": "o3",
+							"relevant": "rev"
+						}
+                    ]
+				},
+				{
+					"name": "c3",
+					"init": false,
+					"outTransition": [
+						{
+							"name": "c_ripristino",
+							"destination": "c4",
+							"link":[
+								{
+									"type": "out",
+									"link": "L1",
+									"event": "cr"
+								}
+							],
+							"observable": null,
+							"relevant": null
+						}
+                    ]
+				},
+				{
+					"name": "c4",
+					"init": false,
+					"outTransition": [
+						{
+							"name": "c_fine_manutenzione",
+							"destination": "c2",
+							"link":[],
+							"observable": null,
+							"relevant": "restart"
+						}
+                    ]
+				}
+			]
+        }
+    ]
+}

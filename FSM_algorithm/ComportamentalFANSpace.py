@@ -115,14 +115,28 @@ class ComportamentalFANSpace(Task):
                 mantain_list[state] & remove_list[state]
             except KeyError:
                 self._prune_recursion(state, {}, mantain_list, remove_list)
+        for rm_state in remove_list.keys():
+            print('prune state number ' + str(rm_state.id))
+            for st in self._space_states:
+                rm_trans = []
+                for trns, nx in st.nexts.items():
+                    if nx == rm_state:
+                        rm_trans.append(trns)
+                for trns in rm_trans:
+                    print('prune transition from ' + str(st.id)
+                          + ' to ' + str(rm_state.id))
+                    del st.nexts[trns]
         self._space_states = list(mantain_list.keys())
 
+    val = 0
+
     def _prune_recursion(self, state, forbidden, mantain_list, remove_list):
+        print(ComportamentalFANSpace.val)
+        ComportamentalFANSpace.val += 1
         if state.is_final():
             mantain_list[state] = True
             return False
 
-        remove_trans = []
         for out_trans, next in state.nexts.items():
             if not remove_list.get(next):
                 arc = (state, out_trans.name, next)
@@ -133,14 +147,11 @@ class ComportamentalFANSpace(Task):
                                                   mantain_list, remove_list):
                         if not mantain_list.get(state):
                             mantain_list[state] = True
-                        for trans in remove_trans:
-                            del state.nexts[trans]
+                            if remove_list.get(state):
+                                del remove_list[state]
                         return False
-                    else:
-                        remove_trans.append(out_trans)
-        if remove_list.get(state) is None:
-            print('prune state number ' + str(state._id))
-        remove_list[state] = True
+        if not mantain_list.get(state):
+            remove_list[state] = True
         return True
 
     def dict_per_json(self):

@@ -1,0 +1,843 @@
+{
+    "number comportamental FA": 2,
+    "number states": 7,
+    "number space states": 19,
+    "number transitions": 49,
+    "space_state": [
+        {
+            "name": 0,
+            "link": {
+                "L1": "\u03b5",
+                "L2": "\u03b5"
+            },
+            "state": {
+                "CFAN 0": "a1",
+                "CFAN 1": "c1"
+            },
+            "next": {
+                "a_on": {
+                    "state": {
+                        "CFAN 0": "a2",
+                        "CFAN 1": "c1"
+                    },
+                    "link": {
+                        "L1": "\u03b5",
+                        "L2": "\u03b5"
+                    },
+                    "observable": null,
+                    "relevant": null
+                },
+                "c_on": {
+                    "state": {
+                        "CFAN 0": "a1",
+                        "CFAN 1": "c2"
+                    },
+                    "link": {
+                        "L1": "\u03b5",
+                        "L2": "\u03b5"
+                    },
+                    "observable": null,
+                    "relevant": null
+                }
+            }
+        },
+        {
+            "name": 1,
+            "link": {
+                "L1": "\u03b5",
+                "L2": "\u03b5"
+            },
+            "state": {
+                "CFAN 0": "a2",
+                "CFAN 1": "c1"
+            },
+            "next": {
+                "a_off": {
+                    "state": {
+                        "CFAN 0": "a1",
+                        "CFAN 1": "c1"
+                    },
+                    "link": {
+                        "L1": "\u03b5",
+                        "L2": "\u03b5"
+                    },
+                    "observable": "oa",
+                    "relevant": null
+                },
+                "a_terremoto": {
+                    "state": {
+                        "CFAN 0": "a3",
+                        "CFAN 1": "c1"
+                    },
+                    "link": {
+                        "L1": "\u03b5",
+                        "L2": "terr"
+                    },
+                    "observable": "o1",
+                    "relevant": "terr"
+                },
+                "c_on": {
+                    "state": {
+                        "CFAN 0": "a2",
+                        "CFAN 1": "c2"
+                    },
+                    "link": {
+                        "L1": "\u03b5",
+                        "L2": "\u03b5"
+                    },
+                    "observable": null,
+                    "relevant": null
+                }
+            }
+        },
+        {
+            "name": 2,
+            "link": {
+                "L1": "\u03b5",
+                "L2": "\u03b5"
+            },
+            "state": {
+                "CFAN 0": "a1",
+                "CFAN 1": "c2"
+            },
+            "next": {
+                "a_on": {
+                    "state": {
+                        "CFAN 0": "a2",
+                        "CFAN 1": "c2"
+                    },
+                    "link": {
+                        "L1": "\u03b5",
+                        "L2": "\u03b5"
+                    },
+                    "observable": null,
+                    "relevant": null
+                },
+                "c_off": {
+                    "state": {
+                        "CFAN 0": "a1",
+                        "CFAN 1": "c1"
+                    },
+                    "link": {
+                        "L1": "\u03b5",
+                        "L2": "\u03b5"
+                    },
+                    "observable": "oc",
+                    "relevant": null
+                },
+                "c_control": {
+                    "state": {
+                        "CFAN 0": "a1",
+                        "CFAN 1": "c2"
+                    },
+                    "link": {
+                        "L1": "av",
+                        "L2": "\u03b5"
+                    },
+                    "observable": "o2",
+                    "relevant": null
+                },
+                "c_revisione": {
+                    "state": {
+                        "CFAN 0": "a1",
+                        "CFAN 1": "c4"
+                    },
+                    "link": {
+                        "L1": "\u03b5",
+                        "L2": "\u03b5"
+                    },
+                    "observable": "o3",
+                    "relevant": "rev"
+                }
+            }
+        },
+        {
+            "name": 13,
+            "link": {
+                "L1": "\u03b5",
+                "L2": "\u03b5"
+            },
+            "state": {
+                "CFAN 0": "a3",
+                "CFAN 1": "c3"
+            },
+            "next": {
+                "c_ripristino": {
+                    "state": {
+                        "CFAN 0": "a3",
+                        "CFAN 1": "c4"
+                    },
+                    "link": {
+                        "L1": "cr",
+                        "L2": "\u03b5"
+                    },
+                    "observable": null,
+                    "relevant": null
+                }
+            }
+        },
+        {
+            "name": 7,
+            "link": {
+                "L1": "\u03b5",
+                "L2": "terr"
+            },
+            "state": {
+                "CFAN 0": "a3",
+                "CFAN 1": "c2"
+            },
+            "next": {
+                "c_off": {
+                    "state": {
+                        "CFAN 0": "a3",
+                        "CFAN 1": "c1"
+                    },
+                    "link": {
+                        "L1": "\u03b5",
+                        "L2": "terr"
+                    },
+                    "observable": "oc",
+                    "relevant": null
+                },
+                "c_manomissione": {
+                    "state": {
+                        "CFAN 0": "a3",
+                        "CFAN 1": "c3"
+                    },
+                    "link": {
+                        "L1": "\u03b5",
+                        "L2": "\u03b5"
+                    },
+                    "observable": null,
+                    "relevant": "stop"
+                },
+                "c_revisione": {
+                    "state": {
+                        "CFAN 0": "a3",
+                        "CFAN 1": "c4"
+                    },
+                    "link": {
+                        "L1": "\u03b5",
+                        "L2": "terr"
+                    },
+                    "observable": "o3",
+                    "relevant": "rev"
+                }
+            }
+        },
+        {
+            "name": 3,
+            "link": {
+                "L1": "\u03b5",
+                "L2": "terr"
+            },
+            "state": {
+                "CFAN 0": "a3",
+                "CFAN 1": "c1"
+            },
+            "next": {
+                "c_on": {
+                    "state": {
+                        "CFAN 0": "a3",
+                        "CFAN 1": "c2"
+                    },
+                    "link": {
+                        "L1": "\u03b5",
+                        "L2": "terr"
+                    },
+                    "observable": null,
+                    "relevant": null
+                }
+            }
+        },
+        {
+            "name": 4,
+            "link": {
+                "L1": "\u03b5",
+                "L2": "\u03b5"
+            },
+            "state": {
+                "CFAN 0": "a2",
+                "CFAN 1": "c2"
+            },
+            "next": {
+                "a_off": {
+                    "state": {
+                        "CFAN 0": "a1",
+                        "CFAN 1": "c2"
+                    },
+                    "link": {
+                        "L1": "\u03b5",
+                        "L2": "\u03b5"
+                    },
+                    "observable": "oa",
+                    "relevant": null
+                },
+                "a_terremoto": {
+                    "state": {
+                        "CFAN 0": "a3",
+                        "CFAN 1": "c2"
+                    },
+                    "link": {
+                        "L1": "\u03b5",
+                        "L2": "terr"
+                    },
+                    "observable": "o1",
+                    "relevant": "terr"
+                },
+                "c_off": {
+                    "state": {
+                        "CFAN 0": "a2",
+                        "CFAN 1": "c1"
+                    },
+                    "link": {
+                        "L1": "\u03b5",
+                        "L2": "\u03b5"
+                    },
+                    "observable": "oc",
+                    "relevant": null
+                },
+                "c_control": {
+                    "state": {
+                        "CFAN 0": "a2",
+                        "CFAN 1": "c2"
+                    },
+                    "link": {
+                        "L1": "av",
+                        "L2": "\u03b5"
+                    },
+                    "observable": "o2",
+                    "relevant": null
+                },
+                "c_revisione": {
+                    "state": {
+                        "CFAN 0": "a2",
+                        "CFAN 1": "c4"
+                    },
+                    "link": {
+                        "L1": "\u03b5",
+                        "L2": "\u03b5"
+                    },
+                    "observable": "o3",
+                    "relevant": "rev"
+                }
+            }
+        },
+        {
+            "name": 9,
+            "link": {
+                "L1": "\u03b5",
+                "L2": "\u03b5"
+            },
+            "state": {
+                "CFAN 0": "a2",
+                "CFAN 1": "c4"
+            },
+            "next": {
+                "a_off": {
+                    "state": {
+                        "CFAN 0": "a1",
+                        "CFAN 1": "c4"
+                    },
+                    "link": {
+                        "L1": "\u03b5",
+                        "L2": "\u03b5"
+                    },
+                    "observable": "oa",
+                    "relevant": null
+                },
+                "a_terremoto": {
+                    "state": {
+                        "CFAN 0": "a3",
+                        "CFAN 1": "c4"
+                    },
+                    "link": {
+                        "L1": "\u03b5",
+                        "L2": "terr"
+                    },
+                    "observable": "o1",
+                    "relevant": "terr"
+                },
+                "c_fine_manutenzione": {
+                    "state": {
+                        "CFAN 0": "a2",
+                        "CFAN 1": "c2"
+                    },
+                    "link": {
+                        "L1": "\u03b5",
+                        "L2": "\u03b5"
+                    },
+                    "observable": null,
+                    "relevant": "restart"
+                }
+            }
+        },
+        {
+            "name": 16,
+            "link": {
+                "L1": "av",
+                "L2": "\u03b5"
+            },
+            "state": {
+                "CFAN 0": "a2",
+                "CFAN 1": "c4"
+            },
+            "next": {
+                "a_off": {
+                    "state": {
+                        "CFAN 0": "a1",
+                        "CFAN 1": "c4"
+                    },
+                    "link": {
+                        "L1": "av",
+                        "L2": "\u03b5"
+                    },
+                    "observable": "oa",
+                    "relevant": null
+                },
+                "a_control": {
+                    "state": {
+                        "CFAN 0": "a2",
+                        "CFAN 1": "c4"
+                    },
+                    "link": {
+                        "L1": "\u03b5",
+                        "L2": "\u03b5"
+                    },
+                    "observable": null,
+                    "relevant": null
+                },
+                "c_fine_manutenzione": {
+                    "state": {
+                        "CFAN 0": "a2",
+                        "CFAN 1": "c2"
+                    },
+                    "link": {
+                        "L1": "av",
+                        "L2": "\u03b5"
+                    },
+                    "observable": null,
+                    "relevant": "restart"
+                }
+            }
+        },
+        {
+            "name": 11,
+            "link": {
+                "L1": "av",
+                "L2": "\u03b5"
+            },
+            "state": {
+                "CFAN 0": "a1",
+                "CFAN 1": "c4"
+            },
+            "next": {
+                "a_on": {
+                    "state": {
+                        "CFAN 0": "a2",
+                        "CFAN 1": "c4"
+                    },
+                    "link": {
+                        "L1": "av",
+                        "L2": "\u03b5"
+                    },
+                    "observable": null,
+                    "relevant": null
+                },
+                "c_fine_manutenzione": {
+                    "state": {
+                        "CFAN 0": "a1",
+                        "CFAN 1": "c2"
+                    },
+                    "link": {
+                        "L1": "av",
+                        "L2": "\u03b5"
+                    },
+                    "observable": null,
+                    "relevant": "restart"
+                }
+            }
+        },
+        {
+            "name": 5,
+            "link": {
+                "L1": "av",
+                "L2": "\u03b5"
+            },
+            "state": {
+                "CFAN 0": "a1",
+                "CFAN 1": "c2"
+            },
+            "next": {
+                "a_on": {
+                    "state": {
+                        "CFAN 0": "a2",
+                        "CFAN 1": "c2"
+                    },
+                    "link": {
+                        "L1": "av",
+                        "L2": "\u03b5"
+                    },
+                    "observable": null,
+                    "relevant": null
+                },
+                "c_off": {
+                    "state": {
+                        "CFAN 0": "a1",
+                        "CFAN 1": "c1"
+                    },
+                    "link": {
+                        "L1": "av",
+                        "L2": "\u03b5"
+                    },
+                    "observable": "oc",
+                    "relevant": null
+                },
+                "c_revisione": {
+                    "state": {
+                        "CFAN 0": "a1",
+                        "CFAN 1": "c4"
+                    },
+                    "link": {
+                        "L1": "av",
+                        "L2": "\u03b5"
+                    },
+                    "observable": "o3",
+                    "relevant": "rev"
+                }
+            }
+        },
+        {
+            "name": 10,
+            "link": {
+                "L1": "av",
+                "L2": "\u03b5"
+            },
+            "state": {
+                "CFAN 0": "a1",
+                "CFAN 1": "c1"
+            },
+            "next": {
+                "a_on": {
+                    "state": {
+                        "CFAN 0": "a2",
+                        "CFAN 1": "c1"
+                    },
+                    "link": {
+                        "L1": "av",
+                        "L2": "\u03b5"
+                    },
+                    "observable": null,
+                    "relevant": null
+                },
+                "c_on": {
+                    "state": {
+                        "CFAN 0": "a1",
+                        "CFAN 1": "c2"
+                    },
+                    "link": {
+                        "L1": "av",
+                        "L2": "\u03b5"
+                    },
+                    "observable": null,
+                    "relevant": null
+                }
+            }
+        },
+        {
+            "name": 15,
+            "link": {
+                "L1": "av",
+                "L2": "\u03b5"
+            },
+            "state": {
+                "CFAN 0": "a2",
+                "CFAN 1": "c1"
+            },
+            "next": {
+                "a_off": {
+                    "state": {
+                        "CFAN 0": "a1",
+                        "CFAN 1": "c1"
+                    },
+                    "link": {
+                        "L1": "av",
+                        "L2": "\u03b5"
+                    },
+                    "observable": "oa",
+                    "relevant": null
+                },
+                "a_control": {
+                    "state": {
+                        "CFAN 0": "a2",
+                        "CFAN 1": "c1"
+                    },
+                    "link": {
+                        "L1": "\u03b5",
+                        "L2": "\u03b5"
+                    },
+                    "observable": null,
+                    "relevant": null
+                },
+                "c_on": {
+                    "state": {
+                        "CFAN 0": "a2",
+                        "CFAN 1": "c2"
+                    },
+                    "link": {
+                        "L1": "av",
+                        "L2": "\u03b5"
+                    },
+                    "observable": null,
+                    "relevant": null
+                }
+            }
+        },
+        {
+            "name": 8,
+            "link": {
+                "L1": "av",
+                "L2": "\u03b5"
+            },
+            "state": {
+                "CFAN 0": "a2",
+                "CFAN 1": "c2"
+            },
+            "next": {
+                "a_off": {
+                    "state": {
+                        "CFAN 0": "a1",
+                        "CFAN 1": "c2"
+                    },
+                    "link": {
+                        "L1": "av",
+                        "L2": "\u03b5"
+                    },
+                    "observable": "oa",
+                    "relevant": null
+                },
+                "a_control": {
+                    "state": {
+                        "CFAN 0": "a2",
+                        "CFAN 1": "c2"
+                    },
+                    "link": {
+                        "L1": "\u03b5",
+                        "L2": "\u03b5"
+                    },
+                    "observable": null,
+                    "relevant": null
+                },
+                "c_off": {
+                    "state": {
+                        "CFAN 0": "a2",
+                        "CFAN 1": "c1"
+                    },
+                    "link": {
+                        "L1": "av",
+                        "L2": "\u03b5"
+                    },
+                    "observable": "oc",
+                    "relevant": null
+                },
+                "c_revisione": {
+                    "state": {
+                        "CFAN 0": "a2",
+                        "CFAN 1": "c4"
+                    },
+                    "link": {
+                        "L1": "av",
+                        "L2": "\u03b5"
+                    },
+                    "observable": "o3",
+                    "relevant": "rev"
+                }
+            }
+        },
+        {
+            "name": 6,
+            "link": {
+                "L1": "\u03b5",
+                "L2": "\u03b5"
+            },
+            "state": {
+                "CFAN 0": "a1",
+                "CFAN 1": "c4"
+            },
+            "next": {
+                "a_on": {
+                    "state": {
+                        "CFAN 0": "a2",
+                        "CFAN 1": "c4"
+                    },
+                    "link": {
+                        "L1": "\u03b5",
+                        "L2": "\u03b5"
+                    },
+                    "observable": null,
+                    "relevant": null
+                },
+                "c_fine_manutenzione": {
+                    "state": {
+                        "CFAN 0": "a1",
+                        "CFAN 1": "c2"
+                    },
+                    "link": {
+                        "L1": "\u03b5",
+                        "L2": "\u03b5"
+                    },
+                    "observable": null,
+                    "relevant": "restart"
+                }
+            }
+        },
+        {
+            "name": 14,
+            "link": {
+                "L1": "\u03b5",
+                "L2": "terr"
+            },
+            "state": {
+                "CFAN 0": "a3",
+                "CFAN 1": "c4"
+            },
+            "next": {
+                "c_fine_manutenzione": {
+                    "state": {
+                        "CFAN 0": "a3",
+                        "CFAN 1": "c2"
+                    },
+                    "link": {
+                        "L1": "\u03b5",
+                        "L2": "terr"
+                    },
+                    "observable": null,
+                    "relevant": "restart"
+                }
+            }
+        },
+        {
+            "name": 20,
+            "link": {
+                "L1": "cr",
+                "L2": "\u03b5"
+            },
+            "state": {
+                "CFAN 0": "a3",
+                "CFAN 1": "c4"
+            },
+            "next": {
+                "a_ripristino": {
+                    "state": {
+                        "CFAN 0": "a2",
+                        "CFAN 1": "c4"
+                    },
+                    "link": {
+                        "L1": "\u03b5",
+                        "L2": "\u03b5"
+                    },
+                    "observable": null,
+                    "relevant": null
+                },
+                "c_fine_manutenzione": {
+                    "state": {
+                        "CFAN 0": "a3",
+                        "CFAN 1": "c2"
+                    },
+                    "link": {
+                        "L1": "cr",
+                        "L2": "\u03b5"
+                    },
+                    "observable": null,
+                    "relevant": "restart"
+                }
+            }
+        },
+        {
+            "name": 21,
+            "link": {
+                "L1": "cr",
+                "L2": "\u03b5"
+            },
+            "state": {
+                "CFAN 0": "a3",
+                "CFAN 1": "c2"
+            },
+            "next": {
+                "a_ripristino": {
+                    "state": {
+                        "CFAN 0": "a2",
+                        "CFAN 1": "c2"
+                    },
+                    "link": {
+                        "L1": "\u03b5",
+                        "L2": "\u03b5"
+                    },
+                    "observable": null,
+                    "relevant": null
+                },
+                "c_off": {
+                    "state": {
+                        "CFAN 0": "a3",
+                        "CFAN 1": "c1"
+                    },
+                    "link": {
+                        "L1": "cr",
+                        "L2": "\u03b5"
+                    },
+                    "observable": "oc",
+                    "relevant": null
+                },
+                "c_revisione": {
+                    "state": {
+                        "CFAN 0": "a3",
+                        "CFAN 1": "c4"
+                    },
+                    "link": {
+                        "L1": "cr",
+                        "L2": "\u03b5"
+                    },
+                    "observable": "o3",
+                    "relevant": "rev"
+                }
+            }
+        },
+        {
+            "name": 22,
+            "link": {
+                "L1": "cr",
+                "L2": "\u03b5"
+            },
+            "state": {
+                "CFAN 0": "a3",
+                "CFAN 1": "c1"
+            },
+            "next": {
+                "a_ripristino": {
+                    "state": {
+                        "CFAN 0": "a2",
+                        "CFAN 1": "c1"
+                    },
+                    "link": {
+                        "L1": "\u03b5",
+                        "L2": "\u03b5"
+                    },
+                    "observable": null,
+                    "relevant": null
+                },
+                "c_on": {
+                    "state": {
+                        "CFAN 0": "a3",
+                        "CFAN 1": "c2"
+                    },
+                    "link": {
+                        "L1": "cr",
+                        "L2": "\u03b5"
+                    },
+                    "observable": null,
+                    "relevant": null
+                }
+            }
+        }
+    ]
+}

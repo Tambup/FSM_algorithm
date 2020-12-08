@@ -1,0 +1,413 @@
+{
+    "number space states": 41,
+    "number closures": 17,
+    "number transactions": 64,
+    "closure": [
+        {
+            "name": "x0",
+            "in_state_id": 0,
+            "regex": "\u03b5|f1|(f1|f1)|(f1|f1)f1",
+            "exit": {
+                "o1": [
+                    {
+                        "successor": "x1",
+                        "trns_regex": "\u03b5"
+                    },
+                    {
+                        "successor": "x2",
+                        "trns_regex": "f1"
+                    },
+                    {
+                        "successor": "x6",
+                        "trns_regex": "\u03b5"
+                    },
+                    {
+                        "successor": "x5",
+                        "trns_regex": "(f1|f1)"
+                    },
+                    {
+                        "successor": "x4",
+                        "trns_regex": "(f1|f1)"
+                    },
+                    {
+                        "successor": "x7",
+                        "trns_regex": "(f1|f1)f1"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "x1",
+            "in_state_id": 2,
+            "regex": "((\u03b5|\u03b5)|((\u03b5|\u03b5)|\u03b5))|((((\u03b5|\u03b5)f1|(f1|f1))|((\u03b5|\u03b5)|((\u03b5|\u03b5)|\u03b5))f1)|(((f1|f1)|f1)|(f1|f1)))|((((\u03b5|\u03b5)f3|((\u03b5|\u03b5)f3|f3))|(((f1|f1)|f1)|(f1|f1)))|((((\u03b5|\u03b5)f1|(f1|f1))|((\u03b5|\u03b5)|((\u03b5|\u03b5)|\u03b5))f1)|(((f1|f1)|f1)|(f1|f1))))|(((((\u03b5|\u03b5)f1|(f1|f1))f3|((\u03b5|\u03b5)f3|((\u03b5|\u03b5)f3|f3))f1)|(((f1|f1)|f1)|(f1|f1))f1|(((f1|f1)f3|((f1|f1)f3|f3f1))|(((f1|f1)|f1)|(f1|f1))f1|((f1|f1)f1|(((f1|f1)|f1)|(f1|f1))f1)))|((((\u03b5|\u03b5)f1|(f1|f1))|((\u03b5|\u03b5)|((\u03b5|\u03b5)|\u03b5))f1)|(((f1|f1)|f1)|(f1|f1)))f1)|((\u03b5|\u03b5)|((\u03b5|\u03b5)|\u03b5))f1|((\u03b5|\u03b5)|((\u03b5|\u03b5)|\u03b5))f1f1",
+            "exit": {
+                "o2": [
+                    {
+                        "successor": "x3",
+                        "trns_regex": "\u03b5"
+                    },
+                    {
+                        "successor": "x10",
+                        "trns_regex": "(\u03b5|\u03b5)"
+                    },
+                    {
+                        "successor": "x9",
+                        "trns_regex": "(\u03b5|\u03b5)"
+                    },
+                    {
+                        "successor": "x12",
+                        "trns_regex": "((\u03b5|\u03b5)|\u03b5)"
+                    },
+                    {
+                        "successor": "x8",
+                        "trns_regex": "((\u03b5|\u03b5)f1|(f1|f1))"
+                    },
+                    {
+                        "successor": "x11",
+                        "trns_regex": "((\u03b5|\u03b5)|((\u03b5|\u03b5)|\u03b5))"
+                    },
+                    {
+                        "successor": "x15",
+                        "trns_regex": "((((\u03b5|\u03b5)f1|(f1|f1))|((\u03b5|\u03b5)|((\u03b5|\u03b5)|\u03b5))f1)|(((f1|f1)|f1)|(f1|f1)))"
+                    },
+                    {
+                        "successor": "x14",
+                        "trns_regex": "((((\u03b5|\u03b5)f3|f3)|(((f1|f1)|f1)|(f1|f1)))|((((\u03b5|\u03b5)f1|(f1|f1))|((\u03b5|\u03b5)|((\u03b5|\u03b5)|\u03b5))f1)|(((f1|f1)|f1)|(f1|f1))))|((\u03b5|\u03b5)|((\u03b5|\u03b5)|\u03b5))f1"
+                    },
+                    {
+                        "successor": "x13",
+                        "trns_regex": "((((\u03b5|\u03b5)f3|((\u03b5|\u03b5)f3|f3))|(((f1|f1)|f1)|(f1|f1)))|((((\u03b5|\u03b5)f1|(f1|f1))|((\u03b5|\u03b5)|((\u03b5|\u03b5)|\u03b5))f1)|(((f1|f1)|f1)|(f1|f1))))|((\u03b5|\u03b5)|((\u03b5|\u03b5)|\u03b5))f1"
+                    },
+                    {
+                        "successor": "x16",
+                        "trns_regex": "((\u03b5|\u03b5)|((\u03b5|\u03b5)|\u03b5))"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "x2",
+            "in_state_id": 4,
+            "regex": "(\u03b5|(\u03b5|\u03b5))|((f3|((f3|f3)|(f1|(\u03b5|\u03b5)f1)))|(\u03b5|\u03b5)f1)|((\u03b5|(\u03b5|\u03b5))|(\u03b5|\u03b5))|((\u03b5|(\u03b5|\u03b5))|(\u03b5|\u03b5))f1",
+            "exit": {
+                "o2": [
+                    {
+                        "successor": "x8",
+                        "trns_regex": "\u03b5"
+                    },
+                    {
+                        "successor": "x15",
+                        "trns_regex": "(\u03b5|(\u03b5|\u03b5))"
+                    },
+                    {
+                        "successor": "x14",
+                        "trns_regex": "((\u03b5|(\u03b5|\u03b5))|(\u03b5|\u03b5))"
+                    },
+                    {
+                        "successor": "x13",
+                        "trns_regex": "((\u03b5|(\u03b5|\u03b5))|(\u03b5|\u03b5))"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "x3",
+            "in_state_id": 10,
+            "regex": "(\u03b5|(\u03b5|\u03b5))|((f3|((f3|f3)|(f1|(\u03b5|\u03b5)f1)))|(\u03b5|\u03b5)f1)|((\u03b5|(\u03b5|\u03b5))|(\u03b5|\u03b5))|((\u03b5|(\u03b5|\u03b5))|(\u03b5|\u03b5))f1",
+            "exit": {
+                "o1": [
+                    {
+                        "successor": "x2",
+                        "trns_regex": "(\u03b5|(\u03b5|\u03b5))"
+                    },
+                    {
+                        "successor": "x7",
+                        "trns_regex": "((f3|((f3|f3)|(f1|(\u03b5|\u03b5)f1)))|(\u03b5|\u03b5)f1)|((\u03b5|(\u03b5|\u03b5))|(\u03b5|\u03b5))f1"
+                    },
+                    {
+                        "successor": "x5",
+                        "trns_regex": "((\u03b5|(\u03b5|\u03b5))|(\u03b5|\u03b5))"
+                    },
+                    {
+                        "successor": "x4",
+                        "trns_regex": "((\u03b5|(\u03b5|\u03b5))|(\u03b5|\u03b5))"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "x4",
+            "in_state_id": 14,
+            "regex": "(\u03b5|\u03b5)|((f3|f3)|((f1|f1)|f1))|((\u03b5|\u03b5)|\u03b5)|((\u03b5|\u03b5)|\u03b5)f1",
+            "exit": {
+                "o2": [
+                    {
+                        "successor": "x8",
+                        "trns_regex": "\u03b5"
+                    },
+                    {
+                        "successor": "x15",
+                        "trns_regex": "(\u03b5|\u03b5)"
+                    },
+                    {
+                        "successor": "x14",
+                        "trns_regex": "((\u03b5|\u03b5)|\u03b5)"
+                    },
+                    {
+                        "successor": "x13",
+                        "trns_regex": "((\u03b5|\u03b5)|\u03b5)"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "x5",
+            "in_state_id": 8,
+            "regex": "(\u03b5|(\u03b5|\u03b5))|((f3|((f3|f3)|(f1|(\u03b5|\u03b5)f1)))|(\u03b5|\u03b5)f1)|((\u03b5|(\u03b5|\u03b5))|(\u03b5|\u03b5))|((\u03b5|(\u03b5|\u03b5))|(\u03b5|\u03b5))f1",
+            "exit": {
+                "o2": [
+                    {
+                        "successor": "x8",
+                        "trns_regex": "\u03b5"
+                    },
+                    {
+                        "successor": "x15",
+                        "trns_regex": "(\u03b5|(\u03b5|\u03b5))"
+                    },
+                    {
+                        "successor": "x14",
+                        "trns_regex": "((\u03b5|(\u03b5|\u03b5))|(\u03b5|\u03b5))"
+                    },
+                    {
+                        "successor": "x13",
+                        "trns_regex": "((\u03b5|(\u03b5|\u03b5))|(\u03b5|\u03b5))"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "x6",
+            "in_state_id": 7,
+            "regex": "(\u03b5|(\u03b5|\u03b5))|(((f1|f1)|(\u03b5|(\u03b5|\u03b5))f1)|((f1|f1)|f1))|(((f3|(f3|f3))|((f1|f1)|f1))|(((f1|f1)|(\u03b5|(\u03b5|\u03b5))f1)|((f1|f1)|f1)))|((((f1|f1)f3|(f3|(f3|f3))f1)|((f1|f1)|f1)f1|((f1f3|(f1f3|f3f1))|((f1|f1)|f1)f1|(f1f1|((f1|f1)|f1)f1)))|(((f1|f1)|(\u03b5|(\u03b5|\u03b5))f1)|((f1|f1)|f1))f1)|(\u03b5|(\u03b5|\u03b5))f1|(\u03b5|(\u03b5|\u03b5))f1f1",
+            "exit": {
+                "o2": [
+                    {
+                        "successor": "x10",
+                        "trns_regex": "\u03b5"
+                    },
+                    {
+                        "successor": "x9",
+                        "trns_regex": "\u03b5"
+                    },
+                    {
+                        "successor": "x12",
+                        "trns_regex": "(\u03b5|\u03b5)"
+                    },
+                    {
+                        "successor": "x8",
+                        "trns_regex": "(f1|f1)"
+                    },
+                    {
+                        "successor": "x11",
+                        "trns_regex": "(\u03b5|(\u03b5|\u03b5))"
+                    },
+                    {
+                        "successor": "x15",
+                        "trns_regex": "(((f1|f1)|(\u03b5|(\u03b5|\u03b5))f1)|((f1|f1)|f1))"
+                    },
+                    {
+                        "successor": "x14",
+                        "trns_regex": "(((f3|f3)|((f1|f1)|f1))|(((f1|f1)|(\u03b5|(\u03b5|\u03b5))f1)|((f1|f1)|f1)))|(\u03b5|(\u03b5|\u03b5))f1"
+                    },
+                    {
+                        "successor": "x13",
+                        "trns_regex": "(((f3|(f3|f3))|((f1|f1)|f1))|(((f1|f1)|(\u03b5|(\u03b5|\u03b5))f1)|((f1|f1)|f1)))|(\u03b5|(\u03b5|\u03b5))f1"
+                    },
+                    {
+                        "successor": "x16",
+                        "trns_regex": "(\u03b5|(\u03b5|\u03b5))"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "x7",
+            "in_state_id": 23,
+            "regex": "\u03b5",
+            "exit": {}
+        },
+        {
+            "name": "x8",
+            "in_state_id": 31,
+            "regex": "\u03b5",
+            "exit": {
+                "o1": [
+                    {
+                        "successor": "x7",
+                        "trns_regex": "\u03b5"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "x9",
+            "in_state_id": 26,
+            "regex": "(\u03b5|\u03b5)|((f3|f3)|((f1|f1)|f1))|((\u03b5|\u03b5)|\u03b5)|((\u03b5|\u03b5)|\u03b5)f1",
+            "exit": {
+                "o1": [
+                    {
+                        "successor": "x2",
+                        "trns_regex": "(\u03b5|\u03b5)"
+                    },
+                    {
+                        "successor": "x7",
+                        "trns_regex": "((f3|f3)|((f1|f1)|f1))|((\u03b5|\u03b5)|\u03b5)f1"
+                    },
+                    {
+                        "successor": "x5",
+                        "trns_regex": "((\u03b5|\u03b5)|\u03b5)"
+                    },
+                    {
+                        "successor": "x4",
+                        "trns_regex": "((\u03b5|\u03b5)|\u03b5)"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "x10",
+            "in_state_id": 18,
+            "regex": "(\u03b5|(\u03b5|\u03b5))|((f3|((f3|f3)|(f1|(\u03b5|\u03b5)f1)))|(\u03b5|\u03b5)f1)|((\u03b5|(\u03b5|\u03b5))|(\u03b5|\u03b5))|((\u03b5|(\u03b5|\u03b5))|(\u03b5|\u03b5))f1",
+            "exit": {
+                "o1": [
+                    {
+                        "successor": "x2",
+                        "trns_regex": "(\u03b5|(\u03b5|\u03b5))"
+                    },
+                    {
+                        "successor": "x7",
+                        "trns_regex": "((f3|((f3|f3)|(f1|(\u03b5|\u03b5)f1)))|(\u03b5|\u03b5)f1)|((\u03b5|(\u03b5|\u03b5))|(\u03b5|\u03b5))f1"
+                    },
+                    {
+                        "successor": "x5",
+                        "trns_regex": "((\u03b5|(\u03b5|\u03b5))|(\u03b5|\u03b5))"
+                    },
+                    {
+                        "successor": "x4",
+                        "trns_regex": "((\u03b5|(\u03b5|\u03b5))|(\u03b5|\u03b5))"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "x11",
+            "in_state_id": 37,
+            "regex": "\u03b5|(\u03b5|\u03b5)|((f1|f1)|(\u03b5|\u03b5)f1)",
+            "exit": {
+                "o1": [
+                    {
+                        "successor": "x2",
+                        "trns_regex": "\u03b5"
+                    },
+                    {
+                        "successor": "x5",
+                        "trns_regex": "(\u03b5|\u03b5)"
+                    },
+                    {
+                        "successor": "x4",
+                        "trns_regex": "(\u03b5|\u03b5)"
+                    },
+                    {
+                        "successor": "x7",
+                        "trns_regex": "((f1|f1)|(\u03b5|\u03b5)f1)"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "x12",
+            "in_state_id": 27,
+            "regex": "\u03b5|(\u03b5|\u03b5)|((f1|f1)|(\u03b5|\u03b5)f1)",
+            "exit": {
+                "o1": [
+                    {
+                        "successor": "x2",
+                        "trns_regex": "\u03b5"
+                    },
+                    {
+                        "successor": "x5",
+                        "trns_regex": "(\u03b5|\u03b5)"
+                    },
+                    {
+                        "successor": "x4",
+                        "trns_regex": "(\u03b5|\u03b5)"
+                    },
+                    {
+                        "successor": "x7",
+                        "trns_regex": "((f1|f1)|(\u03b5|\u03b5)f1)"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "x13",
+            "in_state_id": 38,
+            "regex": "\u03b5",
+            "exit": {
+                "o1": [
+                    {
+                        "successor": "x7",
+                        "trns_regex": "\u03b5"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "x14",
+            "in_state_id": 28,
+            "regex": "\u03b5",
+            "exit": {
+                "o1": [
+                    {
+                        "successor": "x7",
+                        "trns_regex": "\u03b5"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "x15",
+            "in_state_id": 40,
+            "regex": "\u03b5",
+            "exit": {
+                "o1": [
+                    {
+                        "successor": "x7",
+                        "trns_regex": "\u03b5"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "x16",
+            "in_state_id": 42,
+            "regex": "\u03b5|(f1|f1)",
+            "exit": {
+                "o1": [
+                    {
+                        "successor": "x5",
+                        "trns_regex": "\u03b5"
+                    },
+                    {
+                        "successor": "x4",
+                        "trns_regex": "\u03b5"
+                    },
+                    {
+                        "successor": "x7",
+                        "trns_regex": "(f1|f1)"
+                    }
+                ]
+            }
+        }
+    ]
+}

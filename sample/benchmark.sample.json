@@ -1,0 +1,159 @@
+{
+    "name": "benchmark",
+    "comportamentalFA": [
+        {
+            "name": "C1",
+			"state":[
+				{
+					"name": "10",
+					"init": true,
+					"outTransition": [
+						{
+							"name": "T1A",
+							"destination": "11",
+							"link":[
+								{
+									"type": "in",
+									"link": "L1",
+									"event": "e1"
+								}
+							],
+							"observable": null,
+							"relevant": null
+						},
+						{
+							"name": "T1C",
+							"destination": "11",
+							"link":[],
+							"observable": null,
+							"relevant": "f1"
+						}
+                    ]
+				},
+				{
+					"name": "11",
+					"init": false,
+					"outTransition": [
+						{
+							"name": "T1B",
+							"destination": "10",
+							"link":[
+								{
+									"type": "in",
+									"link": "L3",
+									"event": "e2"
+								}
+							],
+							"observable": null,
+							"relevant": null
+						}
+                    ]
+				}
+			]
+        },
+        {
+            "name": "C2",
+			"state":[
+				{
+					"name": "20",
+					"init": true,
+					"outTransition": [
+						{
+							"name": "T2A",
+							"destination": "21",
+							"link":[
+								{
+									"type": "out",
+									"link": "L1",
+									"event": "e1"
+                                },
+                                {
+									"type": "out",
+									"link": "L2",
+									"event": "e3"
+								}
+							],
+							"observable": "o1",
+							"relevant": null
+						}
+                    ]
+				},
+				{
+					"name": "21",
+					"init": false,
+					"outTransition": [
+						{
+							"name": "T2B",
+							"destination": "20",
+							"link":[
+								{
+									"type": "out",
+									"link": "L1",
+									"event": "e1"
+								}
+							],
+							"observable": "o2",
+							"relevant": null
+						}
+                    ]
+				}
+			]
+        },
+        {
+            "name": "C3",
+			"state":[
+				{
+					"name": "30",
+					"init": true,
+					"outTransition": [
+						{
+							"name": "T3A",
+							"destination": "31",
+							"link":[
+								{
+									"type": "out",
+									"link": "L3",
+									"event": "e2"
+								}
+							],
+							"observable": null,
+							"relevant": null
+						}
+                    ]
+				},
+				{
+					"name": "31",
+					"init": false,
+					"outTransition": [
+						{
+							"name": "T3B",
+							"destination": "30",
+							"link":[
+								{
+									"type": "in",
+									"link": "L2",
+									"event": "e3"
+								}
+							],
+							"observable": null,
+							"relevant": null
+                        },
+                        {
+							"name": "T3C",
+							"destination": "31",
+							"link":[
+								{
+									"type": "in",
+									"link": "L2",
+									"event": "e3"
+								}
+							],
+							"observable": null,
+							"relevant": "f3"
+						}
+                    ]
+				}
+			]
+		}
+    ]
+}

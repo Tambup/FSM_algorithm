@@ -47,7 +47,7 @@ class Closure(RegexOperation):
         self._final_states = {}
         self._exit_states = {}
 
-        grey_list = {temp[0]: True}
+        grey_list = {temp[0]: temp[0]}
         for state in temp:
             new_nexts = {}
             for next_trans, next_state in state.nexts.items():
@@ -58,9 +58,11 @@ class Closure(RegexOperation):
                 if not self._work_space.get(next_state):
                     if not new_trans.observable:
                         self._work_space[new_state] = None
-                        if not grey_list.get(new_state):
+                        if grey_list.get(new_state):
+                            new_nexts[new_trans] = grey_list[new_state]
+                        else:
                             temp.append(new_state)
-                grey_list[new_state] = True
+                grey_list[new_state] = new_state
 
             state.nexts = new_nexts
             if state.to_decorate():

@@ -92,9 +92,13 @@ class RegexOperation:
             for n_first in self._prev[n]:
                 if n_first == n:
                     continue
+                found = False
                 for t_first, n_cand in n_first.nexts.items():
                     if n_cand == n:
+                        found = True
                         break
+                if not found:
+                    break
                 remove_from_nfirst = False
                 for t_second, n_second in n.nexts.items():
                     if n_second == n:

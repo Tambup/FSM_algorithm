@@ -1,0 +1,1812 @@
+{
+    "number comportamental FA": 3,
+    "number states": 6,
+    "number space states": 41,
+    "number transitions": 85,
+    "space_state": [
+        {
+            "name": 0,
+            "link": {
+                "L2": "\u03b5",
+                "L1": "\u03b5",
+                "L3": "\u03b5"
+            },
+            "state": {
+                "CFAN 0": "10",
+                "CFAN 1": "20",
+                "CFAN 2": "30"
+            },
+            "next": {
+                "T1C": {
+                    "state": {
+                        "CFAN 0": "11",
+                        "CFAN 1": "20",
+                        "CFAN 2": "30"
+                    },
+                    "link": {
+                        "L2": "\u03b5",
+                        "L1": "\u03b5",
+                        "L3": "\u03b5"
+                    },
+                    "observable": null,
+                    "relevant": "f1"
+                },
+                "T2A": {
+                    "state": {
+                        "CFAN 0": "10",
+                        "CFAN 1": "21",
+                        "CFAN 2": "30"
+                    },
+                    "link": {
+                        "L2": "e3",
+                        "L1": "e1",
+                        "L3": "\u03b5"
+                    },
+                    "observable": "o1",
+                    "relevant": null
+                },
+                "T3A": {
+                    "state": {
+                        "CFAN 0": "10",
+                        "CFAN 1": "20",
+                        "CFAN 2": "31"
+                    },
+                    "link": {
+                        "L2": "\u03b5",
+                        "L1": "\u03b5",
+                        "L3": "e2"
+                    },
+                    "observable": null,
+                    "relevant": null
+                }
+            }
+        },
+        {
+            "name": 1,
+            "link": {
+                "L2": "\u03b5",
+                "L1": "\u03b5",
+                "L3": "\u03b5"
+            },
+            "state": {
+                "CFAN 0": "11",
+                "CFAN 1": "20",
+                "CFAN 2": "30"
+            },
+            "next": {
+                "T2A": {
+                    "state": {
+                        "CFAN 0": "11",
+                        "CFAN 1": "21",
+                        "CFAN 2": "30"
+                    },
+                    "link": {
+                        "L2": "e3",
+                        "L1": "e1",
+                        "L3": "\u03b5"
+                    },
+                    "observable": "o1",
+                    "relevant": null
+                },
+                "T3A": {
+                    "state": {
+                        "CFAN 0": "11",
+                        "CFAN 1": "20",
+                        "CFAN 2": "31"
+                    },
+                    "link": {
+                        "L2": "\u03b5",
+                        "L1": "\u03b5",
+                        "L3": "e2"
+                    },
+                    "observable": null,
+                    "relevant": null
+                }
+            }
+        },
+        {
+            "name": 36,
+            "link": {
+                "L2": "e3",
+                "L1": "\u03b5",
+                "L3": "\u03b5"
+            },
+            "state": {
+                "CFAN 0": "11",
+                "CFAN 1": "20",
+                "CFAN 2": "31"
+            },
+            "next": {
+                "T3B": {
+                    "state": {
+                        "CFAN 0": "11",
+                        "CFAN 1": "20",
+                        "CFAN 2": "30"
+                    },
+                    "link": {
+                        "L2": "\u03b5",
+                        "L1": "\u03b5",
+                        "L3": "\u03b5"
+                    },
+                    "observable": null,
+                    "relevant": null
+                },
+                "T3C": {
+                    "state": {
+                        "CFAN 0": "11",
+                        "CFAN 1": "20",
+                        "CFAN 2": "31"
+                    },
+                    "link": {
+                        "L2": "\u03b5",
+                        "L1": "\u03b5",
+                        "L3": "\u03b5"
+                    },
+                    "observable": null,
+                    "relevant": "f3"
+                }
+            }
+        },
+        {
+            "name": 26,
+            "link": {
+                "L2": "e3",
+                "L1": "e1",
+                "L3": "\u03b5"
+            },
+            "state": {
+                "CFAN 0": "10",
+                "CFAN 1": "20",
+                "CFAN 2": "31"
+            },
+            "next": {
+                "T1A": {
+                    "state": {
+                        "CFAN 0": "11",
+                        "CFAN 1": "20",
+                        "CFAN 2": "31"
+                    },
+                    "link": {
+                        "L2": "e3",
+                        "L1": "\u03b5",
+                        "L3": "\u03b5"
+                    },
+                    "observable": null,
+                    "relevant": null
+                },
+                "T1C": {
+                    "state": {
+                        "CFAN 0": "11",
+                        "CFAN 1": "20",
+                        "CFAN 2": "31"
+                    },
+                    "link": {
+                        "L2": "e3",
+                        "L1": "e1",
+                        "L3": "\u03b5"
+                    },
+                    "observable": null,
+                    "relevant": "f1"
+                },
+                "T3B": {
+                    "state": {
+                        "CFAN 0": "10",
+                        "CFAN 1": "20",
+                        "CFAN 2": "30"
+                    },
+                    "link": {
+                        "L2": "\u03b5",
+                        "L1": "e1",
+                        "L3": "\u03b5"
+                    },
+                    "observable": null,
+                    "relevant": null
+                },
+                "T3C": {
+                    "state": {
+                        "CFAN 0": "10",
+                        "CFAN 1": "20",
+                        "CFAN 2": "31"
+                    },
+                    "link": {
+                        "L2": "\u03b5",
+                        "L1": "e1",
+                        "L3": "\u03b5"
+                    },
+                    "observable": null,
+                    "relevant": "f3"
+                }
+            }
+        },
+        {
+            "name": 18,
+            "link": {
+                "L2": "e3",
+                "L1": "e1",
+                "L3": "e2"
+            },
+            "state": {
+                "CFAN 0": "11",
+                "CFAN 1": "20",
+                "CFAN 2": "31"
+            },
+            "next": {
+                "T1B": {
+                    "state": {
+                        "CFAN 0": "10",
+                        "CFAN 1": "20",
+                        "CFAN 2": "31"
+                    },
+                    "link": {
+                        "L2": "e3",
+                        "L1": "e1",
+                        "L3": "\u03b5"
+                    },
+                    "observable": null,
+                    "relevant": null
+                },
+                "T3B": {
+                    "state": {
+                        "CFAN 0": "11",
+                        "CFAN 1": "20",
+                        "CFAN 2": "30"
+                    },
+                    "link": {
+                        "L2": "\u03b5",
+                        "L1": "e1",
+                        "L3": "e2"
+                    },
+                    "observable": null,
+                    "relevant": null
+                },
+                "T3C": {
+                    "state": {
+                        "CFAN 0": "11",
+                        "CFAN 1": "20",
+                        "CFAN 2": "31"
+                    },
+                    "link": {
+                        "L2": "\u03b5",
+                        "L1": "e1",
+                        "L3": "e2"
+                    },
+                    "observable": null,
+                    "relevant": "f3"
+                }
+            }
+        },
+        {
+            "name": 10,
+            "link": {
+                "L2": "e3",
+                "L1": "e1",
+                "L3": "\u03b5"
+            },
+            "state": {
+                "CFAN 0": "11",
+                "CFAN 1": "20",
+                "CFAN 2": "30"
+            },
+            "next": {
+                "T3A": {
+                    "state": {
+                        "CFAN 0": "11",
+                        "CFAN 1": "20",
+                        "CFAN 2": "31"
+                    },
+                    "link": {
+                        "L2": "e3",
+                        "L1": "e1",
+                        "L3": "e2"
+                    },
+                    "observable": null,
+                    "relevant": null
+                }
+            }
+        },
+        {
+            "name": 6,
+            "link": {
+                "L2": "e3",
+                "L1": "\u03b5",
+                "L3": "\u03b5"
+            },
+            "state": {
+                "CFAN 0": "11",
+                "CFAN 1": "21",
+                "CFAN 2": "30"
+            },
+            "next": {
+                "T2B": {
+                    "state": {
+                        "CFAN 0": "11",
+                        "CFAN 1": "20",
+                        "CFAN 2": "30"
+                    },
+                    "link": {
+                        "L2": "e3",
+                        "L1": "e1",
+                        "L3": "\u03b5"
+                    },
+                    "observable": "o2",
+                    "relevant": null
+                },
+                "T3A": {
+                    "state": {
+                        "CFAN 0": "11",
+                        "CFAN 1": "21",
+                        "CFAN 2": "31"
+                    },
+                    "link": {
+                        "L2": "e3",
+                        "L1": "\u03b5",
+                        "L3": "e2"
+                    },
+                    "observable": null,
+                    "relevant": null
+                }
+            }
+        },
+        {
+            "name": 2,
+            "link": {
+                "L2": "e3",
+                "L1": "e1",
+                "L3": "\u03b5"
+            },
+            "state": {
+                "CFAN 0": "10",
+                "CFAN 1": "21",
+                "CFAN 2": "30"
+            },
+            "next": {
+                "T1A": {
+                    "state": {
+                        "CFAN 0": "11",
+                        "CFAN 1": "21",
+                        "CFAN 2": "30"
+                    },
+                    "link": {
+                        "L2": "e3",
+                        "L1": "\u03b5",
+                        "L3": "\u03b5"
+                    },
+                    "observable": null,
+                    "relevant": null
+                },
+                "T1C": {
+                    "state": {
+                        "CFAN 0": "11",
+                        "CFAN 1": "21",
+                        "CFAN 2": "30"
+                    },
+                    "link": {
+                        "L2": "e3",
+                        "L1": "e1",
+                        "L3": "\u03b5"
+                    },
+                    "observable": null,
+                    "relevant": "f1"
+                },
+                "T3A": {
+                    "state": {
+                        "CFAN 0": "10",
+                        "CFAN 1": "21",
+                        "CFAN 2": "31"
+                    },
+                    "link": {
+                        "L2": "e3",
+                        "L1": "e1",
+                        "L3": "e2"
+                    },
+                    "observable": null,
+                    "relevant": null
+                }
+            }
+        },
+        {
+            "name": 9,
+            "link": {
+                "L2": "\u03b5",
+                "L1": "\u03b5",
+                "L3": "\u03b5"
+            },
+            "state": {
+                "CFAN 0": "10",
+                "CFAN 1": "20",
+                "CFAN 2": "31"
+            },
+            "next": {
+                "T1C": {
+                    "state": {
+                        "CFAN 0": "11",
+                        "CFAN 1": "20",
+                        "CFAN 2": "31"
+                    },
+                    "link": {
+                        "L2": "\u03b5",
+                        "L1": "\u03b5",
+                        "L3": "\u03b5"
+                    },
+                    "observable": null,
+                    "relevant": "f1"
+                },
+                "T2A": {
+                    "state": {
+                        "CFAN 0": "10",
+                        "CFAN 1": "21",
+                        "CFAN 2": "31"
+                    },
+                    "link": {
+                        "L2": "e3",
+                        "L1": "e1",
+                        "L3": "\u03b5"
+                    },
+                    "observable": "o1",
+                    "relevant": null
+                }
+            }
+        },
+        {
+            "name": 5,
+            "link": {
+                "L2": "\u03b5",
+                "L1": "\u03b5",
+                "L3": "e2"
+            },
+            "state": {
+                "CFAN 0": "11",
+                "CFAN 1": "20",
+                "CFAN 2": "31"
+            },
+            "next": {
+                "T1B": {
+                    "state": {
+                        "CFAN 0": "10",
+                        "CFAN 1": "20",
+                        "CFAN 2": "31"
+                    },
+                    "link": {
+                        "L2": "\u03b5",
+                        "L1": "\u03b5",
+                        "L3": "\u03b5"
+                    },
+                    "observable": null,
+                    "relevant": null
+                },
+                "T2A": {
+                    "state": {
+                        "CFAN 0": "11",
+                        "CFAN 1": "21",
+                        "CFAN 2": "31"
+                    },
+                    "link": {
+                        "L2": "e3",
+                        "L1": "e1",
+                        "L3": "e2"
+                    },
+                    "observable": "o1",
+                    "relevant": null
+                }
+            }
+        },
+        {
+            "name": 3,
+            "link": {
+                "L2": "\u03b5",
+                "L1": "\u03b5",
+                "L3": "e2"
+            },
+            "state": {
+                "CFAN 0": "10",
+                "CFAN 1": "20",
+                "CFAN 2": "31"
+            },
+            "next": {
+                "T1C": {
+                    "state": {
+                        "CFAN 0": "11",
+                        "CFAN 1": "20",
+                        "CFAN 2": "31"
+                    },
+                    "link": {
+                        "L2": "\u03b5",
+                        "L1": "\u03b5",
+                        "L3": "e2"
+                    },
+                    "observable": null,
+                    "relevant": "f1"
+                },
+                "T2A": {
+                    "state": {
+                        "CFAN 0": "10",
+                        "CFAN 1": "21",
+                        "CFAN 2": "31"
+                    },
+                    "link": {
+                        "L2": "e3",
+                        "L1": "e1",
+                        "L3": "e2"
+                    },
+                    "observable": "o1",
+                    "relevant": null
+                }
+            }
+        },
+        {
+            "name": 17,
+            "link": {
+                "L2": "\u03b5",
+                "L1": "\u03b5",
+                "L3": "\u03b5"
+            },
+            "state": {
+                "CFAN 0": "11",
+                "CFAN 1": "20",
+                "CFAN 2": "31"
+            },
+            "next": {
+                "T2A": {
+                    "state": {
+                        "CFAN 0": "11",
+                        "CFAN 1": "21",
+                        "CFAN 2": "31"
+                    },
+                    "link": {
+                        "L2": "e3",
+                        "L1": "e1",
+                        "L3": "\u03b5"
+                    },
+                    "observable": "o1",
+                    "relevant": null
+                }
+            }
+        },
+        {
+            "name": 38,
+            "link": {
+                "L2": "\u03b5",
+                "L1": "e1",
+                "L3": "\u03b5"
+            },
+            "state": {
+                "CFAN 0": "10",
+                "CFAN 1": "20",
+                "CFAN 2": "31"
+            },
+            "next": {
+                "T1A": {
+                    "state": {
+                        "CFAN 0": "11",
+                        "CFAN 1": "20",
+                        "CFAN 2": "31"
+                    },
+                    "link": {
+                        "L2": "\u03b5",
+                        "L1": "\u03b5",
+                        "L3": "\u03b5"
+                    },
+                    "observable": null,
+                    "relevant": null
+                }
+            }
+        },
+        {
+            "name": 28,
+            "link": {
+                "L2": "\u03b5",
+                "L1": "e1",
+                "L3": "e2"
+            },
+            "state": {
+                "CFAN 0": "11",
+                "CFAN 1": "20",
+                "CFAN 2": "31"
+            },
+            "next": {
+                "T1B": {
+                    "state": {
+                        "CFAN 0": "10",
+                        "CFAN 1": "20",
+                        "CFAN 2": "31"
+                    },
+                    "link": {
+                        "L2": "\u03b5",
+                        "L1": "e1",
+                        "L3": "\u03b5"
+                    },
+                    "observable": null,
+                    "relevant": null
+                }
+            }
+        },
+        {
+            "name": 40,
+            "link": {
+                "L2": "\u03b5",
+                "L1": "e1",
+                "L3": "\u03b5"
+            },
+            "state": {
+                "CFAN 0": "11",
+                "CFAN 1": "20",
+                "CFAN 2": "30"
+            },
+            "next": {
+                "T3A": {
+                    "state": {
+                        "CFAN 0": "11",
+                        "CFAN 1": "20",
+                        "CFAN 2": "31"
+                    },
+                    "link": {
+                        "L2": "\u03b5",
+                        "L1": "e1",
+                        "L3": "e2"
+                    },
+                    "observable": null,
+                    "relevant": null
+                }
+            }
+        },
+        {
+            "name": 31,
+            "link": {
+                "L2": "e3",
+                "L1": "e1",
+                "L3": "\u03b5"
+            },
+            "state": {
+                "CFAN 0": "11",
+                "CFAN 1": "20",
+                "CFAN 2": "31"
+            },
+            "next": {
+                "T3B": {
+                    "state": {
+                        "CFAN 0": "11",
+                        "CFAN 1": "20",
+                        "CFAN 2": "30"
+                    },
+                    "link": {
+                        "L2": "\u03b5",
+                        "L1": "e1",
+                        "L3": "\u03b5"
+                    },
+                    "observable": null,
+                    "relevant": null
+                }
+            }
+        },
+        {
+            "name": 22,
+            "link": {
+                "L2": "e3",
+                "L1": "\u03b5",
+                "L3": "\u03b5"
+            },
+            "state": {
+                "CFAN 0": "11",
+                "CFAN 1": "21",
+                "CFAN 2": "31"
+            },
+            "next": {
+                "T2B": {
+                    "state": {
+                        "CFAN 0": "11",
+                        "CFAN 1": "20",
+                        "CFAN 2": "31"
+                    },
+                    "link": {
+                        "L2": "e3",
+                        "L1": "e1",
+                        "L3": "\u03b5"
+                    },
+                    "observable": "o2",
+                    "relevant": null
+                },
+                "T3B": {
+                    "state": {
+                        "CFAN 0": "11",
+                        "CFAN 1": "21",
+                        "CFAN 2": "30"
+                    },
+                    "link": {
+                        "L2": "\u03b5",
+                        "L1": "\u03b5",
+                        "L3": "\u03b5"
+                    },
+                    "observable": null,
+                    "relevant": null
+                },
+                "T3C": {
+                    "state": {
+                        "CFAN 0": "11",
+                        "CFAN 1": "21",
+                        "CFAN 2": "31"
+                    },
+                    "link": {
+                        "L2": "\u03b5",
+                        "L1": "\u03b5",
+                        "L3": "\u03b5"
+                    },
+                    "observable": null,
+                    "relevant": "f3"
+                }
+            }
+        },
+        {
+            "name": 14,
+            "link": {
+                "L2": "e3",
+                "L1": "e1",
+                "L3": "\u03b5"
+            },
+            "state": {
+                "CFAN 0": "10",
+                "CFAN 1": "21",
+                "CFAN 2": "31"
+            },
+            "next": {
+                "T1A": {
+                    "state": {
+                        "CFAN 0": "11",
+                        "CFAN 1": "21",
+                        "CFAN 2": "31"
+                    },
+                    "link": {
+                        "L2": "e3",
+                        "L1": "\u03b5",
+                        "L3": "\u03b5"
+                    },
+                    "observable": null,
+                    "relevant": null
+                },
+                "T1C": {
+                    "state": {
+                        "CFAN 0": "11",
+                        "CFAN 1": "21",
+                        "CFAN 2": "31"
+                    },
+                    "link": {
+                        "L2": "e3",
+                        "L1": "e1",
+                        "L3": "\u03b5"
+                    },
+                    "observable": null,
+                    "relevant": "f1"
+                },
+                "T3B": {
+                    "state": {
+                        "CFAN 0": "10",
+                        "CFAN 1": "21",
+                        "CFAN 2": "30"
+                    },
+                    "link": {
+                        "L2": "\u03b5",
+                        "L1": "e1",
+                        "L3": "\u03b5"
+                    },
+                    "observable": null,
+                    "relevant": null
+                },
+                "T3C": {
+                    "state": {
+                        "CFAN 0": "10",
+                        "CFAN 1": "21",
+                        "CFAN 2": "31"
+                    },
+                    "link": {
+                        "L2": "\u03b5",
+                        "L1": "e1",
+                        "L3": "\u03b5"
+                    },
+                    "observable": null,
+                    "relevant": "f3"
+                }
+            }
+        },
+        {
+            "name": 8,
+            "link": {
+                "L2": "e3",
+                "L1": "e1",
+                "L3": "e2"
+            },
+            "state": {
+                "CFAN 0": "11",
+                "CFAN 1": "21",
+                "CFAN 2": "31"
+            },
+            "next": {
+                "T1B": {
+                    "state": {
+                        "CFAN 0": "10",
+                        "CFAN 1": "21",
+                        "CFAN 2": "31"
+                    },
+                    "link": {
+                        "L2": "e3",
+                        "L1": "e1",
+                        "L3": "\u03b5"
+                    },
+                    "observable": null,
+                    "relevant": null
+                },
+                "T3B": {
+                    "state": {
+                        "CFAN 0": "11",
+                        "CFAN 1": "21",
+                        "CFAN 2": "30"
+                    },
+                    "link": {
+                        "L2": "\u03b5",
+                        "L1": "e1",
+                        "L3": "e2"
+                    },
+                    "observable": null,
+                    "relevant": null
+                },
+                "T3C": {
+                    "state": {
+                        "CFAN 0": "11",
+                        "CFAN 1": "21",
+                        "CFAN 2": "31"
+                    },
+                    "link": {
+                        "L2": "\u03b5",
+                        "L1": "e1",
+                        "L3": "e2"
+                    },
+                    "observable": null,
+                    "relevant": "f3"
+                }
+            }
+        },
+        {
+            "name": 4,
+            "link": {
+                "L2": "e3",
+                "L1": "e1",
+                "L3": "\u03b5"
+            },
+            "state": {
+                "CFAN 0": "11",
+                "CFAN 1": "21",
+                "CFAN 2": "30"
+            },
+            "next": {
+                "T3A": {
+                    "state": {
+                        "CFAN 0": "11",
+                        "CFAN 1": "21",
+                        "CFAN 2": "31"
+                    },
+                    "link": {
+                        "L2": "e3",
+                        "L1": "e1",
+                        "L3": "e2"
+                    },
+                    "observable": null,
+                    "relevant": null
+                }
+            }
+        },
+        {
+            "name": 19,
+            "link": {
+                "L2": "e3",
+                "L1": "\u03b5",
+                "L3": "\u03b5"
+            },
+            "state": {
+                "CFAN 0": "10",
+                "CFAN 1": "21",
+                "CFAN 2": "31"
+            },
+            "next": {
+                "T1C": {
+                    "state": {
+                        "CFAN 0": "11",
+                        "CFAN 1": "21",
+                        "CFAN 2": "31"
+                    },
+                    "link": {
+                        "L2": "e3",
+                        "L1": "\u03b5",
+                        "L3": "\u03b5"
+                    },
+                    "observable": null,
+                    "relevant": "f1"
+                },
+                "T2B": {
+                    "state": {
+                        "CFAN 0": "10",
+                        "CFAN 1": "20",
+                        "CFAN 2": "31"
+                    },
+                    "link": {
+                        "L2": "e3",
+                        "L1": "e1",
+                        "L3": "\u03b5"
+                    },
+                    "observable": "o2",
+                    "relevant": null
+                },
+                "T3B": {
+                    "state": {
+                        "CFAN 0": "10",
+                        "CFAN 1": "21",
+                        "CFAN 2": "30"
+                    },
+                    "link": {
+                        "L2": "\u03b5",
+                        "L1": "\u03b5",
+                        "L3": "\u03b5"
+                    },
+                    "observable": null,
+                    "relevant": null
+                },
+                "T3C": {
+                    "state": {
+                        "CFAN 0": "10",
+                        "CFAN 1": "21",
+                        "CFAN 2": "31"
+                    },
+                    "link": {
+                        "L2": "\u03b5",
+                        "L1": "\u03b5",
+                        "L3": "\u03b5"
+                    },
+                    "observable": null,
+                    "relevant": "f3"
+                }
+            }
+        },
+        {
+            "name": 11,
+            "link": {
+                "L2": "e3",
+                "L1": "\u03b5",
+                "L3": "e2"
+            },
+            "state": {
+                "CFAN 0": "11",
+                "CFAN 1": "21",
+                "CFAN 2": "31"
+            },
+            "next": {
+                "T1B": {
+                    "state": {
+                        "CFAN 0": "10",
+                        "CFAN 1": "21",
+                        "CFAN 2": "31"
+                    },
+                    "link": {
+                        "L2": "e3",
+                        "L1": "\u03b5",
+                        "L3": "\u03b5"
+                    },
+                    "observable": null,
+                    "relevant": null
+                },
+                "T2B": {
+                    "state": {
+                        "CFAN 0": "11",
+                        "CFAN 1": "20",
+                        "CFAN 2": "31"
+                    },
+                    "link": {
+                        "L2": "e3",
+                        "L1": "e1",
+                        "L3": "e2"
+                    },
+                    "observable": "o2",
+                    "relevant": null
+                },
+                "T3B": {
+                    "state": {
+                        "CFAN 0": "11",
+                        "CFAN 1": "21",
+                        "CFAN 2": "30"
+                    },
+                    "link": {
+                        "L2": "\u03b5",
+                        "L1": "\u03b5",
+                        "L3": "e2"
+                    },
+                    "observable": null,
+                    "relevant": null
+                },
+                "T3C": {
+                    "state": {
+                        "CFAN 0": "11",
+                        "CFAN 1": "21",
+                        "CFAN 2": "31"
+                    },
+                    "link": {
+                        "L2": "\u03b5",
+                        "L1": "\u03b5",
+                        "L3": "e2"
+                    },
+                    "observable": null,
+                    "relevant": "f3"
+                }
+            }
+        },
+        {
+            "name": 7,
+            "link": {
+                "L2": "e3",
+                "L1": "e1",
+                "L3": "e2"
+            },
+            "state": {
+                "CFAN 0": "10",
+                "CFAN 1": "21",
+                "CFAN 2": "31"
+            },
+            "next": {
+                "T1A": {
+                    "state": {
+                        "CFAN 0": "11",
+                        "CFAN 1": "21",
+                        "CFAN 2": "31"
+                    },
+                    "link": {
+                        "L2": "e3",
+                        "L1": "\u03b5",
+                        "L3": "e2"
+                    },
+                    "observable": null,
+                    "relevant": null
+                },
+                "T1C": {
+                    "state": {
+                        "CFAN 0": "11",
+                        "CFAN 1": "21",
+                        "CFAN 2": "31"
+                    },
+                    "link": {
+                        "L2": "e3",
+                        "L1": "e1",
+                        "L3": "e2"
+                    },
+                    "observable": null,
+                    "relevant": "f1"
+                },
+                "T3B": {
+                    "state": {
+                        "CFAN 0": "10",
+                        "CFAN 1": "21",
+                        "CFAN 2": "30"
+                    },
+                    "link": {
+                        "L2": "\u03b5",
+                        "L1": "e1",
+                        "L3": "e2"
+                    },
+                    "observable": null,
+                    "relevant": null
+                },
+                "T3C": {
+                    "state": {
+                        "CFAN 0": "10",
+                        "CFAN 1": "21",
+                        "CFAN 2": "31"
+                    },
+                    "link": {
+                        "L2": "\u03b5",
+                        "L1": "e1",
+                        "L3": "e2"
+                    },
+                    "observable": null,
+                    "relevant": "f3"
+                }
+            }
+        },
+        {
+            "name": 29,
+            "link": {
+                "L2": "\u03b5",
+                "L1": "\u03b5",
+                "L3": "\u03b5"
+            },
+            "state": {
+                "CFAN 0": "10",
+                "CFAN 1": "21",
+                "CFAN 2": "30"
+            },
+            "next": {
+                "T1C": {
+                    "state": {
+                        "CFAN 0": "11",
+                        "CFAN 1": "21",
+                        "CFAN 2": "30"
+                    },
+                    "link": {
+                        "L2": "\u03b5",
+                        "L1": "\u03b5",
+                        "L3": "\u03b5"
+                    },
+                    "observable": null,
+                    "relevant": "f1"
+                },
+                "T2B": {
+                    "state": {
+                        "CFAN 0": "10",
+                        "CFAN 1": "20",
+                        "CFAN 2": "30"
+                    },
+                    "link": {
+                        "L2": "\u03b5",
+                        "L1": "e1",
+                        "L3": "\u03b5"
+                    },
+                    "observable": "o2",
+                    "relevant": null
+                },
+                "T3A": {
+                    "state": {
+                        "CFAN 0": "10",
+                        "CFAN 1": "21",
+                        "CFAN 2": "31"
+                    },
+                    "link": {
+                        "L2": "\u03b5",
+                        "L1": "\u03b5",
+                        "L3": "e2"
+                    },
+                    "observable": null,
+                    "relevant": null
+                }
+            }
+        },
+        {
+            "name": 20,
+            "link": {
+                "L2": "\u03b5",
+                "L1": "\u03b5",
+                "L3": "e2"
+            },
+            "state": {
+                "CFAN 0": "11",
+                "CFAN 1": "21",
+                "CFAN 2": "30"
+            },
+            "next": {
+                "T1B": {
+                    "state": {
+                        "CFAN 0": "10",
+                        "CFAN 1": "21",
+                        "CFAN 2": "30"
+                    },
+                    "link": {
+                        "L2": "\u03b5",
+                        "L1": "\u03b5",
+                        "L3": "\u03b5"
+                    },
+                    "observable": null,
+                    "relevant": null
+                },
+                "T2B": {
+                    "state": {
+                        "CFAN 0": "11",
+                        "CFAN 1": "20",
+                        "CFAN 2": "30"
+                    },
+                    "link": {
+                        "L2": "\u03b5",
+                        "L1": "e1",
+                        "L3": "e2"
+                    },
+                    "observable": "o2",
+                    "relevant": null
+                }
+            }
+        },
+        {
+            "name": 12,
+            "link": {
+                "L2": "\u03b5",
+                "L1": "e1",
+                "L3": "e2"
+            },
+            "state": {
+                "CFAN 0": "10",
+                "CFAN 1": "21",
+                "CFAN 2": "30"
+            },
+            "next": {
+                "T1A": {
+                    "state": {
+                        "CFAN 0": "11",
+                        "CFAN 1": "21",
+                        "CFAN 2": "30"
+                    },
+                    "link": {
+                        "L2": "\u03b5",
+                        "L1": "\u03b5",
+                        "L3": "e2"
+                    },
+                    "observable": null,
+                    "relevant": null
+                },
+                "T1C": {
+                    "state": {
+                        "CFAN 0": "11",
+                        "CFAN 1": "21",
+                        "CFAN 2": "30"
+                    },
+                    "link": {
+                        "L2": "\u03b5",
+                        "L1": "e1",
+                        "L3": "e2"
+                    },
+                    "observable": null,
+                    "relevant": "f1"
+                }
+            }
+        },
+        {
+            "name": 30,
+            "link": {
+                "L2": "\u03b5",
+                "L1": "\u03b5",
+                "L3": "\u03b5"
+            },
+            "state": {
+                "CFAN 0": "10",
+                "CFAN 1": "21",
+                "CFAN 2": "31"
+            },
+            "next": {
+                "T1C": {
+                    "state": {
+                        "CFAN 0": "11",
+                        "CFAN 1": "21",
+                        "CFAN 2": "31"
+                    },
+                    "link": {
+                        "L2": "\u03b5",
+                        "L1": "\u03b5",
+                        "L3": "\u03b5"
+                    },
+                    "observable": null,
+                    "relevant": "f1"
+                },
+                "T2B": {
+                    "state": {
+                        "CFAN 0": "10",
+                        "CFAN 1": "20",
+                        "CFAN 2": "31"
+                    },
+                    "link": {
+                        "L2": "\u03b5",
+                        "L1": "e1",
+                        "L3": "\u03b5"
+                    },
+                    "observable": "o2",
+                    "relevant": null
+                }
+            }
+        },
+        {
+            "name": 21,
+            "link": {
+                "L2": "\u03b5",
+                "L1": "\u03b5",
+                "L3": "e2"
+            },
+            "state": {
+                "CFAN 0": "11",
+                "CFAN 1": "21",
+                "CFAN 2": "31"
+            },
+            "next": {
+                "T1B": {
+                    "state": {
+                        "CFAN 0": "10",
+                        "CFAN 1": "21",
+                        "CFAN 2": "31"
+                    },
+                    "link": {
+                        "L2": "\u03b5",
+                        "L1": "\u03b5",
+                        "L3": "\u03b5"
+                    },
+                    "observable": null,
+                    "relevant": null
+                },
+                "T2B": {
+                    "state": {
+                        "CFAN 0": "11",
+                        "CFAN 1": "20",
+                        "CFAN 2": "31"
+                    },
+                    "link": {
+                        "L2": "\u03b5",
+                        "L1": "e1",
+                        "L3": "e2"
+                    },
+                    "observable": "o2",
+                    "relevant": null
+                }
+            }
+        },
+        {
+            "name": 13,
+            "link": {
+                "L2": "\u03b5",
+                "L1": "e1",
+                "L3": "e2"
+            },
+            "state": {
+                "CFAN 0": "10",
+                "CFAN 1": "21",
+                "CFAN 2": "31"
+            },
+            "next": {
+                "T1A": {
+                    "state": {
+                        "CFAN 0": "11",
+                        "CFAN 1": "21",
+                        "CFAN 2": "31"
+                    },
+                    "link": {
+                        "L2": "\u03b5",
+                        "L1": "\u03b5",
+                        "L3": "e2"
+                    },
+                    "observable": null,
+                    "relevant": null
+                },
+                "T1C": {
+                    "state": {
+                        "CFAN 0": "11",
+                        "CFAN 1": "21",
+                        "CFAN 2": "31"
+                    },
+                    "link": {
+                        "L2": "\u03b5",
+                        "L1": "e1",
+                        "L3": "e2"
+                    },
+                    "observable": null,
+                    "relevant": "f1"
+                }
+            }
+        },
+        {
+            "name": 32,
+            "link": {
+                "L2": "\u03b5",
+                "L1": "\u03b5",
+                "L3": "\u03b5"
+            },
+            "state": {
+                "CFAN 0": "11",
+                "CFAN 1": "21",
+                "CFAN 2": "30"
+            },
+            "next": {
+                "T2B": {
+                    "state": {
+                        "CFAN 0": "11",
+                        "CFAN 1": "20",
+                        "CFAN 2": "30"
+                    },
+                    "link": {
+                        "L2": "\u03b5",
+                        "L1": "e1",
+                        "L3": "\u03b5"
+                    },
+                    "observable": "o2",
+                    "relevant": null
+                },
+                "T3A": {
+                    "state": {
+                        "CFAN 0": "11",
+                        "CFAN 1": "21",
+                        "CFAN 2": "31"
+                    },
+                    "link": {
+                        "L2": "\u03b5",
+                        "L1": "\u03b5",
+                        "L3": "e2"
+                    },
+                    "observable": null,
+                    "relevant": null
+                }
+            }
+        },
+        {
+            "name": 24,
+            "link": {
+                "L2": "\u03b5",
+                "L1": "e1",
+                "L3": "\u03b5"
+            },
+            "state": {
+                "CFAN 0": "10",
+                "CFAN 1": "21",
+                "CFAN 2": "30"
+            },
+            "next": {
+                "T1A": {
+                    "state": {
+                        "CFAN 0": "11",
+                        "CFAN 1": "21",
+                        "CFAN 2": "30"
+                    },
+                    "link": {
+                        "L2": "\u03b5",
+                        "L1": "\u03b5",
+                        "L3": "\u03b5"
+                    },
+                    "observable": null,
+                    "relevant": null
+                },
+                "T1C": {
+                    "state": {
+                        "CFAN 0": "11",
+                        "CFAN 1": "21",
+                        "CFAN 2": "30"
+                    },
+                    "link": {
+                        "L2": "\u03b5",
+                        "L1": "e1",
+                        "L3": "\u03b5"
+                    },
+                    "observable": null,
+                    "relevant": "f1"
+                },
+                "T3A": {
+                    "state": {
+                        "CFAN 0": "10",
+                        "CFAN 1": "21",
+                        "CFAN 2": "31"
+                    },
+                    "link": {
+                        "L2": "\u03b5",
+                        "L1": "e1",
+                        "L3": "e2"
+                    },
+                    "observable": null,
+                    "relevant": null
+                }
+            }
+        },
+        {
+            "name": 15,
+            "link": {
+                "L2": "\u03b5",
+                "L1": "e1",
+                "L3": "e2"
+            },
+            "state": {
+                "CFAN 0": "11",
+                "CFAN 1": "21",
+                "CFAN 2": "30"
+            },
+            "next": {
+                "T1B": {
+                    "state": {
+                        "CFAN 0": "10",
+                        "CFAN 1": "21",
+                        "CFAN 2": "30"
+                    },
+                    "link": {
+                        "L2": "\u03b5",
+                        "L1": "e1",
+                        "L3": "\u03b5"
+                    },
+                    "observable": null,
+                    "relevant": null
+                }
+            }
+        },
+        {
+            "name": 33,
+            "link": {
+                "L2": "\u03b5",
+                "L1": "\u03b5",
+                "L3": "\u03b5"
+            },
+            "state": {
+                "CFAN 0": "11",
+                "CFAN 1": "21",
+                "CFAN 2": "31"
+            },
+            "next": {}
+        },
+        {
+            "name": 25,
+            "link": {
+                "L2": "\u03b5",
+                "L1": "e1",
+                "L3": "\u03b5"
+            },
+            "state": {
+                "CFAN 0": "10",
+                "CFAN 1": "21",
+                "CFAN 2": "31"
+            },
+            "next": {
+                "T1A": {
+                    "state": {
+                        "CFAN 0": "11",
+                        "CFAN 1": "21",
+                        "CFAN 2": "31"
+                    },
+                    "link": {
+                        "L2": "\u03b5",
+                        "L1": "\u03b5",
+                        "L3": "\u03b5"
+                    },
+                    "observable": null,
+                    "relevant": null
+                }
+            }
+        },
+        {
+            "name": 16,
+            "link": {
+                "L2": "\u03b5",
+                "L1": "e1",
+                "L3": "e2"
+            },
+            "state": {
+                "CFAN 0": "11",
+                "CFAN 1": "21",
+                "CFAN 2": "31"
+            },
+            "next": {
+                "T1B": {
+                    "state": {
+                        "CFAN 0": "10",
+                        "CFAN 1": "21",
+                        "CFAN 2": "31"
+                    },
+                    "link": {
+                        "L2": "\u03b5",
+                        "L1": "e1",
+                        "L3": "\u03b5"
+                    },
+                    "observable": null,
+                    "relevant": null
+                }
+            }
+        },
+        {
+            "name": 34,
+            "link": {
+                "L2": "\u03b5",
+                "L1": "e1",
+                "L3": "\u03b5"
+            },
+            "state": {
+                "CFAN 0": "11",
+                "CFAN 1": "21",
+                "CFAN 2": "30"
+            },
+            "next": {
+                "T3A": {
+                    "state": {
+                        "CFAN 0": "11",
+                        "CFAN 1": "21",
+                        "CFAN 2": "31"
+                    },
+                    "link": {
+                        "L2": "\u03b5",
+                        "L1": "e1",
+                        "L3": "e2"
+                    },
+                    "observable": null,
+                    "relevant": null
+                }
+            }
+        },
+        {
+            "name": 23,
+            "link": {
+                "L2": "e3",
+                "L1": "e1",
+                "L3": "\u03b5"
+            },
+            "state": {
+                "CFAN 0": "11",
+                "CFAN 1": "21",
+                "CFAN 2": "31"
+            },
+            "next": {
+                "T3B": {
+                    "state": {
+                        "CFAN 0": "11",
+                        "CFAN 1": "21",
+                        "CFAN 2": "30"
+                    },
+                    "link": {
+                        "L2": "\u03b5",
+                        "L1": "e1",
+                        "L3": "\u03b5"
+                    },
+                    "observable": null,
+                    "relevant": null
+                }
+            }
+        },
+        {
+            "name": 37,
+            "link": {
+                "L2": "\u03b5",
+                "L1": "e1",
+                "L3": "\u03b5"
+            },
+            "state": {
+                "CFAN 0": "10",
+                "CFAN 1": "20",
+                "CFAN 2": "30"
+            },
+            "next": {
+                "T1A": {
+                    "state": {
+                        "CFAN 0": "11",
+                        "CFAN 1": "20",
+                        "CFAN 2": "30"
+                    },
+                    "link": {
+                        "L2": "\u03b5",
+                        "L1": "\u03b5",
+                        "L3": "\u03b5"
+                    },
+                    "observable": null,
+                    "relevant": null
+                },
+                "T1C": {
+                    "state": {
+                        "CFAN 0": "11",
+                        "CFAN 1": "20",
+                        "CFAN 2": "30"
+                    },
+                    "link": {
+                        "L2": "\u03b5",
+                        "L1": "e1",
+                        "L3": "\u03b5"
+                    },
+                    "observable": null,
+                    "relevant": "f1"
+                },
+                "T3A": {
+                    "state": {
+                        "CFAN 0": "10",
+                        "CFAN 1": "20",
+                        "CFAN 2": "31"
+                    },
+                    "link": {
+                        "L2": "\u03b5",
+                        "L1": "e1",
+                        "L3": "e2"
+                    },
+                    "observable": null,
+                    "relevant": null
+                }
+            }
+        },
+        {
+            "name": 27,
+            "link": {
+                "L2": "\u03b5",
+                "L1": "e1",
+                "L3": "e2"
+            },
+            "state": {
+                "CFAN 0": "11",
+                "CFAN 1": "20",
+                "CFAN 2": "30"
+            },
+            "next": {
+                "T1B": {
+                    "state": {
+                        "CFAN 0": "10",
+                        "CFAN 1": "20",
+                        "CFAN 2": "30"
+                    },
+                    "link": {
+                        "L2": "\u03b5",
+                        "L1": "e1",
+                        "L3": "\u03b5"
+                    },
+                    "observable": null,
+                    "relevant": null
+                }
+            }
+        },
+        {
+            "name": 39,
+            "link": {
+                "L2": "\u03b5",
+                "L1": "\u03b5",
+                "L3": "e2"
+            },
+            "state": {
+                "CFAN 0": "10",
+                "CFAN 1": "21",
+                "CFAN 2": "31"
+            },
+            "next": {
+                "T1C": {
+                    "state": {
+                        "CFAN 0": "11",
+                        "CFAN 1": "21",
+                        "CFAN 2": "31"
+                    },
+                    "link": {
+                        "L2": "\u03b5",
+                        "L1": "\u03b5",
+                        "L3": "e2"
+                    },
+                    "observable": null,
+                    "relevant": "f1"
+                },
+                "T2B": {
+                    "state": {
+                        "CFAN 0": "10",
+                        "CFAN 1": "20",
+                        "CFAN 2": "31"
+                    },
+                    "link": {
+                        "L2": "\u03b5",
+                        "L1": "e1",
+                        "L3": "e2"
+                    },
+                    "observable": "o2",
+                    "relevant": null
+                }
+            }
+        },
+        {
+            "name": 42,
+            "link": {
+                "L2": "\u03b5",
+                "L1": "e1",
+                "L3": "e2"
+            },
+            "state": {
+                "CFAN 0": "10",
+                "CFAN 1": "20",
+                "CFAN 2": "31"
+            },
+            "next": {
+                "T1A": {
+                    "state": {
+                        "CFAN 0": "11",
+                        "CFAN 1": "20",
+                        "CFAN 2": "31"
+                    },
+                    "link": {
+                        "L2": "\u03b5",
+                        "L1": "\u03b5",
+                        "L3": "e2"
+                    },
+                    "observable": null,
+                    "relevant": null
+                },
+                "T1C": {
+                    "state": {
+                        "CFAN 0": "11",
+                        "CFAN 1": "20",
+                        "CFAN 2": "31"
+                    },
+                    "link": {
+                        "L2": "\u03b5",
+                        "L1": "e1",
+                        "L3": "e2"
+                    },
+                    "observable": null,
+                    "relevant": "f1"
+                }
+            }
+        }
+    ]
+}
