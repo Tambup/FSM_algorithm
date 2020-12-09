@@ -1,0 +1,915 @@
+{
+    "number space states": 19,
+    "number closures": 16,
+    "number transactions": 159,
+    "closure": [
+        {
+            "name": "x0",
+            "in_state_id": 0,
+            "regex": "\u03b5|\u03b5|\u03b5|(\u03b5|\u03b5)",
+            "exit": {
+                "oa": [
+                    {
+                        "successor": "x0",
+                        "trns_regex": "\u03b5"
+                    },
+                    {
+                        "successor": "x5",
+                        "trns_regex": "(\u03b5|\u03b5)"
+                    }
+                ],
+                "o1": [
+                    {
+                        "successor": "x1",
+                        "trns_regex": "\u03b5terr"
+                    },
+                    {
+                        "successor": "x6",
+                        "trns_regex": "(\u03b5|\u03b5)terr"
+                    }
+                ],
+                "oc": [
+                    {
+                        "successor": "x0",
+                        "trns_regex": "\u03b5"
+                    },
+                    {
+                        "successor": "x7",
+                        "trns_regex": "(\u03b5|\u03b5)"
+                    }
+                ],
+                "o2": [
+                    {
+                        "successor": "x2",
+                        "trns_regex": "\u03b5"
+                    },
+                    {
+                        "successor": "x8",
+                        "trns_regex": "(\u03b5|\u03b5)"
+                    }
+                ],
+                "o3": [
+                    {
+                        "successor": "x3",
+                        "trns_regex": "\u03b5rev"
+                    },
+                    {
+                        "successor": "x9",
+                        "trns_regex": "(\u03b5|\u03b5)rev"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "x1",
+            "in_state_id": 3,
+            "regex": "stop|stop|(stoprestart|stoprestart)",
+            "exit": {
+                "oc": [
+                    {
+                        "successor": "x1",
+                        "trns_regex": "\u03b5"
+                    },
+                    {
+                        "successor": "x14",
+                        "trns_regex": "stoprestart"
+                    },
+                    {
+                        "successor": "x7",
+                        "trns_regex": "(stoprestart|stoprestart)"
+                    }
+                ],
+                "o3": [
+                    {
+                        "successor": "x4",
+                        "trns_regex": "\u03b5rev"
+                    },
+                    {
+                        "successor": "x15",
+                        "trns_regex": "stoprestartrev"
+                    },
+                    {
+                        "successor": "x9",
+                        "trns_regex": "(stoprestart|stoprestart)rev"
+                    }
+                ],
+                "oa": [
+                    {
+                        "successor": "x3",
+                        "trns_regex": "stop"
+                    },
+                    {
+                        "successor": "x5",
+                        "trns_regex": "(stoprestart|stoprestart)"
+                    }
+                ],
+                "o1": [
+                    {
+                        "successor": "x4",
+                        "trns_regex": "stopterr"
+                    },
+                    {
+                        "successor": "x6",
+                        "trns_regex": "(stoprestart|stoprestart)terr"
+                    }
+                ],
+                "o2": [
+                    {
+                        "successor": "x8",
+                        "trns_regex": "(stoprestart|stoprestart)"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "x2",
+            "in_state_id": 5,
+            "regex": "\u03b5",
+            "exit": {
+                "oc": [
+                    {
+                        "successor": "x11",
+                        "trns_regex": "\u03b5"
+                    },
+                    {
+                        "successor": "x12",
+                        "trns_regex": "\u03b5"
+                    },
+                    {
+                        "successor": "x7",
+                        "trns_regex": "\u03b5"
+                    }
+                ],
+                "o3": [
+                    {
+                        "successor": "x10",
+                        "trns_regex": "\u03b5rev"
+                    },
+                    {
+                        "successor": "x13",
+                        "trns_regex": "\u03b5rev"
+                    },
+                    {
+                        "successor": "x9",
+                        "trns_regex": "\u03b5rev"
+                    }
+                ],
+                "oa": [
+                    {
+                        "successor": "x2",
+                        "trns_regex": "\u03b5"
+                    },
+                    {
+                        "successor": "x5",
+                        "trns_regex": "\u03b5"
+                    }
+                ],
+                "o1": [
+                    {
+                        "successor": "x6",
+                        "trns_regex": "\u03b5terr"
+                    }
+                ],
+                "o2": [
+                    {
+                        "successor": "x8",
+                        "trns_regex": "\u03b5"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "x3",
+            "in_state_id": 6,
+            "regex": "\u03b5|\u03b5|restart|(restart|restart)",
+            "exit": {
+                "oa": [
+                    {
+                        "successor": "x3",
+                        "trns_regex": "\u03b5"
+                    },
+                    {
+                        "successor": "x5",
+                        "trns_regex": "(restart|restart)"
+                    }
+                ],
+                "o1": [
+                    {
+                        "successor": "x4",
+                        "trns_regex": "\u03b5terr"
+                    },
+                    {
+                        "successor": "x6",
+                        "trns_regex": "(restart|restart)terr"
+                    }
+                ],
+                "oc": [
+                    {
+                        "successor": "x0",
+                        "trns_regex": "restart"
+                    },
+                    {
+                        "successor": "x7",
+                        "trns_regex": "(restart|restart)"
+                    }
+                ],
+                "o2": [
+                    {
+                        "successor": "x2",
+                        "trns_regex": "restart"
+                    },
+                    {
+                        "successor": "x8",
+                        "trns_regex": "(restart|restart)"
+                    }
+                ],
+                "o3": [
+                    {
+                        "successor": "x3",
+                        "trns_regex": "restartrev"
+                    },
+                    {
+                        "successor": "x9",
+                        "trns_regex": "(restart|restart)rev"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "x4",
+            "in_state_id": 14,
+            "regex": "restartstop|restartstop|(restartstoprestart|restartstoprestart)",
+            "exit": {
+                "oc": [
+                    {
+                        "successor": "x1",
+                        "trns_regex": "restart"
+                    },
+                    {
+                        "successor": "x14",
+                        "trns_regex": "restartstoprestart"
+                    },
+                    {
+                        "successor": "x7",
+                        "trns_regex": "(restartstoprestart|restartstoprestart)"
+                    }
+                ],
+                "o3": [
+                    {
+                        "successor": "x4",
+                        "trns_regex": "restartrev"
+                    },
+                    {
+                        "successor": "x15",
+                        "trns_regex": "restartstoprestartrev"
+                    },
+                    {
+                        "successor": "x9",
+                        "trns_regex": "(restartstoprestart|restartstoprestart)rev"
+                    }
+                ],
+                "oa": [
+                    {
+                        "successor": "x3",
+                        "trns_regex": "restartstop"
+                    },
+                    {
+                        "successor": "x5",
+                        "trns_regex": "(restartstoprestart|restartstoprestart)"
+                    }
+                ],
+                "o1": [
+                    {
+                        "successor": "x4",
+                        "trns_regex": "restartstopterr"
+                    },
+                    {
+                        "successor": "x6",
+                        "trns_regex": "(restartstoprestart|restartstoprestart)terr"
+                    }
+                ],
+                "o2": [
+                    {
+                        "successor": "x8",
+                        "trns_regex": "(restartstoprestart|restartstoprestart)"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "x5",
+            "in_state_id": 2,
+            "regex": "\u03b5|\u03b5",
+            "exit": {
+                "oc": [
+                    {
+                        "successor": "x0",
+                        "trns_regex": "\u03b5"
+                    },
+                    {
+                        "successor": "x7",
+                        "trns_regex": "\u03b5"
+                    }
+                ],
+                "o2": [
+                    {
+                        "successor": "x2",
+                        "trns_regex": "\u03b5"
+                    },
+                    {
+                        "successor": "x8",
+                        "trns_regex": "\u03b5"
+                    }
+                ],
+                "o3": [
+                    {
+                        "successor": "x3",
+                        "trns_regex": "\u03b5rev"
+                    },
+                    {
+                        "successor": "x9",
+                        "trns_regex": "\u03b5rev"
+                    }
+                ],
+                "oa": [
+                    {
+                        "successor": "x5",
+                        "trns_regex": "\u03b5"
+                    }
+                ],
+                "o1": [
+                    {
+                        "successor": "x6",
+                        "trns_regex": "\u03b5terr"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "x6",
+            "in_state_id": 7,
+            "regex": "stop|stop|(stoprestart|stoprestart)",
+            "exit": {
+                "oc": [
+                    {
+                        "successor": "x1",
+                        "trns_regex": "\u03b5"
+                    },
+                    {
+                        "successor": "x14",
+                        "trns_regex": "stoprestart"
+                    },
+                    {
+                        "successor": "x7",
+                        "trns_regex": "(stoprestart|stoprestart)"
+                    }
+                ],
+                "o3": [
+                    {
+                        "successor": "x4",
+                        "trns_regex": "\u03b5rev"
+                    },
+                    {
+                        "successor": "x15",
+                        "trns_regex": "stoprestartrev"
+                    },
+                    {
+                        "successor": "x9",
+                        "trns_regex": "(stoprestart|stoprestart)rev"
+                    }
+                ],
+                "oa": [
+                    {
+                        "successor": "x3",
+                        "trns_regex": "stop"
+                    },
+                    {
+                        "successor": "x5",
+                        "trns_regex": "(stoprestart|stoprestart)"
+                    }
+                ],
+                "o1": [
+                    {
+                        "successor": "x4",
+                        "trns_regex": "stopterr"
+                    },
+                    {
+                        "successor": "x6",
+                        "trns_regex": "(stoprestart|stoprestart)terr"
+                    }
+                ],
+                "o2": [
+                    {
+                        "successor": "x8",
+                        "trns_regex": "(stoprestart|stoprestart)"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "x7",
+            "in_state_id": 1,
+            "regex": "\u03b5|\u03b5",
+            "exit": {
+                "oa": [
+                    {
+                        "successor": "x0",
+                        "trns_regex": "\u03b5"
+                    },
+                    {
+                        "successor": "x5",
+                        "trns_regex": "\u03b5"
+                    }
+                ],
+                "o1": [
+                    {
+                        "successor": "x1",
+                        "trns_regex": "\u03b5terr"
+                    },
+                    {
+                        "successor": "x6",
+                        "trns_regex": "\u03b5terr"
+                    }
+                ],
+                "oc": [
+                    {
+                        "successor": "x7",
+                        "trns_regex": "\u03b5"
+                    }
+                ],
+                "o2": [
+                    {
+                        "successor": "x8",
+                        "trns_regex": "\u03b5"
+                    }
+                ],
+                "o3": [
+                    {
+                        "successor": "x9",
+                        "trns_regex": "\u03b5rev"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "x8",
+            "in_state_id": 8,
+            "regex": "\u03b5",
+            "exit": {
+                "oa": [
+                    {
+                        "successor": "x2",
+                        "trns_regex": "\u03b5"
+                    },
+                    {
+                        "successor": "x5",
+                        "trns_regex": "\u03b5"
+                    }
+                ],
+                "oc": [
+                    {
+                        "successor": "x12",
+                        "trns_regex": "\u03b5"
+                    },
+                    {
+                        "successor": "x7",
+                        "trns_regex": "\u03b5"
+                    }
+                ],
+                "o3": [
+                    {
+                        "successor": "x13",
+                        "trns_regex": "\u03b5rev"
+                    },
+                    {
+                        "successor": "x9",
+                        "trns_regex": "\u03b5rev"
+                    }
+                ],
+                "o1": [
+                    {
+                        "successor": "x6",
+                        "trns_regex": "\u03b5terr"
+                    }
+                ],
+                "o2": [
+                    {
+                        "successor": "x8",
+                        "trns_regex": "\u03b5"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "x9",
+            "in_state_id": 9,
+            "regex": "\u03b5|restart",
+            "exit": {
+                "oa": [
+                    {
+                        "successor": "x3",
+                        "trns_regex": "\u03b5"
+                    },
+                    {
+                        "successor": "x5",
+                        "trns_regex": "restart"
+                    }
+                ],
+                "o1": [
+                    {
+                        "successor": "x4",
+                        "trns_regex": "\u03b5terr"
+                    },
+                    {
+                        "successor": "x6",
+                        "trns_regex": "restartterr"
+                    }
+                ],
+                "oc": [
+                    {
+                        "successor": "x7",
+                        "trns_regex": "restart"
+                    }
+                ],
+                "o2": [
+                    {
+                        "successor": "x8",
+                        "trns_regex": "restart"
+                    }
+                ],
+                "o3": [
+                    {
+                        "successor": "x9",
+                        "trns_regex": "restartrev"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "x10",
+            "in_state_id": 11,
+            "regex": "\u03b5|(restart|(restart|restart))",
+            "exit": {
+                "oa": [
+                    {
+                        "successor": "x10",
+                        "trns_regex": "\u03b5"
+                    },
+                    {
+                        "successor": "x3",
+                        "trns_regex": "\u03b5"
+                    },
+                    {
+                        "successor": "x2",
+                        "trns_regex": "(restart|restart)"
+                    },
+                    {
+                        "successor": "x5",
+                        "trns_regex": "(restart|(restart|restart))"
+                    }
+                ],
+                "oc": [
+                    {
+                        "successor": "x11",
+                        "trns_regex": "restart"
+                    },
+                    {
+                        "successor": "x12",
+                        "trns_regex": "(restart|restart)"
+                    },
+                    {
+                        "successor": "x7",
+                        "trns_regex": "(restart|(restart|restart))"
+                    }
+                ],
+                "o3": [
+                    {
+                        "successor": "x10",
+                        "trns_regex": "restartrev"
+                    },
+                    {
+                        "successor": "x13",
+                        "trns_regex": "(restart|restart)rev"
+                    },
+                    {
+                        "successor": "x9",
+                        "trns_regex": "(restart|(restart|restart))rev"
+                    }
+                ],
+                "o1": [
+                    {
+                        "successor": "x4",
+                        "trns_regex": "\u03b5terr"
+                    },
+                    {
+                        "successor": "x6",
+                        "trns_regex": "(restart|(restart|restart))terr"
+                    }
+                ],
+                "o2": [
+                    {
+                        "successor": "x8",
+                        "trns_regex": "(restart|(restart|restart))"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "x11",
+            "in_state_id": 10,
+            "regex": "\u03b5|(\u03b5|(\u03b5|\u03b5))",
+            "exit": {
+                "oa": [
+                    {
+                        "successor": "x11",
+                        "trns_regex": "\u03b5"
+                    },
+                    {
+                        "successor": "x0",
+                        "trns_regex": "\u03b5"
+                    },
+                    {
+                        "successor": "x2",
+                        "trns_regex": "(\u03b5|\u03b5)"
+                    },
+                    {
+                        "successor": "x5",
+                        "trns_regex": "(\u03b5|(\u03b5|\u03b5))"
+                    }
+                ],
+                "oc": [
+                    {
+                        "successor": "x11",
+                        "trns_regex": "\u03b5"
+                    },
+                    {
+                        "successor": "x12",
+                        "trns_regex": "(\u03b5|\u03b5)"
+                    },
+                    {
+                        "successor": "x7",
+                        "trns_regex": "(\u03b5|(\u03b5|\u03b5))"
+                    }
+                ],
+                "o3": [
+                    {
+                        "successor": "x10",
+                        "trns_regex": "\u03b5rev"
+                    },
+                    {
+                        "successor": "x13",
+                        "trns_regex": "(\u03b5|\u03b5)rev"
+                    },
+                    {
+                        "successor": "x9",
+                        "trns_regex": "(\u03b5|(\u03b5|\u03b5))rev"
+                    }
+                ],
+                "o1": [
+                    {
+                        "successor": "x1",
+                        "trns_regex": "\u03b5terr"
+                    },
+                    {
+                        "successor": "x6",
+                        "trns_regex": "(\u03b5|(\u03b5|\u03b5))terr"
+                    }
+                ],
+                "o2": [
+                    {
+                        "successor": "x8",
+                        "trns_regex": "(\u03b5|(\u03b5|\u03b5))"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "x12",
+            "in_state_id": 15,
+            "regex": "\u03b5|(\u03b5|\u03b5)",
+            "exit": {
+                "oa": [
+                    {
+                        "successor": "x11",
+                        "trns_regex": "\u03b5"
+                    },
+                    {
+                        "successor": "x0",
+                        "trns_regex": "\u03b5"
+                    },
+                    {
+                        "successor": "x2",
+                        "trns_regex": "\u03b5"
+                    },
+                    {
+                        "successor": "x5",
+                        "trns_regex": "(\u03b5|\u03b5)"
+                    }
+                ],
+                "o1": [
+                    {
+                        "successor": "x1",
+                        "trns_regex": "\u03b5terr"
+                    },
+                    {
+                        "successor": "x6",
+                        "trns_regex": "(\u03b5|\u03b5)terr"
+                    }
+                ],
+                "oc": [
+                    {
+                        "successor": "x12",
+                        "trns_regex": "\u03b5"
+                    },
+                    {
+                        "successor": "x7",
+                        "trns_regex": "(\u03b5|\u03b5)"
+                    }
+                ],
+                "o3": [
+                    {
+                        "successor": "x13",
+                        "trns_regex": "\u03b5rev"
+                    },
+                    {
+                        "successor": "x9",
+                        "trns_regex": "(\u03b5|\u03b5)rev"
+                    }
+                ],
+                "o2": [
+                    {
+                        "successor": "x8",
+                        "trns_regex": "(\u03b5|\u03b5)"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "x13",
+            "in_state_id": 16,
+            "regex": "\u03b5|(restart|restart)",
+            "exit": {
+                "oa": [
+                    {
+                        "successor": "x10",
+                        "trns_regex": "\u03b5"
+                    },
+                    {
+                        "successor": "x3",
+                        "trns_regex": "\u03b5"
+                    },
+                    {
+                        "successor": "x2",
+                        "trns_regex": "restart"
+                    },
+                    {
+                        "successor": "x5",
+                        "trns_regex": "(restart|restart)"
+                    }
+                ],
+                "o1": [
+                    {
+                        "successor": "x4",
+                        "trns_regex": "\u03b5terr"
+                    },
+                    {
+                        "successor": "x6",
+                        "trns_regex": "(restart|restart)terr"
+                    }
+                ],
+                "oc": [
+                    {
+                        "successor": "x12",
+                        "trns_regex": "restart"
+                    },
+                    {
+                        "successor": "x7",
+                        "trns_regex": "(restart|restart)"
+                    }
+                ],
+                "o3": [
+                    {
+                        "successor": "x13",
+                        "trns_regex": "restartrev"
+                    },
+                    {
+                        "successor": "x9",
+                        "trns_regex": "(restart|restart)rev"
+                    }
+                ],
+                "o2": [
+                    {
+                        "successor": "x8",
+                        "trns_regex": "(restart|restart)"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "x14",
+            "in_state_id": 22,
+            "regex": "\u03b5|(\u03b5|\u03b5)",
+            "exit": {
+                "oa": [
+                    {
+                        "successor": "x0",
+                        "trns_regex": "\u03b5"
+                    },
+                    {
+                        "successor": "x5",
+                        "trns_regex": "(\u03b5|\u03b5)"
+                    }
+                ],
+                "o1": [
+                    {
+                        "successor": "x1",
+                        "trns_regex": "\u03b5terr"
+                    },
+                    {
+                        "successor": "x6",
+                        "trns_regex": "(\u03b5|\u03b5)terr"
+                    }
+                ],
+                "oc": [
+                    {
+                        "successor": "x14",
+                        "trns_regex": "\u03b5"
+                    },
+                    {
+                        "successor": "x7",
+                        "trns_regex": "(\u03b5|\u03b5)"
+                    }
+                ],
+                "o3": [
+                    {
+                        "successor": "x15",
+                        "trns_regex": "\u03b5rev"
+                    },
+                    {
+                        "successor": "x9",
+                        "trns_regex": "(\u03b5|\u03b5)rev"
+                    }
+                ],
+                "o2": [
+                    {
+                        "successor": "x8",
+                        "trns_regex": "(\u03b5|\u03b5)"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "x15",
+            "in_state_id": 20,
+            "regex": "\u03b5|(restart|restart)",
+            "exit": {
+                "oa": [
+                    {
+                        "successor": "x3",
+                        "trns_regex": "\u03b5"
+                    },
+                    {
+                        "successor": "x5",
+                        "trns_regex": "(restart|restart)"
+                    }
+                ],
+                "o1": [
+                    {
+                        "successor": "x4",
+                        "trns_regex": "\u03b5terr"
+                    },
+                    {
+                        "successor": "x6",
+                        "trns_regex": "(restart|restart)terr"
+                    }
+                ],
+                "oc": [
+                    {
+                        "successor": "x14",
+                        "trns_regex": "restart"
+                    },
+                    {
+                        "successor": "x7",
+                        "trns_regex": "(restart|restart)"
+                    }
+                ],
+                "o3": [
+                    {
+                        "successor": "x15",
+                        "trns_regex": "restartrev"
+                    },
+                    {
+                        "successor": "x9",
+                        "trns_regex": "(restart|restart)rev"
+                    }
+                ],
+                "o2": [
+                    {
+                        "successor": "x8",
+                        "trns_regex": "(restart|restart)"
+                    }
+                ]
+            }
+        }
+    ]
+}

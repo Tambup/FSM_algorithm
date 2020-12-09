@@ -47,17 +47,19 @@ class RegexOperation:
         raise NotImplementedError
 
     def _concat(self, nk=None):
+        last = self._temp[-1]
         rel = ''.join([rel if rel else ''
                        for _, _, rel in self._temp[:-1]])
 
-        new_tr = self._new_generic_trans_given_relevance(relevance=rel, nk=nk)
+        new_tr = self._new_generic_trans_given_relevance(relevance=rel,
+                                                         nk=nk)
 
         self._temp[0][0].update_nexts(del_tr=[self._temp[0][1]],
                                       new_tr=new_tr,
-                                      new_next=self._temp[-1])
-        for i, elem in enumerate(self._prev[self._temp[-1]]):
+                                      new_next=last)
+        for i, elem in enumerate(self._prev[last]):
             if elem == self._temp[-2][0]:
-                self._prev[self._temp[-1]][i] = self._temp[0][0]
+                self._prev[last][i] = self._temp[0][0]
                 break
         for elem, _, _ in self._temp[1:-1]:
             del self._work_space[elem]
@@ -66,21 +68,23 @@ class RegexOperation:
         return trns.subscript_value if isinstance(trns, SubscrTrans) else None
 
     def _alternative(self, null_evt):
+        last = self._temp[-1]
         rel = '(' + '|'.join(
             [tr.relevant if tr.relevant else null_evt
                 for tr in self._temp[1]]
             ) + ')'
         nk = self._subscription_value(self._temp[1][0])
-        new_tr = self._new_generic_trans_given_relevance(relevance=rel, nk=nk)
+        new_tr = self._new_generic_trans_given_relevance(relevance=rel,
+                                                         nk=nk)
 
         self._temp[0].update_nexts(del_tr=self._temp[1],
                                    new_tr=new_tr,
-                                   new_next=self._temp[-1])
+                                   new_next=last)
 
-        self._prev[self._temp[-1]] = [
-            val for val in self._prev[self._temp[-1]] if val != self._temp[0]
+        self._prev[last] = [
+            val for val in self._prev[last] if val != self._temp[0]
             ]
-        self._prev[self._temp[-1]].append(self._temp[0])
+        self._prev[last].append(self._temp[0])
 
     def _remaining(self):
         remove_val = None
@@ -140,6 +144,7 @@ class RegexOperation:
                             nk=subscription)
 
     def _sub_trans(self, n_first, rel, n_second, nk=None):
-        new_t = self._new_generic_trans_given_relevance(relevance=rel, nk=nk)
+        new_t = self._new_generic_trans_given_relevance(relevance=rel,
+                                                        nk=nk)
         n_first.add_next(transition=new_t, next=n_second)
         self._prev[n_second].append(n_first)

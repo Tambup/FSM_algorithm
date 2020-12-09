@@ -27,7 +27,7 @@ class Diagnosis(RegexOperation):
         print('Start computing diagnosis')
         self._unify_exit()
         while len([tr for space in self._work_space.keys()
-                  for tr in space.nexts.keys()]) > 2:
+                  for tr in space.nexts.keys()]) > 1:
             if super()._sequence_transition():
                 super()._concat()
             elif super()._set_parallel_tansition():

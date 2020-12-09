@@ -128,11 +128,7 @@ class ComportamentalFANSpace(Task):
                     del st.nexts[trns]
         self._space_states = list(mantain_list.keys())
 
-    val = 0
-
     def _prune_recursion(self, state, forbidden, mantain_list, remove_list):
-        print(ComportamentalFANSpace.val)
-        ComportamentalFANSpace.val += 1
         if state.is_final():
             mantain_list[state] = True
             return False

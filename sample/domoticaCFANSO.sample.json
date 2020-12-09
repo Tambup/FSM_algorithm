@@ -1,0 +1,294 @@
+{
+    "observation": [
+        "o1"
+    ],
+    "number comportamental FA": 2,
+    "number states": 7,
+    "number space states": 11,
+    "number transitions": 13,
+    "space_state_linear_observation": [
+        {
+            "name": 4,
+            "obs_index": 1,
+            "link": {
+                "L1": "\u03b5",
+                "L2": "\u03b5"
+            },
+            "state": {
+                "CFAN 0": "a3",
+                "CFAN 1": "c3"
+            },
+            "next": {
+                "c_ripristino": {
+                    "state": {
+                        "CFAN 0": "a3",
+                        "CFAN 1": "c4"
+                    },
+                    "link": {
+                        "L1": "cr",
+                        "L2": "\u03b5"
+                    }
+                }
+            }
+        },
+        {
+            "name": 6,
+            "obs_index": 1,
+            "link": {
+                "L1": "\u03b5",
+                "L2": "\u03b5"
+            },
+            "state": {
+                "CFAN 0": "a2",
+                "CFAN 1": "c4"
+            },
+            "next": {
+                "c_fine_manutenzione": {
+                    "state": {
+                        "CFAN 0": "a2",
+                        "CFAN 1": "c2"
+                    },
+                    "link": {
+                        "L1": "\u03b5",
+                        "L2": "\u03b5"
+                    }
+                }
+            }
+        },
+        {
+            "name": 7,
+            "obs_index": 1,
+            "link": {
+                "L1": "\u03b5",
+                "L2": "\u03b5"
+            },
+            "state": {
+                "CFAN 0": "a2",
+                "CFAN 1": "c2"
+            },
+            "next": {}
+        },
+        {
+            "name": 5,
+            "obs_index": 1,
+            "link": {
+                "L1": "cr",
+                "L2": "\u03b5"
+            },
+            "state": {
+                "CFAN 0": "a3",
+                "CFAN 1": "c4"
+            },
+            "next": {
+                "a_ripristino": {
+                    "state": {
+                        "CFAN 0": "a2",
+                        "CFAN 1": "c4"
+                    },
+                    "link": {
+                        "L1": "\u03b5",
+                        "L2": "\u03b5"
+                    }
+                },
+                "c_fine_manutenzione": {
+                    "state": {
+                        "CFAN 0": "a3",
+                        "CFAN 1": "c2"
+                    },
+                    "link": {
+                        "L1": "cr",
+                        "L2": "\u03b5"
+                    }
+                }
+            }
+        },
+        {
+            "name": 8,
+            "obs_index": 1,
+            "link": {
+                "L1": "cr",
+                "L2": "\u03b5"
+            },
+            "state": {
+                "CFAN 0": "a3",
+                "CFAN 1": "c2"
+            },
+            "next": {
+                "a_ripristino": {
+                    "state": {
+                        "CFAN 0": "a2",
+                        "CFAN 1": "c2"
+                    },
+                    "link": {
+                        "L1": "\u03b5",
+                        "L2": "\u03b5"
+                    }
+                }
+            }
+        },
+        {
+            "name": 3,
+            "obs_index": 1,
+            "link": {
+                "L1": "\u03b5",
+                "L2": "terr"
+            },
+            "state": {
+                "CFAN 0": "a3",
+                "CFAN 1": "c2"
+            },
+            "next": {
+                "c_manomissione": {
+                    "state": {
+                        "CFAN 0": "a3",
+                        "CFAN 1": "c3"
+                    },
+                    "link": {
+                        "L1": "\u03b5",
+                        "L2": "\u03b5"
+                    }
+                }
+            }
+        },
+        {
+            "name": 2,
+            "obs_index": 1,
+            "link": {
+                "L1": "\u03b5",
+                "L2": "terr"
+            },
+            "state": {
+                "CFAN 0": "a3",
+                "CFAN 1": "c1"
+            },
+            "next": {
+                "c_on": {
+                    "state": {
+                        "CFAN 0": "a3",
+                        "CFAN 1": "c2"
+                    },
+                    "link": {
+                        "L1": "\u03b5",
+                        "L2": "terr"
+                    }
+                }
+            }
+        },
+        {
+            "name": 1,
+            "obs_index": 0,
+            "link": {
+                "L1": "\u03b5",
+                "L2": "\u03b5"
+            },
+            "state": {
+                "CFAN 0": "a2",
+                "CFAN 1": "c1"
+            },
+            "next": {
+                "a_terremoto": {
+                    "state": {
+                        "CFAN 0": "a3",
+                        "CFAN 1": "c1"
+                    },
+                    "link": {
+                        "L1": "\u03b5",
+                        "L2": "terr"
+                    }
+                },
+                "c_on": {
+                    "state": {
+                        "CFAN 0": "a2",
+                        "CFAN 1": "c2"
+                    },
+                    "link": {
+                        "L1": "\u03b5",
+                        "L2": "\u03b5"
+                    }
+                }
+            }
+        },
+        {
+            "name": 9,
+            "obs_index": 0,
+            "link": {
+                "L1": "\u03b5",
+                "L2": "\u03b5"
+            },
+            "state": {
+                "CFAN 0": "a2",
+                "CFAN 1": "c2"
+            },
+            "next": {
+                "a_terremoto": {
+                    "state": {
+                        "CFAN 0": "a3",
+                        "CFAN 1": "c2"
+                    },
+                    "link": {
+                        "L1": "\u03b5",
+                        "L2": "terr"
+                    }
+                }
+            }
+        },
+        {
+            "name": 0,
+            "obs_index": 0,
+            "link": {
+                "L1": "\u03b5",
+                "L2": "\u03b5"
+            },
+            "state": {
+                "CFAN 0": "a1",
+                "CFAN 1": "c1"
+            },
+            "next": {
+                "a_on": {
+                    "state": {
+                        "CFAN 0": "a2",
+                        "CFAN 1": "c1"
+                    },
+                    "link": {
+                        "L1": "\u03b5",
+                        "L2": "\u03b5"
+                    }
+                },
+                "c_on": {
+                    "state": {
+                        "CFAN 0": "a1",
+                        "CFAN 1": "c2"
+                    },
+                    "link": {
+                        "L1": "\u03b5",
+                        "L2": "\u03b5"
+                    }
+                }
+            }
+        },
+        {
+            "name": 10,
+            "obs_index": 0,
+            "link": {
+                "L1": "\u03b5",
+                "L2": "\u03b5"
+            },
+            "state": {
+                "CFAN 0": "a1",
+                "CFAN 1": "c2"
+            },
+            "next": {
+                "a_on": {
+                    "state": {
+                        "CFAN 0": "a2",
+                        "CFAN 1": "c2"
+                    },
+                    "link": {
+                        "L1": "\u03b5",
+                        "L2": "\u03b5"
+                    }
+                }
+            }
+        }
+    ]
+}

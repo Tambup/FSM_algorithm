@@ -1,4 +1,6 @@
 class OutTransition():
+    nonce = 0
+
     def __init__(self, name, destination, links, observable, relevant):
         self._name = name
         self._destination = destination
@@ -7,6 +9,8 @@ class OutTransition():
             )
         self._observable = observable
         self._relevant = relevant
+        self._nonce = OutTransition.nonce
+        OutTransition.nonce += 1
 
     @property
     def name(self):
@@ -69,7 +73,7 @@ class OutTransition():
         return False
 
     def __hash__(self):
-        return hash((self._name, self._destination, self._links))
+        return hash((self._name, self._destination, self._links, self._nonce))
 
     def _same_vectors(self, obj):
         return all(elem in self._links for elem in obj.links) and \

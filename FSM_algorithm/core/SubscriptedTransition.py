@@ -2,7 +2,6 @@ from core.OutTransition import OutTransition
 
 
 class SubscriptedTransition(OutTransition):
-    _nonce = 0
 
     def __init__(self, name, destination, links,
                  observable, relevant, subscr=None):
@@ -10,8 +9,6 @@ class SubscriptedTransition(OutTransition):
                  for link in links]
         super().__init__(name, destination, links, observable, relevant)
         self._subscript_value = subscr
-        self._nonce = SubscriptedTransition._nonce
-        SubscriptedTransition._nonce += 1
 
     @staticmethod
     def from_trans(out_trans):
@@ -26,4 +23,4 @@ class SubscriptedTransition(OutTransition):
         return self._subscript_value
 
     def __hash__(self):
-        return hash((super().__hash__(), self._subscript_value, self._nonce))
+        return hash((super().__hash__(), self._subscript_value))

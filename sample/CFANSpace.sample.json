@@ -1,4 +1,8 @@
 {
+    "number comportamental FA": 2,
+    "number states": 4,
+    "number space states": 13,
+    "number transitions": 16,
     "space_state": [
         {
             "name": 0,
