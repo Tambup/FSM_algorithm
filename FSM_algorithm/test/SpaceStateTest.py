@@ -10,7 +10,7 @@ class TestStringMethods(unittest.TestCase):
     def test_maintain(self):
         f = open('sample/FSCNetwork.sample.json', 'r')
         lines = [line.strip() for line in f]
-        cfaNetwork = UserIO.readInput(''.join(line for line in lines))
+        cfaNetwork = UserIO.read_json(''.join(line for line in lines))
         a = cfaNetwork._comportamentalFAs[0]._states[0]
         b = cfaNetwork._comportamentalFAs[1]._states[0]
         check = SpaceState([a, b], {'L2', 'L3'})
@@ -21,7 +21,7 @@ class TestStringMethods(unittest.TestCase):
     def test_next_transition_valid(self):
         f = open('sample/FSCNetwork.sample.json', 'r')
         lines = [line.strip() for line in f]
-        cfaNetwork = UserIO.readInput(''.join(line for line in lines))
+        cfaNetwork = UserIO.read_json(''.join(line for line in lines))
         test = ComportamentalFANSpace(cfaNetwork)
         test.build()
         outTransition = {
@@ -34,13 +34,21 @@ class TestStringMethods(unittest.TestCase):
             'observable': 'o3',
             'relevant': None}
         s1 = State('30', True, [outTransition])
-        i, next = test._space_states[0].next_transition_state()[s1]
+        successors = test._space_states[0].next_transition_state()
+        nonces = [tr[0]._nonce for _, tr in successors.values()]
+        for nonce in nonces:
+            s1.out_transitions[0]._nonce = nonce
+            try:
+                i, next = successors[s1]
+                break
+            except KeyError:
+                pass
         self.assertTrue(next[0] == s1._out_transitions[0])
 
     def test_next_transition_none(self):
         f = open('sample/FSCNetwork.sample.json', 'r')
         lines = [line.strip() for line in f]
-        cfaNetwork = UserIO.readInput(''.join(line for line in lines))
+        cfaNetwork = UserIO.read_json(''.join(line for line in lines))
         test = ComportamentalFANSpace(cfaNetwork)
         test.build()
         next = test._space_states[12].next_transition_state()
@@ -49,7 +57,7 @@ class TestStringMethods(unittest.TestCase):
     def test_must_add_valid(self):
         f = open('sample/FSCNetwork.sample.json', 'r')
         lines = [line.strip() for line in f]
-        cfaNetwork = UserIO.readInput(''.join(line for line in lines))
+        cfaNetwork = UserIO.read_json(''.join(line for line in lines))
         test = ComportamentalFANSpace(cfaNetwork)
         test.build()
         link = {
@@ -63,7 +71,7 @@ class TestStringMethods(unittest.TestCase):
     def test_must_add_in_false(self):
         f = open('sample/FSCNetwork.sample.json', 'r')
         lines = [line.strip() for line in f]
-        cfaNetwork = UserIO.readInput(''.join(line for line in lines))
+        cfaNetwork = UserIO.read_json(''.join(line for line in lines))
         test = ComportamentalFANSpace(cfaNetwork)
         test.build()
         link = {

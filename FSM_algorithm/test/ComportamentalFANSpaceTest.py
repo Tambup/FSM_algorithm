@@ -8,7 +8,7 @@ class TestStringMethods(unittest.TestCase):
     def test_prune(self):
         f = open('sample/FSCNetwork.sample.json', 'r')
         lines = [line.strip() for line in f]
-        cfaNetwork = UserIO.readInput(''.join(line for line in lines))
+        cfaNetwork = UserIO.read_json(''.join(line for line in lines))
         fanSpace = ComportamentalFANSpace(cfaNetwork)
         fanSpace.build_no_prune()
         a = fanSpace._space_states[13]
@@ -20,7 +20,7 @@ class TestStringMethods(unittest.TestCase):
     def test_prune_only_prunable(self):
         f = open('sample/FSCNetwork.sample.json', 'r')
         lines = [line.strip() for line in f]
-        cfaNetwork = UserIO.readInput(''.join(line for line in lines))
+        cfaNetwork = UserIO.read_json(''.join(line for line in lines))
         fanSpace = ComportamentalFANSpace(cfaNetwork)
         fanSpace.build_no_prune()
         a = fanSpace._space_states[12]
@@ -31,7 +31,7 @@ class TestStringMethods(unittest.TestCase):
     def test_add_state_invalid(self):
         f = open('sample/FSCNetwork.sample.json', 'r')
         lines = [line.strip() for line in f]
-        cfaNetwork = UserIO.readInput(''.join(line for line in lines))
+        cfaNetwork = UserIO.read_json(''.join(line for line in lines))
         fanSpace = ComportamentalFANSpace(cfaNetwork)
         fanSpace._initialize()
         fanSpace._add_states(fanSpace._space_states[0], fanSpace.
@@ -57,7 +57,7 @@ class TestStringMethods(unittest.TestCase):
     def test_add_state_valid(self):
         f = open('sample/FSCNetwork.sample.json', 'r')
         lines = [line.strip() for line in f]
-        cfaNetwork = UserIO.readInput(''.join(line for line in lines))
+        cfaNetwork = UserIO.read_json(''.join(line for line in lines))
         fanSpace = ComportamentalFANSpace(cfaNetwork)
         fanSpace._initialize()
         ss = fanSpace._space_states[0]
@@ -71,7 +71,7 @@ class TestStringMethods(unittest.TestCase):
     def test_add_state_valid_no_dupplicate_state(self):
         f = open('sample/FSCNetwork.sample.json', 'r')
         lines = [line.strip() for line in f]
-        cfaNetwork = UserIO.readInput(''.join(line for line in lines))
+        cfaNetwork = UserIO.read_json(''.join(line for line in lines))
         fanSpace = ComportamentalFANSpace(cfaNetwork)
         fanSpace._initialize()
         fanSpace._add_states(fanSpace._space_states[0], fanSpace.
@@ -130,7 +130,7 @@ class TestStringMethods(unittest.TestCase):
         state_exp_2 = State('31', False, [out_exp_2, out_exp_3])
         f = open('sample/FSCNetwork.sample.json', 'r')
         lines = [line.strip() for line in f]
-        cfaNetwork = UserIO.readInput(''.join(line for line in lines))
+        cfaNetwork = UserIO.read_json(''.join(line for line in lines))
         fanSpace = ComportamentalFANSpace(cfaNetwork)
         fanSpace._initialize()
         fanSpace._add_states(fanSpace._space_states[0], fanSpace.
@@ -157,7 +157,7 @@ class TestStringMethods(unittest.TestCase):
         state_exp_1 = State('20', True, [out_exp_1])
         f = open('sample/FSCNetwork.sample.json', 'r')
         lines = [line.strip() for line in f]
-        cfaNetwork = UserIO.readInput(''.join(line for line in lines))
+        cfaNetwork = UserIO.read_json(''.join(line for line in lines))
         fanSpace = ComportamentalFANSpace(cfaNetwork)
         fanSpace._initialize()
         fanSpace._add_states(fanSpace._space_states[0], fanSpace.
