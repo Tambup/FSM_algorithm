@@ -1,5 +1,5 @@
 import unittest
-from core.ComportamentalFA import ComportamentalFA
+from FSM_algorithm.core import ComportamentalFA
 
 
 class TestStringMethods(unittest.TestCase):

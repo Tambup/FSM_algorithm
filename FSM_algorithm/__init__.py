@@ -1,11 +1,11 @@
 import argparse
 import sys
-from userInputOutput import UserInputOutput as UserIO
-from ComportamentalFANSpace import ComportamentalFANSpace
-from ComportamentalFANSObservation import ComportamentalFANSObservation
-from core.ComportamentalFANetwork import ComportamentalFANetwork
-from Diagnosis import Diagnosis
-from Diagnosticator import Diagnosticator
+from .userInputOutput import UserInputOutput as UserIO
+from .ComportamentalFANSpace import ComportamentalFANSpace
+from .ComportamentalFANSObservation import ComportamentalFANSObservation
+from .core import ComportamentalFANetwork
+from .Diagnosis import Diagnosis
+from .Diagnosticator import Diagnosticator
 import threading
 import signal
 

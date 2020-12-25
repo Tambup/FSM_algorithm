@@ -1,5 +1,5 @@
-from ComportamentalFANSpace import ComportamentalFANSpace
-from LOSpaceState import LOSpaceState
+from .ComportamentalFANSpace import ComportamentalFANSpace
+from .LOSpaceState import LOSpaceState
 import functools
 
 

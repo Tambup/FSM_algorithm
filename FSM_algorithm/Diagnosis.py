@@ -1,7 +1,7 @@
 import copy
-from core.OutTransition import OutTransition
-from LOSpaceState import LOSpaceState
-from RegexOperation import RegexOperation
+from .core import OutTransition
+from .LOSpaceState import LOSpaceState
+from .RegexOperation import RegexOperation
 
 
 class Diagnosis(RegexOperation):

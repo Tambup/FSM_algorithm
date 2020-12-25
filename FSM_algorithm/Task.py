@@ -1,4 +1,4 @@
-from core.ComportamentalFANetwork import ComportamentalFANetwork
+from .core import ComportamentalFANetwork
 
 
 class Task:

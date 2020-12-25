@@ -1,5 +1,5 @@
 import unittest
-from core.ComportamentalFANetwork import ComportamentalFANetwork
+from FSM_algorithm.core import ComportamentalFANetwork
 
 
 class TestStringMethods(unittest.TestCase):

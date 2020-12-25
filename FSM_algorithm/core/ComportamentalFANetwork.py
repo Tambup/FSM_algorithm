@@ -1,4 +1,4 @@
-from core.ComportamentalFA import ComportamentalFA
+from .ComportamentalFA import ComportamentalFA
 
 
 class ComportamentalFANetwork():

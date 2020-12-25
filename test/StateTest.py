@@ -1,5 +1,5 @@
 import unittest
-from core.State import State
+from FSM_algorithm.core import State
 
 
 class TestStringMethods(unittest.TestCase):

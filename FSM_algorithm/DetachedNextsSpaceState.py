@@ -1,4 +1,4 @@
-from SpaceState import SpaceState
+from .SpaceState import SpaceState
 
 
 class DetachedNextsSpaceState(SpaceState):

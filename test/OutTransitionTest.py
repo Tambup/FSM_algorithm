@@ -1,5 +1,5 @@
 import unittest
-from core.OutTransition import OutTransition
+from FSM_algorithm.core import OutTransition
 
 
 class TestStringMethods(unittest.TestCase):

@@ -1,4 +1,4 @@
-from core.State import State
+from .State import State
 
 
 class ComportamentalFA():

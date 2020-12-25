@@ -1,9 +1,10 @@
 import unittest
-from ComportamentalFANSObservation import ComportamentalFANSObservation
-from userInputOutput import UserInputOutput as UserIO
-from core.State import State
-from SpaceState import SpaceState
-from LOSpaceState import LOSpaceState
+from FSM_algorithm.ComportamentalFANSObservation \
+    import ComportamentalFANSObservation
+from FSM_algorithm.userInputOutput import UserInputOutput as UserIO
+from FSM_algorithm.core import State
+from FSM_algorithm.SpaceState import SpaceState
+from FSM_algorithm.LOSpaceState import LOSpaceState
 
 
 class TestStringMethods(unittest.TestCase):

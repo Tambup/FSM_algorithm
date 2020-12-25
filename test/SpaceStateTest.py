@@ -1,9 +1,9 @@
 import unittest
-from userInputOutput import UserInputOutput as UserIO
-from ComportamentalFANSpace import ComportamentalFANSpace
-from core.OutTransition import OutTransition
-from SpaceState import SpaceState
-from core.State import State
+from FSM_algorithm.userInputOutput import UserInputOutput as UserIO
+from FSM_algorithm.ComportamentalFANSpace import ComportamentalFANSpace
+from FSM_algorithm.core.OutTransition import OutTransition
+from FSM_algorithm.SpaceState import SpaceState
+from FSM_algorithm.core import State
 
 
 class TestStringMethods(unittest.TestCase):

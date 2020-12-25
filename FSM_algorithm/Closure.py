@@ -1,7 +1,7 @@
-from core.SubscriptedTransition import SubscriptedTransition as SubscrTrans
-from SpaceState import SpaceState
-from RegexOperation import RegexOperation
-from DetachedNextsSpaceState import DetachedNextsSpaceState as DNSpaceState
+from .core import SubscriptedTransition as SubscrTrans
+from .SpaceState import SpaceState
+from .RegexOperation import RegexOperation
+from .DetachedNextsSpaceState import DetachedNextsSpaceState as DNSpaceState
 
 
 class Closure(RegexOperation):

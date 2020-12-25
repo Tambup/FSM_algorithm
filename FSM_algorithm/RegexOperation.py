@@ -1,5 +1,5 @@
-from core.SubscriptedTransition import SubscriptedTransition as SubscrTrans
-from core.OutTransition import OutTransition
+from .core import SubscriptedTransition as SubscrTrans
+from .core import OutTransition
 
 
 class RegexOperation:

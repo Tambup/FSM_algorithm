@@ -1,5 +1,5 @@
-from Closure import Closure
-from SpaceState import SpaceState
+from .Closure import Closure
+from .SpaceState import SpaceState
 
 
 class Diagnosticator:

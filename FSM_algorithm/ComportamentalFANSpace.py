@@ -1,7 +1,7 @@
 import copy
-from Task import Task
-from SpaceState import SpaceState
 import functools
+from .Task import Task
+from .SpaceState import SpaceState
 
 
 class ComportamentalFANSpace(Task):
@@ -67,7 +67,7 @@ class ComportamentalFANSpace(Task):
     def _init_instance(self, init_states, link_names):
         return [SpaceState(init_states, link_names)]
 
-    def _initialize(self) -> SpaceState:
+    def _initialize(self):
         compFAs = super().compFAN.comportamentalFAs
         link_names = super().compFAN.in_links()
         init_states = [compFA.init_state() for compFA in compFAs]

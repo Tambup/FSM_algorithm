@@ -1,4 +1,4 @@
-from core.OutTransition import OutTransition
+from .OutTransition import OutTransition
 
 
 class State():

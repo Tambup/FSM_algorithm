@@ -1,6 +1,6 @@
 import json
-from core.ComportamentalFANetwork import ComportamentalFANetwork
 import pickle
+from ..core import ComportamentalFANetwork  # type: ignore
 from threading import Lock
 
 
