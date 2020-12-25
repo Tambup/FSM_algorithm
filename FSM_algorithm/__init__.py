@@ -78,7 +78,8 @@ def main():
                           type=argparse.FileType('w+'), required=True,
                           help='File to output results')
     argGroup.add_argument('-O', '--obs-list', dest='obs_list', action='append',
-                          help='List of observations')
+                          help='List of observations. Use -Oo1 -Oo2 if the \
+                          observation is o1 followed by o2.')
     argGroup.add_argument('-d', '--diagnosis', dest='diagnosis',
                           action='store_true',
                           help='State that the diagnosis must be computed')
