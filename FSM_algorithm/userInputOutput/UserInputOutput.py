@@ -1,7 +1,7 @@
 import json
 import pickle
-from ..core import ComportamentalFANetwork  # type: ignore
 from threading import Lock
+from FSM_algorithm.core import ComportamentalFANetwork
 
 
 mutex = Lock()
