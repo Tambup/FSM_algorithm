@@ -1,3 +1,5 @@
 /.vscode/
 /.mypy_cache/
+/doc/build/
+process-palette.json
 *.pyc

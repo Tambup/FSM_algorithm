@@ -1,8 +1,20 @@
 from .ComportamentalFA import ComportamentalFA
 
 
-class ComportamentalFANetwork():
+class ComportamentalFANetwork:
+    """
+    This class represent a Comportamental Finite Automa Network
+    (ComportamentalFAN).
+
+    :param name: The name of the ComportamentalFA
+    :type name: str
+    :param CFAs: The list of ComportamentalFA of the ComportamentalFAN
+    :type CFAs: list
+    """
     def __init__(self, name, CFAs):
+        """
+        Constructor method.
+        """
         self._name = name
         self._comportamentalFAs = []
         for cfa in CFAs:
@@ -11,21 +23,58 @@ class ComportamentalFANetwork():
 
     @property
     def name(self):
+        """
+        Describe the name of the current ComportamentalFAN.
+
+        :return: Returns the name of the current ComportamentalFAN
+        :rtype: str
+        """
         return self._name
 
     @property
     def comportamentalFAs(self):
+        """
+        These are the ComportamentalFA that are members
+        of the current ComportamentalFAN.
+
+        :return: Returns the list of the ComportamentalFA
+            of the current ComportamentalFAN
+        :rtype: list
+        """
         return self._comportamentalFAs
 
     def in_links(self):
+        """
+        Returns the list of links entering in the ComportamentalFAN
+
+        :return: The list of links entering in the ComportamentalFAN
+        :rtype: list
+        """
         return {link for compFa in self._comportamentalFAs
                 for link in compFa.in_links()}
 
     def out_links(self):
+        """
+        Returns the list of links exiting in the ComportamentalFAN
+
+        :return: The list of links exiting in the ComportamentalFAN
+        :rtype: list
+        """
         return {link for compFa in self._comportamentalFAs
                 for link in compFa.out_links()}
 
     def check(self):
+        """
+        Check if the ComportamentalFAN is correct.
+
+        orrect means that the ComportamentalFAN has at least one
+        :class:`~FSM_algorithm.core.ComportamentalFA`, that all the
+        ComportamentalFA are correct, and all links between the
+        differents ComportamentalFA are well formed.
+
+        :return: True if the state is correct, else false
+        :rtype: bool
+        """
         if self._comportamentalFAs is None:
             return False
 

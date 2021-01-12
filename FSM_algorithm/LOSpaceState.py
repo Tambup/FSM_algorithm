@@ -2,13 +2,45 @@ from .SpaceState import SpaceState
 
 
 class LOSpaceState(SpaceState):
+    """
+    This class represent a Space State of the state
+    :class:`~FSM_algorithm.ComportamentalFANSObservation.ComportamentalFANSObservation`.
+
+    This can be seen as a vertex of a oriented graph, where the graph is
+    represented by
+    :class:`~FSM_algorithm.ComportamentalFANSObservation.ComportamentalFANSObservation`.
+    Every LOSpaceState has additional information regarding observation of the
+    state such as :py:attr:`obs_index`.
+
+    :param states: the list of :class:`~FSM_algorithm.core.State.State` that
+        constitute the Space State.
+    :type states: list
+    :param links: the list of
+        :class:`~FSM_algorithm.core.OutTransition.OutTransition` in
+        the Space State.
+    :type links: list
+    """
     def __init__(self, states, links):
+        """
+        Constructor method.
+        """
         super().__init__(states, links)
         self._obs_index = None
         self._has_next_obs = True
 
     @property
     def obs_index(self):
+        """
+        Describe the index of the observation
+        given a observation list.
+
+        By example the initial state has obs_index 0, and the first
+        successor reach by a transition with an allowed observation
+        has obs_index 1.
+
+        :return: The index of the observation read until this LOSpaceState
+        :rtype: int
+        """
         return self._obs_index
 
     @obs_index.setter
@@ -16,9 +48,33 @@ class LOSpaceState(SpaceState):
         self._obs_index = value
 
     def set_has_obs(self, val):
+        """
+        Set the information about the presence of remaining elements in
+        the observation.
+
+        This is necessary to understand if the current LOSpaceState is final
+        or not in :py:meth:`is_final()`
+
+        :param val: True if there are remaining elements in
+            the observation, else False
+        :type val: bool
+        """
         self._has_next_obs = val
 
     def next_transition_state(self, obs_val):
+        """
+        Returns all the possible successor States
+        (:class:`~FSM_algorithm.core.State`) of the current LOSpaceState
+        relative to a particular observation.
+
+        This means that the transition must be null or equal to obs_val.
+
+        :param obs_val: The observation to be used for the search
+        :type obs_val: str
+        :return: A dict where the key is a :class:`~FSM_algorithm.core.State`
+            and the value a list of tuples containing index and transition
+        :rtype: dict
+        """
         possible_next = {}
         for i, next_state in enumerate(self._states):
             trans = [out_trans for out_trans in next_state.out_transitions
@@ -36,6 +92,12 @@ class LOSpaceState(SpaceState):
         return False
 
     def is_final(self):
+        """
+        Check if the current LOSpaceState is final or not
+
+        :return: True if the current LOSpaceState is final, else False
+        :rtype: bool
+        """
         if self._has_next_obs:
             return False
         return super().is_final()

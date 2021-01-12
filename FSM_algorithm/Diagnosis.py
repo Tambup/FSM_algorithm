@@ -5,6 +5,17 @@ from .RegexOperation import RegexOperation
 
 
 class Diagnosis(RegexOperation):
+    """
+    This class, using :py:meth:`diagnosis()` compute the regex from a
+    list of :class:`~FSM_algorithm.LOSpaceState` computed with
+    :class:`~FSM_algorithm.ComportamentalFANSObservation`.
+
+    :param space_states: The list of :class:`~FSM_algorithm.LOSpaceState`
+    :type space_states: list
+    :param observation: The list of observations on the
+        :class:`~FSM_algorithm.core.ComportamentalFANetwork`
+    :type observation: list
+    """
     final_trans = OutTransition(name='',
                                 destination='FINAL',
                                 links=[],
@@ -14,6 +25,9 @@ class Diagnosis(RegexOperation):
     final_state = LOSpaceState(states=[], links=[])
 
     def __init__(self, space_states, observation):
+        """
+        Constructor method.
+        """
         super().__init__()
         self._space_states = space_states
         self._regex = ''
@@ -21,9 +35,20 @@ class Diagnosis(RegexOperation):
 
     @property
     def regex(self):
+        """
+        Describe the regex computed with :py:meth:`diagnosis()`.
+
+        :return: The computed regex
+        :rtype: str
+        """
         return self._regex
 
     def diagnosis(self):
+        """
+        Compute the regex relative to an observation on a
+        list of :class:`~FSM_algorithm.LOSpaceState` computed with
+        :class:`~FSM_algorithm.ComportamentalFANSObservation`.
+        """
         print('Start computing diagnosis')
         self._unify_exit()
         while len([tr for space in self._work_space.keys()
@@ -64,6 +89,12 @@ class Diagnosis(RegexOperation):
                              relevant=relevance)
 
     def dict_per_json(self):
+        """
+        Returns the object's attributes in a form easy to transform in json.
+
+        :return: All the necessary information in a data structure
+        :rtype: dict
+        """
         return {
             'observation': self._observation,
             'number space states': len(self._space_states),

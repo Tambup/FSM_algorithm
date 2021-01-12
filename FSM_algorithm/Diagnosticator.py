@@ -3,7 +3,23 @@ from .SpaceState import SpaceState
 
 
 class Diagnosticator:
+    """
+    This class has two functions:
+        - using :py:meth:`build()` create the closure space;
+        - using :py:meth:`linear_diagnosis()` build the regex.
+
+    To accomplish these tasks, the class needs a list of
+    :class:`~FSM_algorithm.SpaceState` computed with
+    :class:`~FSM_algorithm.ComportamentalFANSpace` method
+    :py:meth:`~FSM_algorithm.ComportamentalFANSpace.ComportamentalFANSpace.build()`.
+
+    :param space_states: The list of :class:`~FSM_algorithm.SpaceState`
+    :type space_states: list
+    """
     def __init__(self, space_states):
+        """
+        Constructor method.
+        """
         self._space_states = space_states
         self._closures = None
         self._regex = None
@@ -11,6 +27,9 @@ class Diagnosticator:
         self._observation = None
 
     def build(self):
+        """
+        Creates the closure space with decoration, that is the diagnosticator.
+        """
         print('\nStart diagnosticator')
         self._build_closures()
         self._build_closure_space()
@@ -38,6 +57,13 @@ class Diagnosticator:
             closure.build_next(self._closures)
 
     def linear_diagnosis(self, observations):
+        """
+        Compute the regex relative to an observation once the diagnosticator
+        is computed by :py:meth:`build()`.
+
+        :param observations: The list of observations to be used
+        :type observations: list
+        """
         print('\nStart evaluate diagnosis respect observation ' +
               str(observations))
         self._observation = observations
@@ -99,6 +125,12 @@ class Diagnosticator:
             return trns_regex
 
     def dict_per_json(self):
+        """
+        Returns the object's attributes in a form easy to transform in json.
+
+        :return: All the necessary information in a data structure
+        :rtype: dict
+        """
         if self._is_linear_diagnosis:
             return {
                 'observation': self._observation,

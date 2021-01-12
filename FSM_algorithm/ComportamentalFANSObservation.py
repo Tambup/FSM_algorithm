@@ -4,12 +4,33 @@ import functools
 
 
 class ComportamentalFANSObservation(ComportamentalFANSpace):
+    """
+    The class rapresent a comportamental finite automa network space
+    relative to an observation.
+
+    From now comportamental finite automa network space relative to an
+    observation are identified as CFANSO or CFANSObservation.
+
+    :param compFAN: The comportamental FA network
+    :type compFAN: :class:`~FSM_algorithm.core.ComportamentalFANetwork`
+    """
     def __init__(self, compFAN):
+        """
+        Constructor method.
+        """
         super().__init__(compFAN)
         self._observation = None
         self._id_count = None
 
     def build(self, observation):
+        """
+        Build a CFANS observation pruning states that cannot
+        reach a final state.
+
+        :param observation: The list of observations on the
+            :class:`~FSM_algorithm.core.ComportamentalFANetwork`
+        :type observation: list
+        """
         self._observation = observation
         print('\nStart creation CFANS on observation ' +
               str(observation) + '\n')

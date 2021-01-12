@@ -5,9 +5,23 @@ from .DetachedNextsSpaceState import DetachedNextsSpaceState as DNSpaceState
 
 
 class Closure(RegexOperation):
+    """
+    This class represent a closure.
+
+    :param enter_state_index: The index, relative to state_space,
+        of the enter state of the closure
+    :type enter_state_index: int
+    :param state_space: The list of space states
+    :type state_space: list
+    :param name: The symbolic name that the closure will assume
+    :type name: str
+    """
     final_state = DNSpaceState(SpaceState(states=['', ''], links=[]))
 
     def __init__(self, enter_state_index, state_space, name):
+        """
+        Constructor method.
+        """
         super().__init__()
         self._name = name
         self._init_index = enter_state_index
@@ -20,19 +34,55 @@ class Closure(RegexOperation):
 
     @property
     def name(self):
+        """
+        Returns the symbolic name of the closure.
+
+        :return: The symbolyc name of the closure
+        :rtype: str
+        """
         return self._name
 
     @property
     def regex(self):
+        """
+        Returns the decoration (that is a regex) of the closure.
+
+        :return: The decoration of the closure.
+        :rtype: str
+        """
         return self._regex
 
     def is_final(self):
+        """
+        Check if the current closure is final or not.
+
+        :return: True if and only if the closure contains final states
+        :rtype: bool
+        """
         return True if self._final_states else False
 
     def in_space_state(self):
+        """
+        Build the
+        :class:`~FSM_algorithm.DetachedNextsSpaceState.DetachedNextsSpaceState`
+        relative to the initial state of the closure.
+
+        :return: The initial
+            :class:`~FSM_algorithm.DetachedNextsSpaceState.DetachedNextsSpaceState`
+        :rtype:
+            :class:`~FSM_algorithm.DetachedNextsSpaceState.DetachedNextsSpaceState`
+        """
         return DNSpaceState(self._init_space[self._init_index])
 
     def build(self):
+        """
+        Build the closure.
+
+        Building means:
+
+            - Compute the decoration of all the final states;
+            - Compute the decoration of all the exit states;
+        """
         init_st = DNSpaceState(space_state=SpaceState(states=[''], links=[]),
                                is_closure_init=True)
         init_st.set_link(SpaceState.NULL_EVT, '!'+SpaceState.NULL_EVT)
@@ -146,6 +196,12 @@ class Closure(RegexOperation):
                            subscr=nk)
 
     def build_next(self, closures):
+        """
+        Build the list of adjacent closure, each one with its decoration.
+
+        :param closures: The list of closures of the network
+        :type closures: list
+        """
         self._out = {}
         for state in self._exit_states.keys():
             for trns in state.external_nexts.keys():
@@ -166,9 +222,24 @@ class Closure(RegexOperation):
                         break
 
     def out_list(self, observation):
+        """
+        Returns the list of adjacent closure, each one with its decoration,
+        associated to an observation.
+
+        :param observation: The observation
+        :type observation: str
+        :return: A list of the adjacent closure with decoration
+        :rtype: list
+        """
         return self._out.get(observation, [])
 
     def dict_per_json(self):
+        """
+        Returns the object's attributes in a form easy to transform in json.
+
+        :return: All the necessary information in a data structure
+        :rtype: dict
+        """
         temp = {}
         temp['name'] = self._name
         temp['in_state_id'] = self.in_space_state().id

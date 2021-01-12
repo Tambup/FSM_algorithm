@@ -1,8 +1,23 @@
 from .OutTransition import OutTransition
 
 
-class State():
+class State:
+    """
+    This class represent a state in a
+    :class:`~FSM_algorithm.core.ComportamentalFA`.
+
+    :param name: Name of the state
+    :type name: str
+    :param is_init: Describe if the current state is initial or not
+    :type is_init: bool
+    :param out_transitions: The list of transitions exiting
+        from the current state
+    :type out_transitions: list
+    """
     def __init__(self, name, is_init, out_transitions):
+        """
+        Constructor method.
+        """
         self._name = name
         self._is_init = is_init
         self._out_transitions = []
@@ -17,17 +32,41 @@ class State():
 
     @property
     def name(self):
+        """
+        Describe the name of the current state.
+
+        :return: Returns the name of the current state
+        :rtype: str
+        """
         return self._name
 
     @property
     def out_transitions(self):
+        """
+        These are the transitions exiting the current state
+
+        :return: Returns the list of transitions exiting of the current state
+        :rtype: list
+        """
         return self._out_transitions
 
     def in_links(self):
+        """
+        Returns the list of links entering in the state
+
+        :return: The list of links entering in the state
+        :rtype: list
+        """
         return {link for out_trans in self._out_transitions
                 for link in out_trans.in_links()}
 
     def out_links(self):
+        """
+        Returns the list of links exiting in the state
+
+        :return: The list of links exiting in the state
+        :rtype: list
+        """
         return {link for out_trans in self._out_transitions
                 for link in out_trans.out_links()}
 
@@ -54,6 +93,16 @@ class State():
         return hash((self._name, self._is_init, tuple(self._out_transitions)))
 
     def check(self):
+        """
+        Check if the state is correct.
+
+        Correct means that the state has a name, all transitions have names,
+        are correct and different each other.
+
+
+        :return: True if the state is correct, else false
+        :rtype: bool
+        """
         if self._name is None:
             return False
 
@@ -72,6 +121,16 @@ class State():
         return True
 
     def no_exit(self):
+        """
+        Check if the current state has at least one transition
+        exiting the state.
+
+        In this case an autotransition is not considered an exiting state.
+
+        :return: True if there is a transition going to another state,
+            else False
+        :rtype: bool
+        """
         if self._out_transitions is None:
             return True
 
@@ -82,4 +141,10 @@ class State():
         return True
 
     def is_init(self):
+        """
+        Check if the current state is an inital state or not
+
+        :return: True if the current state is initial, else False
+        :rtype: bool
+        """
         return self._is_init

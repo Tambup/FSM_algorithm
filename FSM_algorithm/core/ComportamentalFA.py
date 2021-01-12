@@ -1,8 +1,19 @@
 from .State import State
 
 
-class ComportamentalFA():
+class ComportamentalFA:
+    """
+    This class represent a Comportamental Finite Automa (ComportamentalFA).
+
+    :param name: The name of the ComportamentalFA
+    :type name: str
+    :param states: The list of states of the ComportamentalFA
+    :type states: list
+    """
     def __init__(self, name, states):
+        """
+        Constructor method.
+        """
         self._name = name
         self._states = []
         for state in states:
@@ -13,17 +24,41 @@ class ComportamentalFA():
 
     @property
     def name(self):
+        """
+        Describe the name of the current ComportamentalFA.
+
+        :return: Returns the name of the current ComportamentalFA
+        :rtype: str
+        """
         return self._name
 
     @property
     def states(self):
+        """
+        These are the states that are members of the current ComportamentalFA.
+
+        :return: Returns the list of the states of the current ComportamentalFA
+        :rtype: list
+        """
         return self._states
 
     def in_links(self):
+        """
+        Returns the list of links entering in the ComportamentalFA
+
+        :return: The list of links entering in the ComportamentalFA
+        :rtype: list
+        """
         return {link for state in self._states
                 for link in state.in_links()}
 
     def out_links(self):
+        """
+        Returns the list of links exiting in the ComportamentalFA
+
+        :return: The list of links exiting in the ComportamentalFA
+        :rtype: list
+        """
         return {link for state in self._states
                 for link in state.out_links()}
 
@@ -55,11 +90,28 @@ class ComportamentalFA():
         return True
 
     def init_state(self):
+        """
+        Returns the initial state of the current ComportamentalFA
+
+        :return: The initial state of the current ComportamentalFA
+        :rtype: :class:`~FSM_algorithm.core.State`
+        """
         for state in self._states:
             if state.is_init():
                 return state
 
     def check(self):
+        """
+        Check if the ComportamentalFA is correct.
+
+        Correct means that the ComportamentalFA has at least one
+        :class:`~FSM_algorithm.core.State`, that all the states are correct,
+        with different names and every transition has a legal destination.
+
+
+        :return: True if the state is correct, else false
+        :rtype: bool
+        """
         if self._states is None:
             return False
         if len(self._states) < 1:

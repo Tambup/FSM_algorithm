@@ -3,7 +3,16 @@ from .core import OutTransition
 
 
 class RegexOperation:
+    """
+    This class provides all the operations to compute a regex from a
+    graph structure with relevance label.
+
+    Should be extended to provide specific way to compute regex.
+    """
     def __init__(self):
+        """
+        Constructor method.
+        """
         self._temp = None
         self._work_space = None
         self._prev = None

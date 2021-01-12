@@ -10,26 +10,43 @@ class ComportamentalFANSpace(Task):
 
     From now comportamental finite automa network space are identified
     as CFANS.
-    """
 
+    :param compFAN: The comportamental FA network
+    :type compFAN: :class:`~FSM_algorithm.core.ComportamentalFANetwork`
+    """
     def __init__(self, compFAN):
+        """
+        Constructor method.
+        """
         super().__init__(compFAN)
         self._space_states = []
 
     @property
     def space_states(self):
+        """
+        Returns all the :class:`~FSM_algorithm.SpaceState.SpaceState`
+        of the current Comportamental FAN Space.
+
+        :return: The list of :class:`~FSM_algorithm.SpaceState.SpaceState`
+        :rtype: list
+        """
         return self._space_states
 
     def is_correct(self):
+        """
+        Check if the Compotamental FAN Space is corret or not.
+
+        :return: True if is correct, else false
+        :rtype: bool
+        """
         return True if self._space_states else False
 
     def build(self, param=None):
-        """Build a CFANS pruning states that cannot reach a final state.
+        """
+        Build a CFANS pruning states that cannot reach a final state.
 
-        Parameters
-        ----------
-        param : list, optional
-            In this class is useless. Don't use it. By default None
+        :param param: In this class is useless. Don't use it, defaults to None
+        :type param: list, optional
         """
         print('Start creation CFANS\n')
         self._initialize()
@@ -46,12 +63,11 @@ class ComportamentalFANSpace(Task):
         print('\nCFANS complete')
 
     def build_no_prune(self, param=None):
-        """Build a CFANS without pruning.
+        """
+        Build a CFANS without pruning.
 
-        Parameters
-        ----------
-        param : list, optional
-            In this class is useless. Don't use it. By default None
+        :param param: In this class is useless. Don't use it, defaults to None
+        :type param: list, optional
         """
         self._initialize()
 
@@ -151,12 +167,11 @@ class ComportamentalFANSpace(Task):
         return True
 
     def dict_per_json(self):
-        """Build a dict from the object.
+        """
+        Returns the object's attributes in a form easy to transform in json.
 
-        Returns
-        -------
-        dict
-            Return a dict that describe the CFANS.
+        :return: All the necessary information in a data structure
+        :rtype: dict
         """
         num_trans = 0
         for space_state in self._space_states:
